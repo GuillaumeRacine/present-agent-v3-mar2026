@@ -1,0 +1,190 @@
+{
+  "project": "Present Agent",
+  "created": "2026-03-16",
+  "last_updated": "2026-03-16",
+  "psychology_research_date": "2026-03-16",
+  "assumptions": [
+    {
+      "id": "D001",
+      "assumption": "Gift selection (knowing what to get) is the primary pain point for gifters",
+      "category": "desirability",
+      "confidence": 0.3,
+      "evidence": ["Pain research Phase 2: Anxiety scored 25, Ideation scored 16", "Fear of judgment > not knowing what to get"],
+      "test_method": "Pain point research - frequency analysis",
+      "test_cost": "low",
+      "status": "invalidated",
+      "phase_discovered": "0",
+      "notes": "UPDATED: Research showed anxiety/judgment fear is primary, not ideation"
+    },
+    {
+      "id": "D002",
+      "assumption": "Gifters would trust AI recommendations for gift selection",
+      "category": "desirability",
+      "confidence": 0.5,
+      "evidence": ["ADHD segment already pays for AI assistance ($79-130/mo)", "No direct evidence of trust barrier yet"],
+      "test_method": "Survey or concept test",
+      "test_cost": "medium",
+      "status": "partially_validated",
+      "phase_discovered": "0"
+    },
+    {
+      "id": "D003",
+      "assumption": "Recipients want better gifts but don't want to share wishlists",
+      "category": "desirability",
+      "confidence": 0.6,
+      "evidence": ["Pain research: 'transactional feel' mentioned repeatedly", "Wishlists feel grabby"],
+      "test_method": "User interviews with gift recipients",
+      "test_cost": "medium",
+      "status": "partially_validated",
+      "phase_discovered": "0"
+    },
+    {
+      "id": "D004",
+      "assumption": "ADHD adults will pay $10-20/month for gift delegation",
+      "category": "desirability",
+      "confidence": 0.6,
+      "evidence": ["ADHD apps market $2.78B", "Focusmate $79/mo, coaching $130/mo", "High pain intensity for gifting"],
+      "test_method": "Fake door test with pricing page",
+      "test_cost": "low",
+      "status": "untested",
+      "phase_discovered": "3"
+    },
+    {
+      "id": "D005",
+      "assumption": "'Arrive ready' (wrapped, carded, on time) is high-value differentiator",
+      "category": "desirability",
+      "confidence": 0.7,
+      "evidence": ["52% said wrapping worst part of holidays", "71% would pay someone else to wrap"],
+      "test_method": "Feature preference survey",
+      "test_cost": "low",
+      "status": "untested",
+      "phase_discovered": "2"
+    },
+    {
+      "id": "D006",
+      "assumption": "Proactive reminders with reduced task complexity beats standard reminders",
+      "category": "desirability",
+      "confidence": 0.7,
+      "evidence": ["ADHD pain: reminders remind without reducing complexity", "Need 'Here are 3 options' not just 'birthday in 2 weeks'"],
+      "test_method": "A/B test in prototype",
+      "test_cost": "medium",
+      "status": "untested",
+      "phase_discovered": "3"
+    },
+    {
+      "id": "V001",
+      "assumption": "Corporate/B2B segment has higher willingness to pay than personal gifting",
+      "category": "viability",
+      "confidence": 0.4,
+      "evidence": ["ADHD personal WTP ($79-130/mo) rivals B2B", "B2B is crowded/consolidating"],
+      "test_method": "Segment analysis - pricing research",
+      "test_cost": "low",
+      "status": "partially_invalidated",
+      "phase_discovered": "0",
+      "notes": "UPDATED: ADHD segment shows comparable WTP to B2B"
+    },
+    {
+      "id": "V002",
+      "assumption": "Subscription model can achieve positive unit economics",
+      "category": "viability",
+      "confidence": 0.5,
+      "evidence": ["Cost model: AI costs $0.02/recommendation", "AI costs <1% of $10/mo subscription"],
+      "test_method": "Unit economics modeling",
+      "test_cost": "low",
+      "status": "partially_validated",
+      "phase_discovered": "0"
+    },
+    {
+      "id": "F001",
+      "assumption": "LLMs can generate meaningfully better gift suggestions than random selection",
+      "category": "feasibility",
+      "confidence": 0.75,
+      "evidence": ["Empirical test Phase 4: 7/10 with context vs 3/10 cold start", "Curated catalog improves further"],
+      "test_method": "Blind test - AI vs random vs human",
+      "test_cost": "medium",
+      "status": "validated",
+      "phase_discovered": "0"
+    },
+    {
+      "id": "F002",
+      "assumption": "AI can infer preferences without explicit profile data",
+      "category": "feasibility",
+      "confidence": 0.3,
+      "evidence": ["Cold-start test: Generic 'Pinterest-like' results", "Needs explicit input for quality"],
+      "test_method": "Prototype test with minimal input",
+      "test_cost": "medium",
+      "status": "invalidated",
+      "phase_discovered": "0",
+      "notes": "UPDATED: Cold start produces generic results. Need explicit input."
+    },
+    {
+      "id": "F003",
+      "assumption": "200-item curated catalog beats open-ended AI recommendations",
+      "category": "feasibility",
+      "confidence": 0.8,
+      "evidence": ["AI feasibility research: constrained inventory improves quality", "Jam study principle"],
+      "test_method": "User preference test",
+      "test_cost": "low",
+      "status": "untested",
+      "phase_discovered": "4"
+    },
+    {
+      "id": "D007",
+      "assumption": "Giver-centric gift framing increases relationship closeness more than recipient-centric",
+      "category": "desirability",
+      "confidence": 0.75,
+      "evidence": ["Aknin & Human 2015: 6 studies show giver-centric gifts promote more closeness", "Self-disclosure is intrinsically rewarding (Tamir & Mitchell 2012)"],
+      "test_method": "A/B test: 'Share yourself' vs 'Match their preferences' framing",
+      "test_cost": "low",
+      "status": "academic_validated",
+      "phase_discovered": "6",
+      "notes": "Counterintuitive finding - people prefer to GIVE recipient-centric but OUTCOMES are better with giver-centric"
+    },
+    {
+      "id": "D008",
+      "assumption": "Conversational turn-taking interface increases AI acceptance for close relationships",
+      "category": "desirability",
+      "confidence": 0.7,
+      "evidence": ["Fu et al 2024: Turn-taking AI increases expected preference matching", "Mimics human conversation pattern"],
+      "test_method": "Compare chatbot vs form-based interface adoption rates",
+      "test_cost": "medium",
+      "status": "academic_validated",
+      "phase_discovered": "6"
+    },
+    {
+      "id": "D009",
+      "assumption": "Users resist AI more for close relationships than distant ones",
+      "category": "desirability",
+      "confidence": 0.8,
+      "evidence": ["Fu et al 2024: 5 studies confirm social closeness negatively predicts AI tool use", "Relational signaling motive dominates for close friends"],
+      "test_method": "User segmentation by relationship type",
+      "test_cost": "low",
+      "status": "academic_validated",
+      "phase_discovered": "6",
+      "notes": "Implication: Start with execution (lower stakes) not selection for close relationships"
+    },
+    {
+      "id": "D010",
+      "assumption": "Positioning AI as 'thinking partner' vs 'decision maker' increases adoption",
+      "category": "desirability",
+      "confidence": 0.65,
+      "evidence": ["AI aversion research: ownership/effort attribution matters", "Ward & Broniarczyk 2016: effort = value in close relationships"],
+      "test_method": "Messaging A/B test on landing page",
+      "test_cost": "low",
+      "status": "untested",
+      "phase_discovered": "6"
+    },
+    {
+      "id": "D011",
+      "assumption": "Givers overweight monetary value while recipients prefer practical/useful gifts",
+      "category": "desirability",
+      "confidence": 0.75,
+      "evidence": ["Baskin et al 2014: construal level differences", "Givi et al 2021: relative vs absolute value mismatch"],
+      "test_method": "Blind preference test - giver vs recipient ratings",
+      "test_cost": "medium",
+      "status": "academic_validated",
+      "phase_discovered": "6",
+      "notes": "Implication: Help calibrate toward feasibility/practicality"
+    }
+  ]
+}

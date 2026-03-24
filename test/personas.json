@@ -1,0 +1,162 @@
+[
+  {
+    "id": "lisa_mothers_day",
+    "name": "Guillaume shopping for Lisa",
+    "description": "Partner + mother of their son, Mother's Day, design/yoga person",
+    "opener": "I need a gift for Lisa, my partner and mother of our son. Mother's Day.",
+    "followUps": {
+      "interests": "She's really into design, reading, yoga and pilates. Very intentional about what she brings into the house.",
+      "not_sure": "not sure",
+      "budget": "Around $200 CAD",
+      "direction": "The wellness one feels right — something for her yoga practice",
+      "expression": "I want her to feel appreciated as both my partner and an amazing mom",
+      "past_gifts": "I got her a nice candle set last year, she liked it but it wasn't super memorable"
+    },
+    "expectedExtraction": {
+      "recipientName": "Lisa",
+      "relationship": "partner",
+      "occasion": "Mother's Day",
+      "interests": ["design", "reading", "yoga", "pilates"]
+    }
+  },
+  {
+    "id": "dad_retirement",
+    "name": "Maria shopping for her dad",
+    "description": "Close relationship, retirement party, practical outdoorsy dad",
+    "opener": "My dad is retiring next month and I want to get him something really special.",
+    "followUps": {
+      "interests": "He's been talking about finally having time for fishing and woodworking. He's pretty practical — hates useless stuff.",
+      "not_sure": "hmm I'm not sure honestly",
+      "budget": "I'd go up to $300 for this",
+      "direction": "Something for his woodworking — he keeps using the same old tools",
+      "expression": "I want him to know I'm proud of his career and excited for his next chapter",
+      "past_gifts": "Last birthday I got him a book about fly fishing and he actually read the whole thing"
+    },
+    "expectedExtraction": {
+      "recipientName": "dad",
+      "relationship": "father",
+      "occasion": "retirement",
+      "interests": ["fishing", "woodworking"]
+    }
+  },
+  {
+    "id": "friend_birthday_no_idea",
+    "name": "Alex shopping for best friend Sam",
+    "description": "Close friend, birthday, user has no idea what to get — diffuse intent",
+    "opener": "My best friend Sam's birthday is in 2 weeks and I have absolutely no idea what to get.",
+    "followUps": {
+      "interests": "He's a software engineer, plays guitar on weekends, loves craft beer. Pretty minimalist though — his apartment is super clean.",
+      "not_sure": "I really don't know what direction",
+      "budget": "$50-100 probably",
+      "direction": "The guitar one — he's always playing",
+      "expression": "Just want him to know he's my best friend, you know?",
+      "past_gifts": "I've never actually gotten him a great gift, that's why I'm stressing"
+    },
+    "expectedExtraction": {
+      "recipientName": "Sam",
+      "relationship": "best friend",
+      "occasion": "birthday",
+      "interests": ["software", "guitar", "craft beer"]
+    }
+  },
+  {
+    "id": "boss_thank_you",
+    "name": "Jordan thanking their boss",
+    "description": "Professional relationship, thank you gift, tricky power dynamic",
+    "opener": "I want to get a thank you gift for my boss. She really went to bat for my promotion.",
+    "followUps": {
+      "interests": "She's really into cooking and hosts dinner parties. She's also a big reader — always recommending books in our 1:1s.",
+      "not_sure": "I don't want it to seem like I'm sucking up",
+      "budget": "Maybe $50-75? I don't want it to be too much",
+      "direction": "Something cooking related but elevated — not generic",
+      "expression": "Genuine gratitude, not obligation",
+      "past_gifts": "The team got her flowers once but that felt impersonal"
+    },
+    "expectedExtraction": {
+      "recipientName": "boss",
+      "relationship": "boss/manager",
+      "occasion": "thank you",
+      "interests": ["cooking", "reading", "hosting"]
+    }
+  },
+  {
+    "id": "sister_wedding",
+    "name": "Priya shopping for sister's wedding",
+    "description": "Very close sibling, wedding, high emotional stakes",
+    "opener": "My sister Ananya is getting married in June. I'm the maid of honor and I want to give her something personal, not just off the registry.",
+    "followUps": {
+      "interests": "She's a photographer, loves travel, and she's really sentimental — she kept every birthday card I ever wrote her.",
+      "not_sure": "I want something that makes her cry happy tears, you know?",
+      "budget": "Up to $250",
+      "direction": "Something sentimental that captures our relationship",
+      "expression": "That she's my person and I'm so happy for her",
+      "past_gifts": "For her 30th I made a photo album of our childhood and she still has it on her coffee table"
+    },
+    "expectedExtraction": {
+      "recipientName": "Ananya",
+      "relationship": "sister",
+      "occasion": "wedding",
+      "interests": ["photography", "travel", "sentimental things"]
+    }
+  },
+  {
+    "id": "acquaintance_housewarming",
+    "name": "Chris bringing a housewarming gift",
+    "description": "Casual acquaintance, low info, just needs something appropriate",
+    "opener": "I'm going to a housewarming party this weekend for a coworker. Don't know them super well.",
+    "followUps": {
+      "interests": "They seem into cooking? They always bring homemade stuff to the office.",
+      "not_sure": "I barely know them honestly",
+      "budget": "Under $50",
+      "direction": "Whatever is safe and appropriate — I just don't want to show up empty handed",
+      "expression": "Friendly gesture, nothing deep",
+      "past_gifts": "no idea, first time getting them anything"
+    },
+    "expectedExtraction": {
+      "recipientName": "coworker",
+      "relationship": "coworker/acquaintance",
+      "occasion": "housewarming",
+      "interests": ["cooking"]
+    }
+  },
+  {
+    "id": "teenager_christmas",
+    "name": "Uncle Dave shopping for teenage niece",
+    "description": "Extended family, holiday gift, generational gap",
+    "opener": "Need a Christmas gift for my 16-year-old niece. I'm the fun uncle but I have no idea what teenagers are into.",
+    "followUps": {
+      "interests": "She's really into art — drawing, painting. She posts her stuff on social media. She's also into K-pop but I don't know anything about that.",
+      "not_sure": "I don't want to get something cringey",
+      "budget": "$40-80",
+      "direction": "Art supplies or something creative",
+      "expression": "That I see her as creative and cool, not just a kid",
+      "past_gifts": "Last year I got her a gift card and felt lame about it"
+    },
+    "expectedExtraction": {
+      "recipientName": "niece",
+      "relationship": "niece",
+      "occasion": "Christmas",
+      "interests": ["art", "drawing", "painting", "K-pop"]
+    }
+  },
+  {
+    "id": "partner_anniversary_adhd",
+    "name": "ADHD user — anxious about anniversary gift",
+    "description": "Classic ADHD target user — paralyzed by options, time blind, high anxiety",
+    "opener": "oh god our anniversary is in 3 days and i completely forgot. my wife is going to kill me. help",
+    "followUps": {
+      "interests": "She likes gardening and baking and true crime podcasts. We've been together 8 years.",
+      "not_sure": "i don't know i just need something fast that doesn't look last minute",
+      "budget": "whatever, $100-150? just needs to arrive in time",
+      "direction": "something that feels personal not like I panic-bought on amazon",
+      "expression": "that I love her even though I'm a disaster at remembering dates",
+      "past_gifts": "honestly she's told me before she wishes I'd put more thought into gifts instead of just getting something expensive"
+    },
+    "expectedExtraction": {
+      "recipientName": "wife",
+      "relationship": "wife",
+      "occasion": "anniversary",
+      "interests": ["gardening", "baking", "true crime"]
+    }
+  }
+]

@@ -1,0 +1,257 @@
+{
+  "timestamp": "2026-03-24T18:42:37.999Z",
+  "scenarioCount": 4,
+  "averageScores": {
+    "budgetCompliance": 1,
+    "categoryDiversity": 1,
+    "brandDiversity": 1,
+    "explanationQuality": 1,
+    "relevance": 0.67,
+    "overall": 0.94
+  },
+  "issueCount": 4,
+  "results": [
+    {
+      "id": "yoga_mom",
+      "recommendations": [
+        {
+          "id": "vitruvi-diffuser",
+          "name": "Stone Diffuser",
+          "brand": "Vitruvi",
+          "price": 140,
+          "currency": "CAD",
+          "category": "artisan",
+          "description": "Hand-finished porcelain essential oil diffuser. Whisper-quiet. Doubles as décor.",
+          "buyUrl": "https://www.vitruvi.com/products/stone-diffuser",
+          "matchScore": 0.95,
+          "whyThisFits": "Lisa's love for yoga and design makes this perfect — it creates the serene atmosphere for her practice while being beautiful enough to complement her aesthetic sense. The wellness connection directly supports her journey in a way she'll experience daily.",
+          "giftAngle": "This will turn any space into her personal wellness sanctuary — beautiful enough for her design eye, functional for her yoga practice.",
+          "whatThisSays": "This says: 'I see how you create beauty and wellness in your daily life, and I want to add something that enhances both.'",
+          "usageSignal": "She'll turn it on every evening when the day winds down"
+        },
+        {
+          "id": "book-of-the-month-6",
+          "name": "6-Month Gift Subscription",
+          "brand": "Book of the Month",
+          "price": 137,
+          "currency": "CAD",
+          "category": "experiential",
+          "description": "Curated book subscription — pick one new hardcover each month from five expert selections.",
+          "buyUrl": "https://www.bookofthemonth.com/gift",
+          "matchScore": 0.85,
+          "whyThisFits": "With her love of reading, Lisa will get six months of curated literary discoveries. This gift keeps giving throughout the year, showing ongoing support for something she's passionate about.",
+          "giftAngle": "Six months of expertly chosen books delivered just for her — like having a personal book curator who knows her taste.",
+          "whatThisSays": "This says: 'I know how much reading feeds your soul, and I want to keep that joy coming all year long.'",
+          "usageSignal": "A new book every month, chosen just for them"
+        },
+        {
+          "id": "slip-silk-pillowcase",
+          "name": "Pure Silk Pillowcase (Queen)",
+          "brand": "Slip",
+          "price": 150,
+          "currency": "CAD",
+          "category": "wellness",
+          "description": "22-momme pure mulberry silk — reduces hair friction, prevents sleep creases, feels luxuriously cool. The OG beauty sleep upgrade.",
+          "buyUrl": "https://slipsilkpillowcase.ca/collections/queen-pillowcases",
+          "matchScore": 0.75,
+          "whyThisFits": "This connects to her wellness journey in an unexpected way — quality sleep as the foundation of wellbeing. It's a luxurious upgrade to something she uses every night, making self-care part of her daily routine.",
+          "giftAngle": "The kind of upgrade that makes every night feel like a spa experience — wellness that works while she sleeps.",
+          "whatThisSays": "This says: 'Your wellness journey includes the quiet moments of self-care, and you deserve luxury in the everyday.'",
+          "usageSignal": "Once she sleeps on silk, she'll never go back to cotton"
+        }
+      ],
+      "scores": {
+        "budgetCompliance": 1,
+        "categoryDiversity": 1,
+        "brandDiversity": 1,
+        "explanationQuality": 1,
+        "relevance": 1,
+        "overall": 1
+      },
+      "issues": []
+    },
+    {
+      "id": "friend_guitar",
+      "recommendations": [
+        {
+          "id": "ridgewallet.com-forged-ember",
+          "name": "Ridge Wallet - Forged Ember",
+          "brand": "The Ridge Wallet",
+          "price": 76,
+          "currency": "USD",
+          "category": "practical",
+          "description": "Carbon fiber-plated, RFID-blocking wallet. Ditch the bulky wallet. Free Shipping Worldwide.",
+          "buyUrl": "https://ridgewallet.com/products/forged-ember",
+          "matchScore": 0.92,
+          "whyThisFits": "Sam's minimalist style perfectly aligns with this sleek, carbon fiber wallet that eliminates bulk while staying organized. As your best friend, you know he values practical design that works seamlessly with his lifestyle.",
+          "giftAngle": "Present it as the perfect upgrade from whatever bulky wallet he's currently carrying - something that matches his clean, intentional approach to life.",
+          "whatThisSays": "This says: 'I see how thoughtfully you curate your life, and I want to support that with something as intentional and efficient as you are.'",
+          "usageSignal": "He'll use this multiple times daily, every time he reaches for cards or cash"
+        },
+        {
+          "id": "www.bloomist.com-bare-vessels-vase",
+          "name": "Bare Vessels, Snowflake",
+          "brand": "DBO Home",
+          "price": 95,
+          "currency": "USD",
+          "category": "artisan",
+          "description": "Functional, tactile, beautiful. We love these used for flowers or utensils. The small shape does double duty as a charming cache pot for your favorite",
+          "buyUrl": "https://www.bloomist.com/products/bare-vessels-vase",
+          "matchScore": 0.83,
+          "whyThisFits": "This functional, minimalist vase captures Sam's aesthetic perfectly - it's beautiful without being cluttered, and versatile enough to hold flowers or even guitar picks. The clean design speaks to his minimalist sensibilities while adding a subtle artistic touch to his space.",
+          "giftAngle": "Frame it as a piece that bridges function and beauty - something that can hold a single bloom or serve as a catch-all for small items, fitting seamlessly into his curated environment.",
+          "whatThisSays": "This says: 'I appreciate your eye for clean, beautiful design and want to add something to your space that reflects that same thoughtful simplicity.'",
+          "usageSignal": "He'll see this daily on his desk or shelf, whether holding flowers, guitar picks, or simply standing as a beautiful accent piece"
+        },
+        {
+          "id": "thesill.com-dwarf-palmetto-tree",
+          "name": "Dwarf Palmetto Tree",
+          "brand": "Live Good Logistics",
+          "price": 99,
+          "currency": "USD",
+          "category": "experiential",
+          "description": "Dwarf Palmetto Tree: Tropical Elegance, Minimal Effort The Dwarf Palmetto Tree , also known as the Sabal Minor Palm, brings a splash of low-maintenance tropical charm to your landscape. With its fan-shaped fronds and compact size, this hardy palm is perfect for creating a lush, exotic vibe without s",
+          "buyUrl": "https://thesill.com/products/dwarf-palmetto-tree",
+          "matchScore": 0.78,
+          "whyThisFits": "This unexpected choice gives Sam something living and beautiful that requires minimal maintenance - perfect for his minimalist lifestyle. The tropical elegance adds natural beauty to his space without overwhelming it, and it's a gift that grows and evolves.",
+          "giftAngle": "Present it as a way to bring some natural energy into his space without the fuss - a low-maintenance companion that adds life to his environment.",
+          "whatThisSays": "This says: 'I want to bring some growing, living beauty into your carefully curated world - something that adds life without adding complexity.'",
+          "usageSignal": "He'll interact with this weekly for watering and daily as a calming presence in his living space"
+        }
+      ],
+      "scores": {
+        "budgetCompliance": 1,
+        "categoryDiversity": 1,
+        "brandDiversity": 1,
+        "explanationQuality": 1,
+        "relevance": 0.33,
+        "overall": 0.87
+      },
+      "issues": [
+        "No interest match for Ridge Wallet - Forged Ember (expected: guitar, craft beer, music)",
+        "No interest match for Dwarf Palmetto Tree (expected: guitar, craft beer, music)"
+      ]
+    },
+    {
+      "id": "boss_cooking",
+      "recommendations": [
+        {
+          "id": "trade-coffee-sub",
+          "name": "Coffee Subscription (3 months)",
+          "brand": "Trade Coffee",
+          "price": 65,
+          "currency": "CAD",
+          "category": "consumable",
+          "description": "Personalized coffee matched to their taste. Fresh-roasted, delivered monthly. Gift card included.",
+          "buyUrl": "https://www.drinktrade.com/pages/gift",
+          "matchScore": 0.75,
+          "whyThisFits": "A boss who appreciates elevated aesthetics and hosting would love discovering new artisanal coffees perfectly matched to her taste preferences. This adds a touch of daily luxury that connects to her sophisticated palate.",
+          "giftAngle": "A monthly surprise that brings café-quality coffee to her morning routine.",
+          "whatThisSays": "This says: 'I want to add a small luxury to your everyday moments, not just the special occasions.'",
+          "usageSignal": "Fresh premium beans delivered monthly that she'll enjoy every morning"
+        },
+        {
+          "id": "anker-soundcore-speaker",
+          "name": "Motion 300 Portable Speaker",
+          "brand": "Soundcore",
+          "price": 80,
+          "currency": "CAD",
+          "category": "practical",
+          "description": "Compact wireless speaker with spatial audio. Waterproof, 13hr battery. Great for outdoors.",
+          "buyUrl": "https://www.soundcore.com/products/motion-300-a3135",
+          "matchScore": 0.5,
+          "whyThisFits": "A thoughtful practical pick for your Boss that shows you put real thought into this.",
+          "giftAngle": "Give it with a note about why you picked this one specifically for them.",
+          "whatThisSays": "This says: 'I want to show my appreciation and respect for her sophisticated taste in cookin'",
+          "usageSignal": "Goes everywhere — kitchen, backyard, beach, camping trips"
+        },
+        {
+          "id": "aesop-resurrection-duo",
+          "name": "Resurrection Aromatique Hand Care Duo",
+          "brand": "Aesop",
+          "price": 67,
+          "currency": "CAD",
+          "category": "artisan",
+          "description": "Hand wash + hand balm in Aesop's signature amber bottles. Citrus and woody scent. The quintessential host gift.",
+          "buyUrl": "https://shop.aesop.com/ca/p/gift-kits/resurrection-aromatique-hand-care-duo/",
+          "matchScore": 0.5,
+          "whyThisFits": "A thoughtful artisan pick for your Boss that shows you put real thought into this.",
+          "giftAngle": "Give it with a note about why you picked this one specifically for them.",
+          "whatThisSays": "This says: 'I want to show my appreciation and respect for her sophisticated taste in cookin'",
+          "usageSignal": "By the kitchen or bathroom sink — used multiple times a day"
+        }
+      ],
+      "scores": {
+        "budgetCompliance": 1,
+        "categoryDiversity": 1,
+        "brandDiversity": 1,
+        "explanationQuality": 1,
+        "relevance": 1,
+        "overall": 1
+      },
+      "issues": []
+    },
+    {
+      "id": "teen_art",
+      "recommendations": [
+        {
+          "id": "terrarium-kit",
+          "name": "Easy Build Closed Terrarium Kit",
+          "brand": "Terrarium Kit",
+          "price": 75,
+          "currency": "CAD",
+          "category": "consumable",
+          "description": "DIY closed terrarium with live moss and everything included. Self-sustaining ecosystem in a glass jar.",
+          "buyUrl": "https://terrariumkit.ca/collections/frontpage",
+          "matchScore": 0.75,
+          "whyThisFits": "This DIY terrarium kit offers a completely different kind of creative project that combines art with nature — building and designing a self-sustaining ecosystem is like creating living sculpture. It's an unexpected creative outlet that she can customize and watch evolve.",
+          "giftAngle": "Frame it as a living art project — she gets to design and build her own tiny world that takes care of itself.",
+          "whatThisSays": "This says: 'I love surprising you with new ways to be creative, and I think you'd enjoy making art that's alive.'",
+          "usageSignal": "A weekend building project that becomes a permanent piece of living art on her desk or shelf"
+        },
+        {
+          "id": "anker-soundcore-speaker",
+          "name": "Motion 300 Portable Speaker",
+          "brand": "Soundcore",
+          "price": 80,
+          "currency": "CAD",
+          "category": "practical",
+          "description": "Compact wireless speaker with spatial audio. Waterproof, 13hr battery. Great for outdoors.",
+          "buyUrl": "https://www.soundcore.com/products/motion-300-a3135",
+          "matchScore": 0.5,
+          "whyThisFits": "A thoughtful practical pick for your Niece that shows you put real thought into this.",
+          "giftAngle": "Give it with a note about why you picked this one specifically for them.",
+          "whatThisSays": "This says: 'I chose this specifically for you — not a random pick.'",
+          "usageSignal": "Goes everywhere — kitchen, backyard, beach, camping trips"
+        },
+        {
+          "id": "audible-3mo",
+          "name": "3-Month Premium Plus Gift",
+          "brand": "Audible Canada",
+          "price": 45,
+          "currency": "CAD",
+          "category": "experiential",
+          "description": "3 audiobook credits plus unlimited access to the Audible Plus catalog. Perfect for commuters.",
+          "buyUrl": "https://www.audible.ca/mk/g/giftcentre",
+          "matchScore": 0.5,
+          "whyThisFits": "A thoughtful experiential pick for your Niece that shows you put real thought into this.",
+          "giftAngle": "Give it with a note about why you picked this one specifically for them.",
+          "whatThisSays": "This says: 'I chose this specifically for you — not a random pick.'",
+          "usageSignal": "A great book for every commute, walk, and workout"
+        }
+      ],
+      "scores": {
+        "budgetCompliance": 1,
+        "categoryDiversity": 1,
+        "brandDiversity": 1,
+        "explanationQuality": 1,
+        "relevance": 0.33,
+        "overall": 0.87
+      },
+      "issues": [
+        "No interest match for Motion 300 Portable Speaker (expected: art, drawing, painting, creative)",
+        "No interest match for 3-Month Premium Plus Gift (expected: art, drawing, painting, creative)"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "name": "present-agent",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "db:seed": "tsx scripts/seed-existing.ts",
+    "db:import-shopify": "tsx scripts/import-shopify.ts",
+    "db:enrich": "tsx scripts/enrich-products.ts",
+    "db:stats": "tsx scripts/db-stats.ts",
+    "db:quality": "tsx scripts/data-quality.ts",
+    "db:quality:dry": "tsx scripts/data-quality.ts --dry-run",
+    "db:quality:llm": "tsx scripts/data-quality.ts --llm-audit",
+    "crawl": "tsx scripts/crawl-stores.ts",
+    "enrich:quick": "tsx scripts/enrich-batch-quick.ts"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.79.0",
+    "@google/generative-ai": "^0.24.1",
+    "better-sqlite3": "^12.8.0",
+    "googleapis": "^171.4.0",
+    "next": "14.2.35",
+    "openai": "^6.32.0",
+    "posthog-js": "^1.363.3",
+    "react": "^18",
+    "react-dom": "^18"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.58.2",
+    "@types/better-sqlite3": "^7.6.13",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.35",
+    "postcss": "^8",
+    "tailwindcss": "^3.4.1",
+    "tsx": "^4.21.0",
+    "typescript": "^5"
+  }
+}

@@ -1,0 +1,257 @@
+{
+  "timestamp": "2026-03-24T18:22:22.658Z",
+  "scenarioCount": 4,
+  "averageScores": {
+    "budgetCompliance": 1,
+    "categoryDiversity": 1,
+    "brandDiversity": 1,
+    "explanationQuality": 1,
+    "relevance": 0.5,
+    "overall": 0.9
+  },
+  "issueCount": 4,
+  "results": [
+    {
+      "id": "yoga_mom",
+      "recommendations": [
+        {
+          "id": "vitruvi-diffuser",
+          "name": "Stone Diffuser",
+          "brand": "Vitruvi",
+          "price": 140,
+          "currency": "CAD",
+          "category": "artisan",
+          "description": "Hand-finished porcelain essential oil diffuser. Whisper-quiet. Doubles as décor.",
+          "buyUrl": "https://www.vitruvi.com/products/stone-diffuser",
+          "matchScore": 0.95,
+          "whyThisFits": "Lisa's yoga practice and wellness journey would be beautifully enhanced by this hand-finished porcelain diffuser that doubles as décor. It perfectly bridges her love of design with her wellness focus, creating a calming atmosphere for both her yoga sessions and daily relaxation.",
+          "giftAngle": "Present it as a way to elevate her wellness space - mention how it can transform any room into a spa-like sanctuary for her yoga practice or evening wind-down.",
+          "whatThisSays": "This says: 'I see how intentionally you create wellness in your life, and I want to help you make every space feel like your personal sanctuary.'",
+          "usageSignal": "She'll turn it on every evening when the day winds down"
+        },
+        {
+          "id": "book-of-the-month-6",
+          "name": "6-Month Gift Subscription",
+          "brand": "Book of the Month",
+          "price": 137,
+          "currency": "CAD",
+          "category": "experiential",
+          "description": "Curated book subscription — pick one new hardcover each month from five expert selections.",
+          "buyUrl": "https://www.bookofthemonth.com/gift",
+          "matchScore": 0.85,
+          "whyThisFits": "Lisa's love of reading gets a thoughtful upgrade with curated monthly book selections. As your partner, she'll appreciate how this gift keeps giving throughout the year, showing ongoing thoughtfulness about her interests beyond just Mother's Day.",
+          "giftAngle": "Frame it as bringing literary discovery into her routine - five expert-curated options each month means she'll always have something perfectly matched to her mood.",
+          "whatThisSays": "This says: 'I know how much reading feeds your soul, and I want to surprise you with new discoveries every month for the rest of the year.'",
+          "usageSignal": "A new book every month, chosen just for them"
+        },
+        {
+          "id": "scoria-zafu-cushion",
+          "name": "Zafu Natural Meditation Cushion",
+          "brand": "Scoria",
+          "price": 94,
+          "currency": "CAD",
+          "category": "wellness",
+          "description": "Beautiful round pleated cushion filled with buckwheat hulls. Muted tones. Free shipping in Canada.",
+          "buyUrl": "https://www.scoria.ca/products/zafu-natural-meditation-cushion-shadow-grey",
+          "matchScore": 0.5,
+          "whyThisFits": "Connects to Lisa's interest in yoga — a wellness pick that fits naturally into their life.",
+          "giftAngle": "Give it with a note about why you picked this one specifically for Lisa.",
+          "whatThisSays": "This says: 'I see your wellness journey and want to be part of it'",
+          "usageSignal": "Becomes their permanent spot on the living room floor"
+        }
+      ],
+      "scores": {
+        "budgetCompliance": 1,
+        "categoryDiversity": 1,
+        "brandDiversity": 1,
+        "explanationQuality": 1,
+        "relevance": 0.83,
+        "overall": 0.97
+      },
+      "issues": []
+    },
+    {
+      "id": "friend_guitar",
+      "recommendations": [
+        {
+          "id": "www.thegldshop.com-4mm-bar-link-chain-bracelet-in-white-gold-4mm",
+          "name": "4MM Bar Link Chain Bracelet in White Gold - 4mm",
+          "brand": "GLD Men",
+          "price": 100,
+          "currency": "USD",
+          "category": "artisan",
+          "description": "The Bar Link Chain Bracelet in White Gold in 4mm offers a clean, modern look built around sleek rectangular links that create a smooth,",
+          "buyUrl": "https://www.thegldshop.com/products/4mm-bar-link-chain-bracelet-in-white-gold-4mm",
+          "matchScore": 0.85,
+          "whyThisFits": "For your very close best friend Sam, this clean, modern bracelet perfectly matches his minimalist style while being something he can wear daily. The sleek rectangular links offer just the right amount of subtle detail without being flashy - exactly what someone with minimalist sensibilities would appreciate in jewelry.",
+          "giftAngle": "Frame it as a daily reminder of your friendship - something understated but meaningful that he can wear whether he's playing guitar or out enjoying craft beer with friends.",
+          "whatThisSays": "This says: 'Our friendship means enough to me that I want you to have something beautiful you can carry with you every day.'",
+          "usageSignal": "He'll wear this constantly, becoming a subtle but constant reminder of your thoughtful gesture"
+        },
+        {
+          "id": "apc.fr-eau-de-cologne-cosmos-natural-aab-cosmo-m82003",
+          "name": "Eau De Cologne - Cosmos Natural",
+          "brand": "A.P.C Paris",
+          "price": 60,
+          "currency": "USD",
+          "category": "consumable",
+          "description": "Pour toutes les peaux. Subtilement parfumée à la fleur d’oranger. Vaporisez l'eau de Cologne à quelques centimètres de votre peau. Flacon vaporisateur en rPET, recyclé et recyclable. Emballage recyclé et recyclable. Produit fabriqué en France à partir de 99,9% d'ingrédients d'origine naturelle. Les ",
+          "buyUrl": "https://apc.fr/products/eau-de-cologne-cosmos-natural-aab-cosmo-m82003",
+          "matchScore": 0.78,
+          "whyThisFits": "This is the delightful surprise - while Sam's focused on guitar and minimalism, this sophisticated, naturally-scented cologne from A.P.C. adds an unexpected layer of refinement to his daily routine. The orange blossom scent is subtle and natural, perfectly suiting someone who appreciates quality without ostentation.",
+          "giftAngle": "Present it as discovering a hidden side of self-care that complements his already thoughtful approach to life - a small daily luxury that's as refined as his musical taste.",
+          "whatThisSays": "This says: 'I know there are layers to who you are beyond what's obvious, and I want to celebrate the sophisticated person you are in all aspects of life.'",
+          "usageSignal": "He'll use this every morning as part of getting ready, creating a small moment of luxury in his daily routine"
+        },
+        {
+          "id": "grownalchemist.com-prep-prime-heroes-kit",
+          "name": "Prep + Prime Heroes Kit",
+          "brand": "Grown Alchemist",
+          "price": 64,
+          "currency": "USD",
+          "category": "wellness",
+          "description": "Four of our best-selling hero products that work together to prep and prime your base for flawless skin throughout the day, with or without make-up. Smooth and buff with the polishing exfoliator, boost hydration with instant smoothing serum. Hydra-restore day cream nourishes and softens the skin bar",
+          "buyUrl": "https://grownalchemist.com/products/prep-prime-heroes-kit",
+          "matchScore": 0.5,
+          "whyThisFits": "Connects to Sam's interest in minimalist — a wellness pick that fits naturally into their life.",
+          "giftAngle": "Give it with a note about why you picked this one specifically for Sam.",
+          "whatThisSays": "This says: 'I see your passion for guitar and want to support your musical journey with some'",
+          "usageSignal": "They use this kit to prep their skin before makeup, ensuring a flawless finish every time."
+        }
+      ],
+      "scores": {
+        "budgetCompliance": 1,
+        "categoryDiversity": 1,
+        "brandDiversity": 1,
+        "explanationQuality": 1,
+        "relevance": 0.17,
+        "overall": 0.83
+      },
+      "issues": [
+        "No interest match for 4MM Bar Link Chain Bracelet in White Gold - 4mm (expected: guitar, craft beer, music)",
+        "No interest match for Prep + Prime Heroes Kit (expected: guitar, craft beer, music)"
+      ]
+    },
+    {
+      "id": "boss_cooking",
+      "recommendations": [
+        {
+          "id": "luluandgeorgia.com-arcana-bowl",
+          "name": "Arcana Bowl",
+          "brand": "Lulu and Georgia",
+          "price": 74,
+          "currency": "USD",
+          "category": "practical",
+          "description": "With a steep taper and stepped base, the Arcana bowl feels bold but balanced. Perfect for citrus or garnishes, this piece brings a polished edge to a bar cart or cocktail spread.",
+          "buyUrl": "https://luluandgeorgia.com/products/arcana-bowl",
+          "matchScore": 0.92,
+          "whyThisFits": "Your boss's love for hosting dinner parties makes this elegant bowl perfect for serving vibrant salads or displaying fresh citrus for cocktails. The bold yet balanced design will become a conversation starter at their gatherings.",
+          "giftAngle": "Present it as something to elevate their dinner party hosting - mention how the steep taper and stepped base will make their signature dishes look restaurant-quality.",
+          "whatThisSays": "This says: 'I appreciate how you bring people together and create memorable experiences - here's something to make those moments even more beautiful.'",
+          "usageSignal": "They'll reach for this striking bowl every time they entertain, making it a centerpiece for salads, appetizers, or decorative fruit displays."
+        },
+        {
+          "id": "cratejoy.com-gourmet-gift-basket-club-splurebox",
+          "name": "Gourmet Gift Basket Club",
+          "brand": "SplureBox",
+          "price": 69.9,
+          "currency": "USD",
+          "category": "consumable",
+          "description": "Embark on a culinary journey with our Gourmet Club! Each month, you'll receive many handpicked gourmet products from around the world, featuring artis",
+          "buyUrl": "https://cratejoy.com/products/gourmet-gift-basket-club-splurebox",
+          "matchScore": 0.88,
+          "whyThisFits": "A boss who loves cooking and hosting will treasure discovering new gourmet ingredients each month to surprise their dinner party guests. This subscription keeps giving throughout the year, showing ongoing appreciation for their leadership.",
+          "giftAngle": "Frame it as fuel for their culinary creativity - they'll get to experiment with unique ingredients and share discoveries with their guests.",
+          "whatThisSays": "This says: 'Your passion for bringing people together through food inspires me, and I want to support that creativity all year long.'",
+          "usageSignal": "They'll eagerly unbox new culinary treasures monthly, incorporating unique ingredients into their dinner party menus and sharing the experience with guests."
+        },
+        {
+          "id": "www.heathceramics.com-liner-serving-spoon",
+          "name": "Liner Serving Spoon",
+          "brand": "David Mellor",
+          "price": 50,
+          "currency": "USD",
+          "category": "artisan",
+          "description": "The Liner collection from David Mellor is flamboyant and flowing. The decorative fluting that subtly fades into its handle brings to mind the elega",
+          "buyUrl": "https://www.heathceramics.com/products/liner-serving-spoon",
+          "matchScore": 0.5,
+          "whyThisFits": "Connects to them's interest in cooking — a artisan pick that fits naturally into their life.",
+          "giftAngle": "Give it with a note about why you picked this one specifically for them.",
+          "whatThisSays": "This says: 'I chose this specifically for you — not a random pick.'",
+          "usageSignal": "They serve their signature dishes with this elegant spoon, impressing guests with both style and functionality."
+        }
+      ],
+      "scores": {
+        "budgetCompliance": 1,
+        "categoryDiversity": 1,
+        "brandDiversity": 1,
+        "explanationQuality": 1,
+        "relevance": 0.67,
+        "overall": 0.93
+      },
+      "issues": []
+    },
+    {
+      "id": "teen_art",
+      "recommendations": [
+        {
+          "id": "terrarium-kit",
+          "name": "Easy Build Closed Terrarium Kit",
+          "brand": "Terrarium Kit",
+          "price": 75,
+          "currency": "CAD",
+          "category": "consumable",
+          "description": "DIY closed terrarium with live moss and everything included. Self-sustaining ecosystem in a glass jar.",
+          "buyUrl": "https://terrariumkit.ca/collections/frontpage",
+          "matchScore": 0.75,
+          "whyThisFits": "This is completely unexpected but brilliant for a creative mind — building a self-sustaining ecosystem combines artistic composition with science. The visual design aspect appeals to her artistic eye while the hands-on building satisfies the creative maker instinct.",
+          "giftAngle": "Frame it as a living art project — she gets to design and build her own tiny world that will thrive on its own.",
+          "whatThisSays": "This says: 'Your creativity isn't limited to paper and canvas — here's something completely different to spark new inspiration.'",
+          "usageSignal": "Build it, close the lid, and it waters itself. A tiny self-sustaining world."
+        },
+        {
+          "id": "anker-soundcore-speaker",
+          "name": "Motion 300 Portable Speaker",
+          "brand": "Soundcore",
+          "price": 80,
+          "currency": "CAD",
+          "category": "practical",
+          "description": "Compact wireless speaker with spatial audio. Waterproof, 13hr battery. Great for outdoors.",
+          "buyUrl": "https://www.soundcore.com/products/motion-300-a3135",
+          "matchScore": 0.5,
+          "whyThisFits": "A thoughtful practical pick for your niece that shows you put real thought into this.",
+          "giftAngle": "Give it with a note about why you picked this one specifically for them.",
+          "whatThisSays": "This says: 'I chose this specifically for you — not a random pick.'",
+          "usageSignal": "Goes everywhere — kitchen, backyard, beach, camping trips"
+        },
+        {
+          "id": "audible-3mo",
+          "name": "3-Month Premium Plus Gift",
+          "brand": "Audible Canada",
+          "price": 45,
+          "currency": "CAD",
+          "category": "experiential",
+          "description": "3 audiobook credits plus unlimited access to the Audible Plus catalog. Perfect for commuters.",
+          "buyUrl": "https://www.audible.ca/mk/g/giftcentre",
+          "matchScore": 0.5,
+          "whyThisFits": "A thoughtful experiential pick for your niece that shows you put real thought into this.",
+          "giftAngle": "Give it with a note about why you picked this one specifically for them.",
+          "whatThisSays": "This says: 'I chose this specifically for you — not a random pick.'",
+          "usageSignal": "A great book for every commute, walk, and workout"
+        }
+      ],
+      "scores": {
+        "budgetCompliance": 1,
+        "categoryDiversity": 1,
+        "brandDiversity": 1,
+        "explanationQuality": 1,
+        "relevance": 0.33,
+        "overall": 0.87
+      },
+      "issues": [
+        "No interest match for Motion 300 Portable Speaker (expected: art, drawing, painting, creative)",
+        "No interest match for 3-Month Premium Plus Gift (expected: art, drawing, painting, creative)"
+      ]
+    }
+  ]
+}

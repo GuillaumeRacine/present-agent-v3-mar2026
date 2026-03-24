@@ -1,0 +1,11 @@
+node_modules
+.next
+.git
+*.md
+docs/
+e2e/
+test/
+.env.local
+data/catalog.db
+data/catalog-full-backup.db
+data/feedback/

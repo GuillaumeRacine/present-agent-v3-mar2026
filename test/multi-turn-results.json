@@ -1,0 +1,82 @@
+{
+  "timestamp": "2026-03-24T21:42:34.664Z",
+  "personas": [
+    {
+      "id": "indecisive_partner",
+      "title": "Forgot anniversary, no idea what to get, changes mind",
+      "scores": {
+        "conversationQuality": 0.89,
+        "contextExtraction": 1,
+        "recommendationRelevance": 1,
+        "budgetCompliance": 1,
+        "turnsToComplete": 3,
+        "totalDurationMs": 37123
+      },
+      "issueCount": 2,
+      "recCount": 3
+    },
+    {
+      "id": "overthinking_parent",
+      "title": "Parent agonizing over teenage son's graduation gift",
+      "scores": {
+        "conversationQuality": 1,
+        "contextExtraction": 1,
+        "recommendationRelevance": 1,
+        "budgetCompliance": 1,
+        "turnsToComplete": 3,
+        "totalDurationMs": 33131
+      },
+      "issueCount": 0,
+      "recCount": 1
+    },
+    {
+      "id": "awkward_professional",
+      "title": "New employee trying to get a holiday gift for entire team",
+      "scores": {
+        "conversationQuality": 0.94,
+        "contextExtraction": 0.8,
+        "recommendationRelevance": 0.67,
+        "budgetCompliance": 1,
+        "turnsToComplete": 3,
+        "totalDurationMs": 25384
+      },
+      "issueCount": 2,
+      "recCount": 3
+    },
+    {
+      "id": "conflicted_sibling",
+      "title": "Complicated relationship, wants to reconnect through a gift",
+      "scores": {
+        "conversationQuality": 0.94,
+        "contextExtraction": 1,
+        "recommendationRelevance": 1,
+        "budgetCompliance": 0.33,
+        "turnsToComplete": 3,
+        "totalDurationMs": 28342
+      },
+      "issueCount": 1,
+      "recCount": 3
+    },
+    {
+      "id": "last_minute_chaos",
+      "title": "Everything is wrong and they need a gift in 2 hours",
+      "scores": {
+        "conversationQuality": 0.94,
+        "contextExtraction": 1,
+        "recommendationRelevance": 1,
+        "budgetCompliance": 0.33,
+        "turnsToComplete": 3,
+        "totalDurationMs": 27421
+      },
+      "issueCount": 0,
+      "recCount": 3
+    }
+  ],
+  "averageScores": {
+    "conversationQuality": 0.94,
+    "contextExtraction": 0.96,
+    "recommendationRelevance": 0.93,
+    "budgetCompliance": 0.73
+  },
+  "totalIssues": 5
+}
