@@ -308,6 +308,8 @@ export default function SessionReplay({ params }: { params: { sessionId: string 
                     "border-gray-200"
                   }`}
                 >
+                  {/* Clickable product area */}
+                  <a href={rec.buyUrl || "#"} target="_blank" rel="noopener noreferrer" className="block hover:opacity-95 transition">
                   {/* Hero image */}
                   <div className={`relative w-full bg-gray-50 ${hasRealImage ? "aspect-square" : "h-36"}`}>
                     {hasRealImage ? (
@@ -359,7 +361,16 @@ export default function SessionReplay({ params }: { params: { sessionId: string 
                     {rec.description && (
                       <p className="text-[13px] text-gray-500 mt-2 leading-relaxed line-clamp-2">{rec.description}</p>
                     )}
+                    {rec.buyUrl && rec.buyUrl.startsWith("http") && (
+                      <p className="text-[11px] text-blue-500 mt-2 flex items-center gap-1">
+                        View product
+                        <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                        </svg>
+                      </p>
+                    )}
                   </div>
+                  </a>
 
                   {/* Personalized context -- merged */}
                   <div className="px-5 pt-1 pb-3">
