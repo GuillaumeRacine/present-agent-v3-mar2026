@@ -11,7 +11,6 @@ import {
   trackMessageSent,
   trackVoiceToggled,
   trackConversationComplete,
-  trackBuyLinkClicked,
 } from "@/lib/posthog";
 import { sendFeedback } from "@/lib/feedback-client";
 import { RecommendationCard } from "@/components/RecommendationCard";
@@ -56,7 +55,7 @@ export default function GiftSession() {
   const [expandedRecId, setExpandedRecId] = useState<string | null>(null);
   const [purchaseModalProduct, setPurchaseModalProduct] = useState<RecommendationItem | null>(null);
   const [purchaseModalDismissed, setPurchaseModalDismissed] = useState(false);
-  const [conversationResumed, setConversationResumed] = useState(false);
+  // conversationResumed removed — chat input is now always visible
   const sessionStartRef = useRef(Date.now());
   const sessionIdRef = useRef(`session-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`);
   const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -142,7 +141,7 @@ export default function GiftSession() {
   // Track conversation completion and reset resumed state
   useEffect(() => {
     if (context.phase === "complete") {
-      setConversationResumed(false);
+      // conversationResumed removed
       trackConversationComplete(
         sessionIdRef.current,
         turnCount,
@@ -589,7 +588,7 @@ export default function GiftSession() {
             onRefine={() => {
               trackRefineClicked(sessionIdRef.current);
               setContext((prev) => ({ ...prev, phase: "refine", readiness: 0.7 }));
-              setConversationResumed(true);
+              // conversationResumed removed
               // Scroll to input after state update re-renders the input
               setTimeout(() => {
                 inputRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -678,7 +677,7 @@ export default function GiftSession() {
                   setUsedNotQuiteRight(true);
                   setRefinementRounds(prev => prev + 1);
                   setContext((prev) => ({ ...prev, phase: "refine", readiness: 0.7 }));
-                  setConversationResumed(true);
+                  // conversationResumed removed
                   setTimeout(() => {
                     inputRef.current?.scrollIntoView({ behavior: "smooth" });
                     inputRef.current?.focus();

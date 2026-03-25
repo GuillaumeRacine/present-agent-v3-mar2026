@@ -62,10 +62,6 @@ const SLOT_CONFIG = [
   { label: "Great match", color: "bg-blue-700 text-white", tag: "Most thoughtful", tagColor: "bg-blue-50 text-blue-700 border-blue-200" },
   { label: "Wild card", color: "bg-purple-100 text-purple-700", tag: "Most surprising", tagColor: "bg-purple-50 text-purple-700 border-purple-200" },
 ];
-const CATEGORY_EMOJI: Record<string, string> = {
-  practical: "🔧", experiential: "✨", consumable: "🍫",
-  artisan: "🎨", wellness: "🧘", kids: "🧸",
-};
 
 export default function SessionReplay({ params }: { params: { sessionId: string } }) {
   const [messages, setMessages] = useState<Message[]>([]);
