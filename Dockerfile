@@ -1,7 +1,7 @@
 FROM node:20-slim AS base
 
-# Install build dependencies for better-sqlite3
-RUN apt-get update && apt-get install -y python3 make g++ && rm -rf /var/lib/apt/lists/*
+# Install build dependencies for better-sqlite3 + curl for catalog download
+RUN apt-get update && apt-get install -y python3 make g++ curl && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 
@@ -9,20 +9,24 @@ WORKDIR /app
 COPY package.json package-lock.json ./
 RUN npm ci
 
-# Copy source (excluding data/ first for layer caching)
+# Copy source
 COPY . .
 
-# Decompress pre-built catalog if .gz exists, otherwise seed from static
+# Download catalog from GitHub Release (38MB → 171K products)
+# This avoids keeping the large .gz file in the git repo
+ENV CATALOG_URL=https://github.com/GuillaumeRacine/present-agent-v3-mar2026/releases/download/v0.1.0/catalog.db.gz
+
 RUN mkdir -p data && \
-    if [ -f data/catalog.db.gz ]; then \
-      echo "Decompressing pre-built catalog.db.gz..."; \
-      gunzip -k data/catalog.db.gz && \
-      echo "Catalog: $(sqlite3 data/catalog.db 'SELECT COUNT(*) FROM products WHERE enriched=1') enriched products"; \
-    elif [ -f data/catalog.db ] && [ "$(wc -c < data/catalog.db)" -gt 1000000 ]; then \
-      echo "Using pre-built catalog.db"; \
+    if [ -f data/catalog.db ] && [ "$(wc -c < data/catalog.db)" -gt 1000000 ]; then \
+      echo "Using existing catalog.db"; \
+    elif [ -f data/catalog.db.gz ]; then \
+      echo "Decompressing local catalog.db.gz..."; \
+      gunzip -k data/catalog.db.gz; \
     else \
-      echo "No pre-built catalog — seeding from static catalog..."; \
-      npx tsx scripts/seed-existing.ts; \
+      echo "Downloading catalog from GitHub Release..."; \
+      curl -L -o data/catalog.db.gz "$CATALOG_URL" && \
+      gunzip data/catalog.db.gz && \
+      echo "Downloaded catalog: $(wc -c < data/catalog.db) bytes"; \
     fi
 
 # Build Next.js
