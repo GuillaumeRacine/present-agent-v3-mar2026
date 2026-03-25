@@ -33,7 +33,7 @@ export interface GiftContext {
 }
 
 // ── Gift Profile Card (with Effort Reflection) ───────────────────
-export function GiftProfileCard({ context, onGetRecommendations, isLoadingRecs, onRefine }: { context: GiftContext; onGetRecommendations: () => void; isLoadingRecs: boolean; onRefine?: () => void }) {
+export function GiftProfileCard({ context, onGetRecommendations, isLoadingRecs, loadingProgress, onRefine }: { context: GiftContext; onGetRecommendations: () => void; isLoadingRecs: boolean; loadingProgress?: string | null; onRefine?: () => void }) {
   const r = context.recipient || {};
   const o = context.occasion || {};
   const g = context.gift || {};
@@ -173,7 +173,7 @@ export function GiftProfileCard({ context, onGetRecommendations, isLoadingRecs, 
             {isLoadingRecs ? (
               <span className="flex items-center justify-center gap-2">
                 <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                Finding perfect gifts...
+                {loadingProgress || "Finding perfect gifts..."}
               </span>
             ) : (
               "Get 3 Recommendations"

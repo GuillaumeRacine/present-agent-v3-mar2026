@@ -44,6 +44,7 @@ export default function GiftSession() {
   const [usedReplies, setUsedReplies] = useState<number[]>([]);
   const [recommendations, setRecommendations] = useState<RecommendationItem[]>([]);
   const [isLoadingRecs, setIsLoadingRecs] = useState(false);
+  const [recsProgress, setRecsProgress] = useState<string | null>(null);
   const [recsError, setRecsError] = useState(false);
   const [selectedProducts, setSelectedProducts] = useState<string[]>([]);
   const [quickReaction, setQuickReaction] = useState<string | null>(null);
@@ -257,18 +258,65 @@ export default function GiftSession() {
   async function fetchRecommendations() {
     setIsLoadingRecs(true);
     setRecsError(false);
+    setRecsProgress("Searching products...");
     try {
-      const res = await fetch("/api/recommend", {
+      // Use streaming endpoint for progressive UX
+      const res = await fetch("/api/recommend/stream", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ context, userId, sessionId: dbSessionId || sessionIdRef.current, recipientId }),
       });
-      const data = await res.json();
-      if (data.error) {
-        setRecsError(true);
+
+      if (!res.ok || !res.body) {
+        // Fallback to non-streaming endpoint
+        const fallbackRes = await fetch("/api/recommend", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ context, userId, sessionId: dbSessionId || sessionIdRef.current, recipientId }),
+        });
+        const data = await fallbackRes.json();
+        if (data.error) { setRecsError(true); setIsLoadingRecs(false); return; }
+        if (data.recommendations) { setRecommendations(data.recommendations); setRecsShownAt(Date.now()); }
+        setRecsProgress(null);
         setIsLoadingRecs(false);
         return;
       }
+
+      // Parse SSE stream
+      const reader = res.body.getReader();
+      const decoder = new TextDecoder();
+      let buffer = "";
+      const streamedRecs: RecommendationItem[] = [];
+
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        buffer += decoder.decode(value, { stream: true });
+
+        const lines = buffer.split("\n\n");
+        buffer = lines.pop() || "";
+
+        for (const line of lines) {
+          if (!line.startsWith("data: ")) continue;
+          try {
+            const event = JSON.parse(line.slice(6));
+            if (event.status === "searching" || event.status === "scoring") {
+              setRecsProgress(event.message);
+            } else if (event.status === "recommendation") {
+              streamedRecs.push(event.recommendation);
+              setRecommendations([...streamedRecs]);
+            } else if (event.status === "done") {
+              setRecommendations(event.recommendations);
+              setRecsShownAt(Date.now());
+              setRecsProgress(null);
+            } else if (event.status === "error") {
+              setRecsError(true);
+            }
+          } catch { /* skip malformed events */ }
+        }
+      }
+
+      const data = { recommendations: streamedRecs.length > 0 ? streamedRecs : null };
       if (data.recommendations) {
         setRecommendations(data.recommendations);
         setRecsShownAt(Date.now());
@@ -537,6 +585,7 @@ export default function GiftSession() {
             context={context}
             onGetRecommendations={fetchRecommendations}
             isLoadingRecs={isLoadingRecs}
+            loadingProgress={recsProgress}
             onRefine={() => {
               trackRefineClicked(sessionIdRef.current);
               setContext((prev) => ({ ...prev, phase: "refine", readiness: 0.7 }));

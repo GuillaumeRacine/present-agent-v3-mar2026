@@ -275,6 +275,9 @@ export function getDb(): Database.Database {
   try { _db.exec("ALTER TABLE products ADD COLUMN last_checked_at TEXT"); } catch { /* already exists */ }
   try { _db.exec("ALTER TABLE products ADD COLUMN check_status TEXT DEFAULT 'unchecked'"); } catch { /* already exists */ }
 
+  // Add per-user Google token storage
+  try { _db.exec("ALTER TABLE users ADD COLUMN google_refresh_token TEXT"); } catch { /* already exists */ }
+
   return _db;
 }
 
