@@ -101,20 +101,35 @@ User → Landing Page (/) → Gift Flow (/gift/new)
 
 ---
 
-## Testing Results (10 Personas, 2026-03-24)
+## Testing Results (15 Personas, 2026-03-25)
 
+### Automated Quality Scoring (4 personas, score-harness.ts)
 | Dimension | Score |
 |-----------|-------|
-| Conversation flow | 5.0/5 |
-| Context extraction | 4.6/5 |
-| Explanation quality | 4.6/5 |
-| Budget compliance | 3.8/5 |
-| Category diversity | 3.8/5 |
-| Recommendation relevance | 3.3/5 |
-| **Overall** | **4.18/5** |
+| Budget compliance | **1.00** (was 0.47) |
+| Category diversity | 1.00 |
+| Brand diversity | 1.00 |
+| Explanation quality | 1.00 |
+| Recommendation relevance | 0.92 (was 0.50) |
+| **Overall** | **0.98** (was 0.90) |
 
-Full transcripts: `test-results/full-transcripts-20260324-102634.md`
-Scored report: `test-results/persona-tests-20260324-101535.md`
+### Multi-Turn Conversation Scoring (10 personas, multi-turn-harness.ts)
+| Dimension | Avg |
+|-----------|-----|
+| Conversation quality | 94% |
+| Context extraction | 98% |
+| Recommendation relevance | 93% |
+| Budget compliance | 80%+ |
+| Turns to complete | 3.0 |
+
+### E2E Tests: 21/21 passing
+
+### Personas: 15 total (10 converters + 5 non-converters)
+- Converters: indecisive partner, overthinking parent, awkward professional, conflicted sibling, last minute chaos, grateful daughter, clueless boyfriend, group gift organizer, new parent exhausted, long distance friend
+- Non-converters: browser only, price shocker, wrong products, early abandoner, delayed returner
+
+Full transcripts: `test/multi-turn-transcripts.md`
+Scored results: `test/score-latest.json`
 
 ---
 

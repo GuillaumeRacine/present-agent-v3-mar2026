@@ -1,15 +1,15 @@
 {
-  "timestamp": "2026-03-25T15:43:42.861Z",
+  "timestamp": "2026-03-25T15:59:24.704Z",
   "scenarioCount": 4,
   "averageScores": {
     "budgetCompliance": 1,
     "categoryDiversity": 1,
     "brandDiversity": 1,
     "explanationQuality": 1,
-    "relevance": 0.83,
-    "overall": 0.97
+    "relevance": 0.92,
+    "overall": 0.98
   },
-  "issueCount": 2,
+  "issueCount": 1,
   "results": [
     {
       "id": "yoga_mom",
@@ -25,42 +25,42 @@
           "imageUrl": "/products/vitruvi.jpg",
           "buyUrl": "https://www.vitruvi.com/products/stone-diffuser",
           "matchScore": 0.95,
-          "whyThisFits": "Lisa's wellness journey includes yoga practice, and this hand-finished porcelain diffuser creates the perfect atmosphere for both her yoga sessions and daily relaxation rituals. The minimalist design aligns with her aesthetic sense, making it both functional wellness support and beautiful home décor.",
-          "giftAngle": "Present it as creating the perfect ambiance for her yoga practice and evening wind-down routine",
-          "whatThisSays": "This says: 'I see how you create sacred space for yourself through yoga and wellness, and I want to help make that space even more beautiful and nurturing.'",
+          "whyThisFits": "Lisa's yoga practice and wellness journey would be beautifully complemented by this hand-finished porcelain diffuser that doubles as elegant home décor. It creates a calming atmosphere that bridges her love of design with her commitment to wellness.",
+          "giftAngle": "Something beautiful that makes your yoga space even more serene",
+          "whatThisSays": "This says: 'I see how you create peaceful moments in your day, and I want to add another layer of calm to those rituals.'",
           "usageSignal": "She'll turn it on every evening when the day winds down"
         },
         {
-          "id": "book-of-the-month-6",
-          "name": "6-Month Gift Subscription",
-          "brand": "Book of the Month",
-          "price": 137,
-          "currency": "CAD",
-          "category": "experiential",
-          "description": "Curated book subscription — pick one new hardcover each month from five expert selections.",
-          "imageUrl": "/products/botm.jpg",
-          "buyUrl": "https://www.bookofthemonth.com/gift",
-          "matchScore": 0.85,
-          "whyThisFits": "Lisa loves reading, and this six-month subscription means she'll think of you every month when her new book arrives. It's a gift that keeps giving throughout the year, supporting her love of literature with expertly curated selections she might not have discovered otherwise.",
-          "giftAngle": "Frame it as six months of literary discoveries, with each book chosen just for her",
-          "whatThisSays": "This says: 'I know how much joy reading brings you, and I want to be part of that journey by bringing new stories into your world every month.'",
-          "usageSignal": "A new book every month, chosen just for them"
-        },
-        {
-          "id": "slip-silk-pillowcase",
-          "name": "Pure Silk Pillowcase (Queen)",
-          "brand": "Slip",
-          "price": 150,
+          "id": "scoria-zafu-cushion",
+          "name": "Zafu Natural Meditation Cushion",
+          "brand": "Scoria",
+          "price": 94,
           "currency": "CAD",
           "category": "wellness",
-          "description": "22-momme pure mulberry silk — reduces hair friction, prevents sleep creases, feels luxuriously cool. The OG beauty sleep upgrade.",
-          "imageUrl": "/products/slip.jpg",
-          "buyUrl": "https://slipsilkpillowcase.ca/collections/queen-pillowcases",
-          "matchScore": 0.78,
-          "whyThisFits": "This is an unexpected wellness upgrade that connects to her self-care journey in a way she might not have considered. The luxury of silk supports both beauty sleep and overall wellness, showing you think about her comfort even in the smallest daily moments.",
-          "giftAngle": "Present it as the ultimate sleep upgrade that supports her wellness routine from bedtime to morning",
-          "whatThisSays": "This says: 'Your wellness matters to me in every detail, even the ones you don't think about – I want you to feel pampered and cared for every single night.'",
-          "usageSignal": "Once she sleeps on silk, she'll never go back to cotton"
+          "description": "Beautiful round pleated cushion filled with buckwheat hulls. Muted tones. Free shipping in Canada.",
+          "imageUrl": "/products/scoria-zafu.jpg",
+          "buyUrl": "https://www.scoria.ca/products/zafu-natural-meditation-cushion-shadow-grey",
+          "matchScore": 0.88,
+          "whyThisFits": "Lisa's yoga practice deserves a dedicated meditation spot, and this beautiful pleated cushion in muted tones speaks to both her wellness focus and design aesthetic. It creates a permanent sacred space in her home.",
+          "giftAngle": "Your own special spot for meditation and quiet moments",
+          "whatThisSays": "This says: 'Your wellness practice is important enough to have its own beautiful space in our home.'",
+          "usageSignal": "Becomes their permanent spot on the living room floor"
+        },
+        {
+          "id": "masterclass-annual",
+          "name": "Annual Membership",
+          "brand": "MasterClass",
+          "price": 140,
+          "currency": "CAD",
+          "category": "experiential",
+          "description": "200+ classes from world experts. Cooking, writing, music, business, wellness. Gift-wrapped email.",
+          "imageUrl": "/products/masterclass.jpg",
+          "buyUrl": "https://www.masterclass.com/gift",
+          "matchScore": 0.663,
+          "whyThisFits": "Connects to Lisa's interest in reading — a experiential pick that fits naturally into their life.",
+          "giftAngle": "Give it with a note about why you picked this one specifically for Lisa.",
+          "whatThisSays": "This says: 'I see your wellness journey and want to be part of it, bringing calm and support'",
+          "usageSignal": "A new world-class teacher every weekend"
         }
       ],
       "scores": {
@@ -77,52 +77,52 @@
       "id": "friend_guitar",
       "recommendations": [
         {
-          "id": "snowpeak.com-organic-cotton-pullover-shirt",
-          "name": "Organic Cotton Pullover Shirt",
-          "brand": "Snow Peak Apparel",
-          "price": 83.97,
-          "currency": "USD",
-          "category": "practical",
-          "description": "The Organic Cotton Pullover Shirt is a versatile everyday essential made with original organic cotton fabric from Japan’s Nishiwaki City. It offers a smooth texture and durable construction that softens over time. This long-sleeved pullover shirt features a classic button-down collar and large doubl",
-          "imageUrl": "https://cdn.shopify.com/s/files/1/0330/3299/4860/files/SH-25AU004241127_bb0310.jpg?v=1755642856",
-          "buyUrl": "https://snowpeak.com/products/organic-cotton-pullover-shirt",
-          "matchScore": 0.9,
-          "whyThisFits": "Sam's minimalist aesthetic will love this clean, understated organic cotton design - it's the kind of comfortable, refined piece that works perfectly for jamming sessions or casual hangouts without any fuss.",
-          "giftAngle": "Perfect for those long practice sessions or when you're just relaxing with your guitar.",
-          "whatThisSays": "This says: 'I know you appreciate quality and simplicity, and I want you to be comfortable while pursuing your passion.'",
-          "usageSignal": "He'll reach for this shirt regularly during his guitar practice sessions and casual days"
-        },
-        {
-          "id": "brooklyncandlestudio.com-fern-moss-xl-3-wick-candle",
-          "name": "Fern + Moss XL 3-Wick Candle",
-          "brand": "Brooklyn Candle Studio",
-          "price": 95,
-          "currency": "USD",
-          "category": "consumable",
-          "description": "TOP NOTES: Sage, Lavender MIDDLE NOTES: Spruce, Pine BASE NOTE: Oakmoss A scent for nature lovers inspired by the dewy and beautiful Fe",
-          "imageUrl": "https://cdn.shopify.com/s/files/1/0315/2749/products/fern-moss-maximalist-candle-brooklyn-candle-studio-918278.jpg?v=1718935275",
-          "buyUrl": "https://brooklyncandlestudio.com/products/fern-moss-xl-3-wick-candle",
-          "matchScore": 0.8,
-          "whyThisFits": "The earthy, natural scent of sage and pine creates the perfect ambiance for Sam's guitar sessions while fitting his minimalist home aesthetic - it's functional luxury that enhances his creative space.",
-          "giftAngle": "Something to set the mood for your next practice session or when you want to create the perfect atmosphere at home.",
-          "whatThisSays": "This says: 'I want to help create the perfect environment where your creativity can flourish.'",
-          "usageSignal": "He'll light this during evening guitar sessions and quiet moments at home, creating a ritual around his music"
-        },
-        {
-          "id": "miansai.com-flat-pyper-bracelet-gold-vermeil-polished-gold",
-          "name": "Flat Pyper Bracelet, Gold Vermeil",
-          "brand": "Miansai",
-          "price": 105,
+          "id": "mohawkgeneralstore.com-kardo-handwoven-pashmina-bandana-black",
+          "name": "Handwoven Pashmina Bandana in Black",
+          "brand": "Kardo",
+          "price": 75,
           "currency": "USD",
           "category": "artisan",
-          "description": "The Flat Pyper Bracelet, is slimmer, sleeker version of our classic Pyper Puff. This piece brings handcrafted detailing to the classic mariner puff chain, resulting in a modern look that's finished in polished gold vermeil",
-          "imageUrl": "https://cdn.shopify.com/s/files/1/1994/2941/files/101-0511_color_polishedgold_01.jpg?v=1711477384",
-          "buyUrl": "https://miansai.com/products/flat-pyper-bracelet-gold-vermeil-polished-gold",
-          "matchScore": 0.7,
-          "whyThisFits": "This sleek, nautical-inspired bracelet has the clean lines Sam appreciates as a minimalist, and as a musician, he'll love how it won't interfere with his guitar playing while adding a subtle touch of everyday elegance.",
-          "giftAngle": "A piece that's refined enough for any occasion but won't get in the way when you're playing.",
-          "whatThisSays": "This says: 'I see the artist in you and want to give you something beautiful that becomes part of who you are.'",
-          "usageSignal": "He'll wear this daily, becoming part of his signature look whether he's performing or just living life"
+          "description": "The Kardo Handwoven Pashmina Bandana is made from 100% handwoven pashmina and finished with raw edges to maintain its natural texture. Designed for ve",
+          "imageUrl": "https://cdn.shopify.com/s/files/1/0653/6981/files/271875_IMG_0066.jpg?v=1759512224",
+          "buyUrl": "https://mohawkgeneralstore.com/products/kardo-handwoven-pashmina-bandana-black",
+          "matchScore": 0.9,
+          "whyThisFits": "Sam's minimalist style meets artisan craftsmanship in this versatile piece that could work as a guitar strap alternative or simply elevate his clean aesthetic. The handwoven quality and raw edges give it character without clutter.",
+          "giftAngle": "Something handmade that fits your style perfectly - minimal but with soul, just like your music.",
+          "whatThisSays": "This says: 'I see how you appreciate quality over quantity, and I found something that honors both your artistic side and your clean aesthetic.'",
+          "usageSignal": "He'll find multiple ways to wear this - whether performing or just adding texture to his minimal wardrobe"
+        },
+        {
+          "id": "www.toddsnyder.com-aesop-olous-aromatique-room-spray-100ml-black",
+          "name": "Aesop Olous Aromatique Room Spray",
+          "brand": "Aesop",
+          "price": 66,
+          "currency": "USD",
+          "category": "consumable",
+          "description": "A blend of citrus botanicals, balanced by breaking waves of cedar and the refreshing spice of cardamom. 100ml Key Ingredients: Galbanum, grapefruit,",
+          "imageUrl": "https://cdn.shopify.com/s/files/1/0186/1574/files/aesop-olous-aromatique-room-spray-100mlaesop-207435.jpg?v=1713323600",
+          "buyUrl": "https://www.toddsnyder.com/products/aesop-olous-aromatique-room-spray-100ml-black",
+          "matchScore": 0.85,
+          "whyThisFits": "The sophisticated cedar and citrus blend would create the perfect atmosphere for Sam's guitar practice sessions, while the minimalist Aesop packaging aligns with his clean aesthetic. This transforms his space without adding clutter.",
+          "giftAngle": "For setting the mood during your practice sessions - thought you'd appreciate how this could enhance your musical space.",
+          "whatThisSays": "This says: 'I want to support not just your passion, but the entire environment where your creativity happens.'",
+          "usageSignal": "He'll spritz this before every practice session, creating a ritual that enhances his musical focus"
+        },
+        {
+          "id": "everlane.com-mens-renew-weekender-nutria",
+          "name": "The ReNew Transit Weekender | Nutria",
+          "brand": "Everlane",
+          "price": 71,
+          "currency": "USD",
+          "category": "practical",
+          "description": "The ReNew Transit Weekender is fully featured—padded laptop sleeve, two water bottle holders, exterior zip pocket, luggage handle pass-through (that's also a pocket), and multiple ways to carry: crossbody, shoulder, or in-hand. Oh, and it’s made using 100% recycled polyester from recycled plastic bo",
+          "imageUrl": "https://cdn.shopify.com/s/files/1/0623/7916/3734/files/3db938a6_9a62.jpg?v=1753411389",
+          "buyUrl": "https://everlane.com/products/mens-renew-weekender-nutria",
+          "matchScore": 0.75,
+          "whyThisFits": "This unexpected choice anticipates Sam's need for a quality travel companion for gigs or craft beer adventures. The eco-conscious materials and laptop protection show thoughtful consideration for his lifestyle beyond just music.",
+          "giftAngle": "Figured you might need something solid for weekend trips - whether it's checking out new breweries or hauling gear to jam sessions.",
+          "whatThisSays": "This says: 'I see your whole life, not just your hobbies, and I want you to have quality gear for all your adventures.'",
+          "usageSignal": "He'll use this for weekend getaways, brewery tours, and anytime he needs to transport his laptop and essentials in style"
         }
       ],
       "scores": {
@@ -139,20 +139,20 @@
       "id": "boss_cooking",
       "recommendations": [
         {
-          "id": "cocktail-emporium-smoky",
-          "name": "Smoky Old Fashioned Set",
-          "brand": "Cocktail Emporium",
-          "price": 72,
+          "id": "batch-cocktail-kit",
+          "name": "Craft Cocktail Kit",
+          "brand": "Batch & Bottle",
+          "price": 55,
           "currency": "CAD",
           "category": "consumable",
-          "description": "Premium ingredient set for smoky Old Fashioneds — Canadian bitters, syrups, and garnishes. Just add whiskey.",
-          "imageUrl": "/products/cocktail-emporium.jpg",
-          "buyUrl": "https://www.cocktailemporium.com/collections/cocktail-gift-sets",
+          "description": "Premium pre-mixed cocktails. Negroni, Old Fashioned, or Margarita. Just pour over ice.",
+          "imageUrl": "/products/cocktail-kit.jpg",
+          "buyUrl": "https://www.hendricksgin.com/en-ca/batch-and-bottle/",
           "matchScore": 0.88,
-          "whyThisFits": "Since she loves hosting dinner parties, this premium cocktail set gives her everything needed to craft sophisticated drinks for her guests. The smoky Old Fashioned is an elevated classic that pairs perfectly with dinner entertaining.",
-          "giftAngle": "Position this as the missing piece for her hosting repertoire - now she can offer guests a perfectly crafted cocktail.",
-          "whatThisSays": "This says: 'I appreciate your attention to detail in hosting and want to help you create memorable moments for your guests.'",
-          "usageSignal": "She'll use this to impress guests at every dinner party - becomes part of her hosting signature"
+          "whyThisFits": "Someone who hosts dinner parties needs sophisticated cocktails to match, and this lets her serve bar-quality drinks without the complexity - perfect for impressing guests while keeping her focused on the cooking.",
+          "giftAngle": "Frame it as the secret to effortless entertaining - now she can serve craft cocktails that taste like they took hours to make.",
+          "whatThisSays": "This says: 'I know you put thought into every detail of your gatherings, and this will let you elevate the drink experience without extra stress.'",
+          "usageSignal": "She'll pour these at every dinner party - instant sophistication in 30 seconds"
         },
         {
           "id": "yeti-tumbler",
@@ -164,10 +164,10 @@
           "description": "Indestructible insulated tumbler. Keeps hot drinks hot, cold drinks cold. Everyone needs one.",
           "imageUrl": "/products/yeti.jpg",
           "buyUrl": "https://www.yeti.ca/drinkware/tumblers/rambler-20-oz-tumbler/21070060018.html",
-          "matchScore": 0.782,
+          "matchScore": 0.8075,
           "whyThisFits": "A thoughtful practical pick for your boss that shows you put real thought into this.",
           "giftAngle": "Give it with a note about why you picked this one specifically for them.",
-          "whatThisSays": "This says: 'I want to show my appreciation for your boss's leadership and acknowledge her re'",
+          "whatThisSays": "This says: 'I appreciate your passion for culinary arts and want to add a refined touch to y'",
           "usageSignal": "Becomes their daily driver for every drink"
         },
         {
@@ -183,7 +183,7 @@
           "matchScore": 0.663,
           "whyThisFits": "A thoughtful experiential pick for your boss that shows you put real thought into this.",
           "giftAngle": "Give it with a note about why you picked this one specifically for them.",
-          "whatThisSays": "This says: 'I want to show my appreciation for your boss's leadership and acknowledge her re'",
+          "whatThisSays": "This says: 'I appreciate your passion for culinary arts and want to add a refined touch to y'",
           "usageSignal": "A great book for every commute, walk, and workout"
         }
       ],
@@ -192,17 +192,30 @@
         "categoryDiversity": 1,
         "brandDiversity": 1,
         "explanationQuality": 1,
-        "relevance": 0.33,
-        "overall": 0.87
+        "relevance": 1,
+        "overall": 1
       },
-      "issues": [
-        "No interest match for Rambler 20oz Tumbler (expected: cooking, hosting, kitchen)",
-        "No interest match for 3-Month Premium Plus Gift (expected: cooking, hosting, kitchen)"
-      ]
+      "issues": []
     },
     {
       "id": "teen_art",
       "recommendations": [
+        {
+          "id": "poketo-planner",
+          "name": "Spectrum Planner",
+          "brand": "Poketo",
+          "price": 45,
+          "currency": "CAD",
+          "category": "artisan",
+          "description": "Beautifully designed undated planner with color-coded sections. Art-meets-function.",
+          "imageUrl": "/products/poketo.jpg",
+          "buyUrl": "https://www.poketo.com/products/spectrum-planner",
+          "matchScore": 0.85,
+          "whyThisFits": "This beautifully designed planner bridges her artistic sensibilities with practical organization — the color-coded sections and art-meets-function approach means she can plan her creative projects and daily life in something that feels like an extension of her artistic identity.",
+          "giftAngle": "A planner that's too beautiful to ignore, designed for creative minds who need both inspiration and organization.",
+          "whatThisSays": "This says: 'I know you're creative AND organized, and you deserve tools that honor both sides of who you are.'",
+          "usageSignal": "She'll use it daily to plan art projects, sketch ideas, and organize her creative life"
+        },
         {
           "id": "terrarium-kit",
           "name": "Easy Build Closed Terrarium Kit",
@@ -214,10 +227,10 @@
           "imageUrl": "/products/terrarium.jpg",
           "buyUrl": "https://terrariumkit.ca/collections/frontpage",
           "matchScore": 0.75,
-          "whyThisFits": "While she loves traditional art, this DIY terrarium introduces her to living art — creating a self-sustaining ecosystem in glass. It's a different kind of creativity that bridges art and science, letting her design and build something beautiful that grows and changes.",
-          "giftAngle": "A different kind of art project — creating a tiny, self-sustaining world in glass that she designs and builds herself.",
-          "whatThisSays": "This says: 'I love seeing you create, and I thought you might enjoy exploring creativity in an unexpected way.'",
-          "usageSignal": "Build it once, then watch it thrive and evolve on her desk or windowsill"
+          "whyThisFits": "While she loves traditional art forms, this introduces her to a completely different kind of creative expression — designing and building a living, breathing ecosystem. It's hands-on creativity with a scientific twist that could spark new artistic inspiration.",
+          "giftAngle": "A different kind of art project — one that grows and evolves long after she finishes creating it.",
+          "whatThisSays": "This says: 'Your creativity extends beyond the canvas, and I want you to discover new ways to create beautiful things.'",
+          "usageSignal": "She'll spend an afternoon building it, then watch her tiny ecosystem thrive for months"
         },
         {
           "id": "anker-soundcore-speaker",
@@ -232,24 +245,8 @@
           "matchScore": 0.8075,
           "whyThisFits": "A thoughtful practical pick for your niece that shows you put real thought into this.",
           "giftAngle": "Give it with a note about why you picked this one specifically for them.",
-          "whatThisSays": "This says: 'I want to support her artistic passion and help her explore her creativity.'",
+          "whatThisSays": "This says: 'I chose this specifically for you — not a random pick.'",
           "usageSignal": "Goes everywhere — kitchen, backyard, beach, camping trips"
-        },
-        {
-          "id": "audible-3mo",
-          "name": "3-Month Premium Plus Gift",
-          "brand": "Audible Canada",
-          "price": 45,
-          "currency": "CAD",
-          "category": "experiential",
-          "description": "3 audiobook credits plus unlimited access to the Audible Plus catalog. Perfect for commuters.",
-          "imageUrl": "/products/audible.jpg",
-          "buyUrl": "https://www.audible.ca/mk/g/giftcentre",
-          "matchScore": 0.7224999999999999,
-          "whyThisFits": "A thoughtful experiential pick for your niece that shows you put real thought into this.",
-          "giftAngle": "Give it with a note about why you picked this one specifically for them.",
-          "whatThisSays": "This says: 'I want to support her artistic passion and help her explore her creativity.'",
-          "usageSignal": "A great book for every commute, walk, and workout"
         }
       ],
       "scores": {
@@ -257,10 +254,12 @@
         "categoryDiversity": 1,
         "brandDiversity": 1,
         "explanationQuality": 1,
-        "relevance": 1,
-        "overall": 1
+        "relevance": 0.67,
+        "overall": 0.93
       },
-      "issues": []
+      "issues": [
+        "No interest match for Motion 300 Portable Speaker (expected: art, drawing, painting, creative)"
+      ]
     }
   ]
 }
