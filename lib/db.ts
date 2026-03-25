@@ -214,6 +214,31 @@ export function getDb(): Database.Database {
       created_at TEXT DEFAULT (datetime('now'))
     );
 
+    -- Session feedback (migrated from JSON files to SQLite)
+    CREATE TABLE IF NOT EXISTS session_feedback (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      session_id TEXT UNIQUE NOT NULL,
+      user_id TEXT,
+      feedback_data TEXT NOT NULL,
+      quality_scores TEXT,
+      created_at TEXT DEFAULT (datetime('now')),
+      updated_at TEXT DEFAULT (datetime('now'))
+    );
+
+    CREATE INDEX IF NOT EXISTS idx_session_feedback_session ON session_feedback(session_id);
+    CREATE INDEX IF NOT EXISTS idx_session_feedback_user ON session_feedback(user_id);
+
+    -- Recommendation cache (deduplicate Claude calls)
+    CREATE TABLE IF NOT EXISTS recommendation_cache (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      context_hash TEXT UNIQUE NOT NULL,
+      recommendations TEXT NOT NULL,
+      created_at TEXT DEFAULT (datetime('now')),
+      expires_at TEXT NOT NULL
+    );
+
+    CREATE INDEX IF NOT EXISTS idx_rec_cache_hash ON recommendation_cache(context_hash);
+
     CREATE INDEX IF NOT EXISTS idx_users_google_id ON users(google_id);
     CREATE INDEX IF NOT EXISTS idx_recipients_user_id ON recipients(user_id);
     CREATE INDEX IF NOT EXISTS idx_gift_sessions_user_recipient ON gift_sessions(user_id, recipient_id, status);

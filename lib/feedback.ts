@@ -8,8 +8,7 @@
 // Feedback flows into the recommender via the /api/feedback endpoint
 // and is stored per-session for analysis + per-user for personalization.
 
-import { writeFileSync, readFileSync, existsSync, mkdirSync } from "fs";
-import { join } from "path";
+import { getDb } from "./db";
 
 // ── Signal Types ─────────────────────────────────────────────────
 
@@ -103,40 +102,39 @@ export interface SessionFeedback {
   };
 }
 
-// ── Storage ──────────────────────────────────────────────────────
-
-const FEEDBACK_DIR = join(process.cwd(), "data", "feedback");
+// ── Storage (SQLite) ─────────────────────────────────────────────
 
 export function saveFeedback(feedback: SessionFeedback): void {
-  mkdirSync(FEEDBACK_DIR, { recursive: true });
-
-  // Save individual session
-  const filename = `${feedback.sessionId}.json`;
-  writeFileSync(join(FEEDBACK_DIR, filename), JSON.stringify(feedback, null, 2));
-
-  // Append to daily log (for batch analysis)
-  const dateStr = new Date().toISOString().slice(0, 10);
-  const logFile = join(FEEDBACK_DIR, `log-${dateStr}.jsonl`);
-  const line = JSON.stringify(feedback) + "\n";
-  const existing = existsSync(logFile) ? readFileSync(logFile, "utf-8") : "";
-  writeFileSync(logFile, existing + line);
+  const db = getDb();
+  db.prepare(
+    `INSERT OR REPLACE INTO session_feedback (session_id, user_id, feedback_data, quality_scores, updated_at)
+     VALUES (?, ?, ?, ?, datetime('now'))`
+  ).run(
+    feedback.sessionId,
+    feedback.userId || null,
+    JSON.stringify(feedback),
+    feedback.qualityScores ? JSON.stringify(feedback.qualityScores) : null,
+  );
 }
 
 export function loadFeedback(sessionId: string): SessionFeedback | null {
-  const filepath = join(FEEDBACK_DIR, `${sessionId}.json`);
-  if (!existsSync(filepath)) return null;
-  return JSON.parse(readFileSync(filepath, "utf-8"));
+  const db = getDb();
+  const row = db
+    .prepare("SELECT feedback_data FROM session_feedback WHERE session_id = ?")
+    .get(sessionId) as { feedback_data: string } | undefined;
+  if (!row) return null;
+  return JSON.parse(row.feedback_data);
 }
 
 export function loadUserHistory(userId: string): SessionFeedback[] {
-  if (!existsSync(FEEDBACK_DIR)) return [];
-  const { readdirSync } = require("fs");
-  const files: string[] = readdirSync(FEEDBACK_DIR).filter((f: string) => f.endsWith(".json") && !f.startsWith("log-"));
+  const db = getDb();
+  const rows = db
+    .prepare("SELECT feedback_data FROM session_feedback WHERE user_id = ? ORDER BY created_at DESC")
+    .all(userId) as { feedback_data: string }[];
   const sessions: SessionFeedback[] = [];
-  for (const file of files) {
+  for (const row of rows) {
     try {
-      const data: SessionFeedback = JSON.parse(readFileSync(join(FEEDBACK_DIR, file), "utf-8"));
-      if (data.userId === userId) sessions.push(data);
+      sessions.push(JSON.parse(row.feedback_data));
     } catch { /* skip corrupted files */ }
   }
   return sessions.sort((a, b) => a.timestamp.localeCompare(b.timestamp));

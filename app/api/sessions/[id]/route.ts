@@ -34,6 +34,12 @@ export async function GET(
     return NextResponse.json({ error: "Session not found" }, { status: 404 });
   }
 
+  // Ownership check: if session has a user_id, verify requester matches
+  const userId = request.headers.get("x-user-id");
+  if (session.user_id && userId && session.user_id !== userId) {
+    return NextResponse.json({ error: "Session not found" }, { status: 404 });
+  }
+
   return NextResponse.json({
     session: {
       ...session,
@@ -57,6 +63,12 @@ export async function PATCH(
     .get(params.id) as GiftSession | undefined;
 
   if (!session) {
+    return NextResponse.json({ error: "Session not found" }, { status: 404 });
+  }
+
+  // Ownership check: if session has a user_id, verify requester matches
+  const userId = request.headers.get("x-user-id");
+  if (session.user_id && userId && session.user_id !== userId) {
     return NextResponse.json({ error: "Session not found" }, { status: 404 });
   }
 

@@ -4,6 +4,7 @@
 // Queries SQLite DB for enriched products (133K+), falls back to static catalog
 
 import Anthropic from "@anthropic-ai/sdk";
+import { createHash } from "crypto";
 import { CATALOG, Product, priceTierFromBudget } from "./catalog";
 import { getDb, type DbProduct } from "./db";
 import { getRecipientHistory } from "./profiles";
@@ -11,6 +12,32 @@ import { loadUserHistory, extractRecommenderInsights } from "./feedback";
 import { sanitizeForPrompt } from "./sanitize";
 
 const anthropic = new Anthropic();
+
+// ── Recommendation Cache ──────────────────────────────────────────
+
+function hashContext(context: Record<string, unknown>): string {
+  const normalized = JSON.stringify(context, Object.keys(context).sort());
+  return createHash("sha256").update(normalized).digest("hex").slice(0, 32);
+}
+
+function getCachedRecommendations(contextHash: string): string | null {
+  try {
+    const db = getDb();
+    const row = db
+      .prepare("SELECT recommendations FROM recommendation_cache WHERE context_hash = ? AND expires_at > datetime('now')")
+      .get(contextHash) as { recommendations: string } | undefined;
+    return row?.recommendations || null;
+  } catch { return null; }
+}
+
+function setCachedRecommendations(contextHash: string, recommendations: string, ttlMinutes = 10): void {
+  try {
+    const db = getDb();
+    db.prepare(
+      "INSERT OR REPLACE INTO recommendation_cache (context_hash, recommendations, expires_at) VALUES (?, ?, datetime('now', ? || ' minutes'))"
+    ).run(contextHash, recommendations, String(ttlMinutes));
+  } catch { /* non-critical */ }
+}
 
 export interface Recommendation {
   product: Product;
@@ -433,7 +460,7 @@ Do NOT pick generic lifestyle products (jewelry, cologne, candles, speakers) unl
 - Slot 3 should be genuinely surprising — a category the giver didn't mention
 - NEVER lead with price in whyThisFits. Lead with emotional/practical fit
 - PREFER products with specific, vivid descriptions over generic ones
-- Budget adherence: all 3 picks MUST be within the stated budget range (±20%). If budget is "$50-100", don't pick a $15 item or a $200 item.
+- **BUDGET IS A HARD CONSTRAINT — NOT A SUGGESTION.** Every pick MUST be within the stated budget. If budget is "$50-100", every pick must cost between $50 and $100. If budget is "$75" or "under $75", every pick must cost $75 or less. Picks outside the budget will be REJECTED. Do not exceed the budget ceiling by even $1.
 
 ## Output
 Return ONLY valid JSON, no markdown fences:
@@ -471,11 +498,26 @@ Return ONLY valid JSON, no markdown fences:
     }
   }
 
-  // Try once, retry on failure with smaller candidate set
-  picks = await callClaude();
+  // Check cache before calling Claude
+  const contextHash = hashContext(context as Record<string, unknown>);
+  const cached = getCachedRecommendations(contextHash);
+  if (cached) {
+    try {
+      picks = JSON.parse(cached);
+    } catch { picks = []; }
+  }
+
+  // Call Claude if cache miss
   if (picks.length === 0) {
-    console.log("Retrying recommendation with smaller candidate set...");
     picks = await callClaude();
+    if (picks.length === 0) {
+      console.log("Retrying recommendation with smaller candidate set...");
+      picks = await callClaude();
+    }
+    // Cache successful results
+    if (picks.length > 0) {
+      setCachedRecommendations(contextHash, JSON.stringify(picks));
+    }
   }
 
   // Map back to full products — check DB first, then static catalog
@@ -498,20 +540,68 @@ Return ONLY valid JSON, no markdown fences:
     });
   }
 
-  // Hard post-filter: reject recommendations outside budget
-  // Strict enforcement: single-number budgets ("$75") are hard ceilings
+  // Context variables needed by buildFallbackCopy (must be declared before post-filter)
+  const recipientName = context.recipient?.name || "them";
+  const interests = context.recipient?.interests || [];
+  const relationship = context.recipient?.relationship || "";
+  const giverExpression = context.gift?.giverWantsToExpress || "";
+
+  function buildFallbackCopy(product: Product): Pick<Recommendation, "whyThisFits" | "giftAngle" | "whatThisSays" | "usageSignal"> {
+    const interestMatch = interests.find((i: string) =>
+      product.meta.recipientTraits?.some((t: string) => t.toLowerCase().includes(i.toLowerCase()))
+    );
+    const why = interestMatch
+      ? `Connects to ${recipientName}'s interest in ${interestMatch} — a ${product.category} pick that fits naturally into their life.`
+      : `A thoughtful ${product.category} pick${relationship ? ` for your ${relationship}` : ""} that shows you put real thought into this.`;
+    const says = giverExpression
+      ? `This says: '${giverExpression.slice(0, 80)}'`
+      : `This says: 'I chose this specifically for you — not a random pick.'`;
+    return {
+      whyThisFits: why,
+      giftAngle: `Give it with a note about why you picked this one specifically for ${recipientName}.`,
+      whatThisSays: says,
+      usageSignal: product.meta.usageSignal || "",
+    };
+  }
+
+  // Hard post-filter: ALWAYS reject recommendations outside budget
+  // This is the final enforcement — Claude sometimes ignores budget in prompt
   const budgetRange = parseBudgetRange(context.gift?.budget);
   if (budgetRange) {
     const isUnderBudget = budgetRange.min === 0;
     const isSingleNumber = !context.gift?.budget?.includes("-");
-    const hardMin = isUnderBudget ? 0 : budgetRange.min * 0.9;
-    // Single number = hard ceiling (no 10% margin). Range = allow 5% over max.
-    const hardMax = isSingleNumber ? budgetRange.max : budgetRange.max * 1.05;
-    const filtered = recommendations.filter(r => r.product.price >= hardMin && r.product.price <= hardMax);
-    if (filtered.length > 0) {
-      recommendations.length = 0;
-      recommendations.push(...filtered);
+    const hardMin = isUnderBudget ? 0 : budgetRange.min * 0.85; // 15% floor tolerance
+    const hardMax = isSingleNumber ? budgetRange.max : budgetRange.max * 1.05; // 5% ceiling tolerance for ranges, exact for single numbers
+
+    const compliant = recommendations.filter(r => r.product.price >= hardMin && r.product.price <= hardMax);
+    const overBudget = recommendations.filter(r => r.product.price > hardMax || r.product.price < hardMin);
+
+    // Replace over-budget recs with budget-compliant candidates from the pool
+    if (overBudget.length > 0 && candidates.length > 0) {
+      const usedIds = new Set(compliant.map(r => r.product.id));
+      const usedCategories = new Set(compliant.map(r => r.product.category));
+
+      for (const bad of overBudget) {
+        const replacement = candidates.find(p =>
+          !usedIds.has(p.id) &&
+          !usedCategories.has(p.category) &&
+          p.price >= hardMin && p.price <= hardMax
+        );
+        if (replacement) {
+          usedIds.add(replacement.id);
+          usedCategories.add(replacement.category);
+          compliant.push({
+            product: replacement,
+            matchScore: bad.matchScore * 0.85, // slight penalty for being a replacement
+            ...buildFallbackCopy(replacement),
+          });
+        }
+        // If no replacement found, the slot is simply dropped (2 recs better than 1 over-budget)
+      }
     }
+
+    recommendations.length = 0;
+    recommendations.push(...compliant);
   }
 
   // Post-processing: enforce category diversity — no two from same category
@@ -557,30 +647,6 @@ Return ONLY valid JSON, no markdown fences:
   }
 
   // Fallback: if AI returned invalid IDs, pick from candidates respecting budget
-  // Generate personalized copy from context instead of generic boilerplate
-  const recipientName = context.recipient?.name || "them";
-  const interests = context.recipient?.interests || [];
-  const relationship = context.recipient?.relationship || "";
-  const giverExpression = context.gift?.giverWantsToExpress || "";
-
-  function buildFallbackCopy(product: Product): Pick<Recommendation, "whyThisFits" | "giftAngle" | "whatThisSays" | "usageSignal"> {
-    const interestMatch = interests.find((i: string) =>
-      product.meta.recipientTraits?.some((t: string) => t.toLowerCase().includes(i.toLowerCase()))
-    );
-    const why = interestMatch
-      ? `Connects to ${recipientName}'s interest in ${interestMatch} — a ${product.category} pick that fits naturally into their life.`
-      : `A thoughtful ${product.category} pick${relationship ? ` for your ${relationship}` : ""} that shows you put real thought into this.`;
-    const says = giverExpression
-      ? `This says: '${giverExpression.slice(0, 80)}'`
-      : `This says: 'I chose this specifically for you — not a random pick.'`;
-    return {
-      whyThisFits: why,
-      giftAngle: `Give it with a note about why you picked this one specifically for ${recipientName}.`,
-      whatThisSays: says,
-      usageSignal: product.meta.usageSignal || "",
-    };
-  }
-
   while (recommendations.length < 3) {
     const used = new Set(recommendations.map((r) => r.product.id));
     const usedCategories = new Set(recommendations.map((r) => r.product.category));

@@ -5,8 +5,8 @@ export async function POST(request: Request) {
   try {
     const { sessionId, userId, eventType, eventData } = await request.json();
 
-    if (!eventType) {
-      return NextResponse.json({ error: "Missing eventType" }, { status: 400 });
+    if (!eventType || !sessionId) {
+      return NextResponse.json({ error: "Missing eventType or sessionId" }, { status: 400 });
     }
 
     trackEvent(sessionId || null, userId || null, eventType as EventType, eventData);
