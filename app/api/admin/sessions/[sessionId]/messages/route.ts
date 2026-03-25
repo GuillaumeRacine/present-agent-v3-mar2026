@@ -78,7 +78,28 @@ export async function GET(
       } catch { /* keep original */ }
     }
 
-    return NextResponse.json({ messages, session, recLog });
+    // Get event timeline for this session
+    let events = db
+      .prepare(
+        `SELECT event_type, event_data, created_at
+         FROM events
+         WHERE session_id = ?
+         ORDER BY created_at`
+      )
+      .all(sid) as Record<string, unknown>[];
+
+    if (events.length === 0) {
+      events = db
+        .prepare(
+          `SELECT event_type, event_data, created_at
+           FROM events
+           WHERE session_id LIKE ?
+           ORDER BY created_at`
+        )
+        .all(`%${sid}%`) as Record<string, unknown>[];
+    }
+
+    return NextResponse.json({ messages, session, recLog, events });
   } catch (error) {
     return NextResponse.json(
       { error: "Failed to fetch messages", detail: String(error) },

@@ -627,7 +627,7 @@ async function runPersona(persona: Persona): Promise<PersonaResult> {
 // ── Main ───────────────────────────────────────────────────────────
 
 async function main() {
-  const personas: Persona[] = JSON.parse(fs.readFileSync("test/realistic-personas.json", "utf-8"));
+  const personas: Persona[] = JSON.parse(fs.readFileSync("test/_run3.json", "utf-8"));
 
   console.log(`\n=== Multi-Turn Conversation Quality Test ===`);
   console.log(`Base URL: ${BASE_URL}`);

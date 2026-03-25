@@ -1,1 +1,586 @@
-[{"id":"indecisive_partner","title":"Forgot anniversary, no idea what to get, changes mind","description":"ADHD user who forgot their anniversary is in 4 days. Doesn't know what their partner wants. Gives vague info, changes direction mid-conversation, needs to see options to decide. Classic target user.","turns":[{"message":"shit our anniversary is friday and I have nothing. help","intent":"Panic opener. No name, no interests, no budget. Just urgency.","expect_ai":"Should extract: occasion=anniversary, urgency=high. Should ask about partner."},{"message":"her name is Megan. 6 years together. she's... I don't know, she likes a lot of things? she reads, does pottery sometimes, we cook together on weekends","intent":"Gives name + relationship + vague interests. Still no budget. User is unsure.","expect_ai":"Should show 2-3 directions. Should ask budget. Should NOT ask more about interests."},{"message":"hmm the pottery one is interesting but actually she hasn't done that in months. maybe the cooking one? idk. under 150 I guess","intent":"Changes direction. Gives budget reluctantly. Still uncertain. Wants to see actual products before committing.","expect_ai":"Should lock in cooking direction + $150 budget. Should complete and show profile card."}],"scoring":{"context_should_have":{"name":"Megan","relationship":"partner","occasion":"anniversary","interests_any":["cooking","reading","pottery"],"budget_contains":"150"},"conversation_should":["Never ask what she likes after turn 2 (already stated)","Show directions by turn 2","Complete by turn 3","Handle the direction change gracefully"],"recs_should":["At least 1 cooking-related item","Nothing pottery-related (she stopped)","Budget compliant under $150","Items available for quick delivery (anniversary in 4 days)"]},"postRecs":{"behavior":"indecisive","reactions":{"slot0":"relevant","slot1":"relevant","slot2":"too_expensive"},"decision":"Picks slot 0 or 1 (whichever is most cooking-related). Needs the image + description to feel confident — if it looks like something Megan would use, they'll go for it.","cardEdit":"Wants to personalize the card — would change generic wording to reference their cooking weekends together.","wouldRefine":"Only if none of the 3 are cooking-related. Otherwise decides from what's shown.","buyBehavior":"Clicks buy link, then immediately comes back to confirm purchase and get feedback link."}},{"id":"overthinking_parent","title":"Parent agonizing over teenage son's graduation gift","description":"Mom who is overthinking a graduation gift for her 18-year-old son. She knows him well but can't decide because everything feels too generic or too expensive. Gives TOO MUCH info. Contradicts herself.","turns":[{"message":"My son Ethan is graduating high school next month. I want something meaningful, not just another gift card. He's going to McGill in September.","intent":"Clear occasion and name. Mentions what she DOESN'T want. Going to university = life transition.","expect_ai":"Should extract: name=Ethan, relationship=son, occasion=graduation, context=heading to university. Should ask about his interests."},{"message":"He's super into sneakers and streetwear — like obsessively. But I don't want to just buy him shoes, that feels lazy. He also games a lot and just started getting into film photography. Oh and he wants a tattoo but I said not till he's 19 lol","intent":"Tons of info. Multiple interests. Explicitly rejects the obvious choice (sneakers). Mentions something new (film photography).","expect_ai":"Should show directions weighted toward film photography (new interest = more meaningful) and maybe streetwear-adjacent but not shoes. Should ask budget."},{"message":"the photography direction is cool actually, I didn't think of that. maybe $200-300? he's my only kid so I want it to be special","intent":"Picks a direction. Gives budget. Adds emotional weight (only kid).","expect_ai":"Should complete with photography direction, $200-300 budget, capture the 'special for only kid' expression."}],"scoring":{"context_should_have":{"name":"Ethan","relationship":"son","occasion":"graduation","interests_any":["photography","film","sneakers","streetwear","gaming"],"budget_contains":"200"},"conversation_should":["Not suggest sneakers/shoes (explicitly rejected)","Lean toward photography (newer interest, more meaningful)","Acknowledge the emotional weight","Complete by turn 3"],"recs_should":["At least 1 photography-related item (camera, film, accessories)","NO sneakers or shoes","Budget $200-300","Feel special/meaningful, not generic"]},"postRecs":{"behavior":"analytical","reactions":{"slot0":"relevant","slot1":"relevant","slot2":"irrelevant"},"decision":"Reads every detail carefully. Will pick the most photography-specific item. Needs the 'why this fits' to reference Ethan's new interest specifically, not generic 'your son will love this'.","cardEdit":"Would write her own card message entirely — too personal for AI-generated text.","wouldRefine":"If no photography item is in the picks, would hit 'Not quite right' and say 'I specifically want something for film photography'.","buyBehavior":"Researches the product externally before buying. May not confirm purchase in-app."}},{"id":"awkward_professional","title":"New employee trying to get a holiday gift for entire team","description":"Started a new job 3 months ago. Office does a holiday gift exchange but they barely know their assigned person. Has almost no info. Terrified of getting something weird or offensive.","turns":[{"message":"I got assigned someone for our office secret santa and I literally know nothing about them except their name is David and he works in accounting","intent":"Minimal info. Professional context. Fear of awkwardness. Secret Santa = typically $25-50.","expect_ai":"Should extract: name=David, relationship=coworker, occasion=secret santa/holiday. Should ask what they DO know or suggest safe directions."},{"message":"I think he drinks coffee? I've seen him with a mug. He seems quiet, maybe early 30s. Our budget limit is $40. I just don't want to get something embarrassing","intent":"Very thin signals. Coffee is a guess. Budget is firm ($40 cap). Primary concern is not looking stupid.","expect_ai":"Should show safe, crowd-pleasing directions. Coffee is the strongest signal. Should NOT ask more questions — there's nothing more to learn."},{"message":"yeah coffee is the safest bet, let's go with that","intent":"Confirms direction. Wants safety over delight.","expect_ai":"Should complete immediately. Coffee direction, $40 cap, professional/safe tone."}],"scoring":{"context_should_have":{"name":"David","relationship":"coworker","occasion":"secret santa","interests_any":["coffee"],"budget_contains":"40"},"conversation_should":["Not push for more personal info (they don't have any)","Suggest safe, universally-liked directions","Respect the low-info constraint","Complete by turn 3"],"recs_should":["All items under $40 STRICT","At least 1 coffee-related item","Nothing too personal or risky","Items that work for someone you barely know"]},"postRecs":{"behavior":"quick_decider","reactions":{"slot0":"relevant"},"decision":"Picks the first coffee-related item immediately. Doesn't read the other options in detail. Just wants this done.","cardEdit":"Skips the card entirely — it's a secret santa, no card needed.","wouldRefine":"Never. Picking the safest option fast is the priority.","buyBehavior":"Clicks buy, done. Doesn't use feedback link — it's a coworker."}},{"id":"conflicted_sibling","title":"Complicated relationship, wants to reconnect through a gift","description":"Hasn't talked to their sister in 8 months after a fight. Sister's birthday is coming up and they want to use the gift as an olive branch. Emotionally loaded. The gift IS the message.","turns":[{"message":"I need a birthday gift for my sister Priya. We haven't really been talking since last summer. I want to... I don't know, bridge the gap I guess","intent":"Emotional opener. The gift is about the relationship, not the object. Vulnerable.","expect_ai":"Should handle the emotional weight. Extract: name=Priya, relationship=sister, occasion=birthday, subtext=reconciliation. Should ask about shared memories or what she's into."},{"message":"We used to be super close. She got me into hiking and we'd do these long trail walks and just talk. She also loves tea — she has this whole ritual with loose leaf and fancy cups. I think she started a garden this year but I only know from instagram","intent":"Rich context through nostalgia. Hiking = shared activity. Tea = her thing. Garden = new but they're not close enough to know details. Instagram stalking = they miss each other.","expect_ai":"Should show directions that reference the shared history. Hiking/tea are the strongest signals. Garden is too uncertain."},{"message":"the hiking one hits different. like it's saying I remember what we had. budget maybe $75-125? I don't want it to seem like I'm trying too hard but also not nothing","intent":"Picks direction with emotional reasoning. Budget has emotional subtext — not too much (desperate), not too little (careless).","expect_ai":"Should complete. Capture the reconciliation expression. Budget $75-125."}],"scoring":{"context_should_have":{"name":"Priya","relationship":"sister","occasion":"birthday","interests_any":["hiking","tea","garden","outdoors"],"budget_contains":"75"},"conversation_should":["Acknowledge the emotional complexity without being therapist-y","Not be too cheerful or surface-level","Reference shared history in directions","Complete by turn 3"],"recs_should":["At least 1 hiking/outdoor item","Items that feel personal, not generic","Budget $75-125","Nothing that screams 'I googled gift for sister'"]},"postRecs":{"behavior":"emotional","reactions":{"slot0":"relevant","slot1":"relevant","slot2":"irrelevant"},"decision":"Reads 'what this gift says' for each option carefully. Picks the one whose message best captures 'I remember us'. The product itself matters less than what it communicates.","cardEdit":"Would heavily edit the card. Might write something like 'I miss our trail talks. Maybe we can do one again soon.' — deeply personal.","wouldRefine":"If none of the options feel like they reference shared hiking memories, would refine with 'I want something that reminds her of when we used to hike together'.","buyBehavior":"Buys carefully, wraps it herself. Sends feedback link with a nervous text message."}},{"id":"last_minute_chaos","title":"Everything is wrong and they need a gift in 2 hours","description":"Ordered something online, it didn't arrive, event is TODAY. Needs something they can buy instantly — digital gift, local pickup, or experience. Tests the system's ability to handle extreme urgency and pivot from physical to digital/experiential.","turns":[{"message":"ok so my friend Jake's birthday dinner is TONIGHT and the thing I ordered didn't come. I need something I can get like right now or send digitally","intent":"Extreme urgency. Physical product probably won't work. Needs digital/experiential/last-minute solutions.","expect_ai":"Should extract urgency. Should immediately orient toward digital gifts, experiences, or instant-delivery options."},{"message":"he's a huge foodie, loves trying new restaurants. we're in montreal. he's turning 30. maybe $50-80?","intent":"Good info dump. Foodie + Montreal + 30th birthday. Budget clear.","expect_ai":"Should show food/restaurant experience directions. Should acknowledge the last-minute reality."},{"message":"the restaurant experience one, for sure. something I can print or show him on my phone tonight","intent":"Needs something deliverable NOW. Digital or printable.","expect_ai":"Should complete with experiential/food direction, last-minute constraint emphasized."}],"scoring":{"context_should_have":{"name":"Jake","relationship":"friend","occasion":"birthday","interests_any":["food","restaurant","dining","foodie"],"budget_contains":"50"},"conversation_should":["Acknowledge the urgency without judgment","Not suggest items that need shipping","Pivot to digital/experiential immediately","Complete by turn 3"],"recs_should":["Prefer experiential or digital-delivery items","Food/restaurant related","Budget $50-80","Things that can be given same-day"]},"postRecs":{"behavior":"urgent","reactions":{"slot0":"relevant"},"decision":"Picks whatever is most clearly giftable tonight — needs to be digital, printable, or an experience voucher. Physical products are instant reject regardless of relevance.","cardEdit":"Skips card — will just say something in person at dinner.","wouldRefine":"If all 3 are physical products, would immediately refine with 'these all need shipping — I need something I can give TONIGHT'.","buyBehavior":"Buys instantly, screenshots the confirmation, shows it on phone at dinner."}}]
+[
+  {
+    "id": "indecisive_partner",
+    "title": "Forgot anniversary, no idea what to get, changes mind",
+    "description": "ADHD user who forgot their anniversary is in 4 days. Doesn't know what their partner wants. Gives vague info, changes direction mid-conversation, needs to see options to decide. Classic target user.",
+    "turns": [
+      {
+        "message": "shit our anniversary is friday and I have nothing. help",
+        "intent": "Panic opener. No name, no interests, no budget. Just urgency.",
+        "expect_ai": "Should extract: occasion=anniversary, urgency=high. Should ask about partner."
+      },
+      {
+        "message": "her name is Megan. 6 years together. she's... I don't know, she likes a lot of things? she reads, does pottery sometimes, we cook together on weekends",
+        "intent": "Gives name + relationship + vague interests. Still no budget. User is unsure.",
+        "expect_ai": "Should show 2-3 directions. Should ask budget. Should NOT ask more about interests."
+      },
+      {
+        "message": "hmm the pottery one is interesting but actually she hasn't done that in months. maybe the cooking one? idk. under 150 I guess",
+        "intent": "Changes direction. Gives budget reluctantly. Still uncertain. Wants to see actual products before committing.",
+        "expect_ai": "Should lock in cooking direction + $150 budget. Should complete and show profile card."
+      }
+    ],
+    "scoring": {
+      "context_should_have": {
+        "name": "Megan",
+        "relationship": "partner",
+        "occasion": "anniversary",
+        "interests_any": [
+          "cooking",
+          "reading",
+          "pottery"
+        ],
+        "budget_contains": "150"
+      },
+      "conversation_should": [
+        "Never ask what she likes after turn 2 (already stated)",
+        "Show directions by turn 2",
+        "Complete by turn 3",
+        "Handle the direction change gracefully"
+      ],
+      "recs_should": [
+        "At least 1 cooking-related item",
+        "Nothing pottery-related (she stopped)",
+        "Budget compliant under $150",
+        "Items available for quick delivery (anniversary in 4 days)"
+      ]
+    },
+    "postRecs": {
+      "behavior": "indecisive",
+      "reactions": {
+        "slot0": "relevant",
+        "slot1": "relevant",
+        "slot2": "too_expensive"
+      },
+      "decision": "Picks slot 0 or 1 (whichever is most cooking-related). Needs the image + description to feel confident \u2014 if it looks like something Megan would use, they'll go for it.",
+      "cardEdit": "Wants to personalize the card \u2014 would change generic wording to reference their cooking weekends together.",
+      "wouldRefine": "Only if none of the 3 are cooking-related. Otherwise decides from what's shown.",
+      "buyBehavior": "Clicks buy link, then immediately comes back to confirm purchase and get feedback link."
+    }
+  },
+  {
+    "id": "overthinking_parent",
+    "title": "Parent agonizing over teenage son's graduation gift",
+    "description": "Mom who is overthinking a graduation gift for her 18-year-old son. She knows him well but can't decide because everything feels too generic or too expensive. Gives TOO MUCH info. Contradicts herself.",
+    "turns": [
+      {
+        "message": "My son Ethan is graduating high school next month. I want something meaningful, not just another gift card. He's going to McGill in September.",
+        "intent": "Clear occasion and name. Mentions what she DOESN'T want. Going to university = life transition.",
+        "expect_ai": "Should extract: name=Ethan, relationship=son, occasion=graduation, context=heading to university. Should ask about his interests."
+      },
+      {
+        "message": "He's super into sneakers and streetwear \u2014 like obsessively. But I don't want to just buy him shoes, that feels lazy. He also games a lot and just started getting into film photography. Oh and he wants a tattoo but I said not till he's 19 lol",
+        "intent": "Tons of info. Multiple interests. Explicitly rejects the obvious choice (sneakers). Mentions something new (film photography).",
+        "expect_ai": "Should show directions weighted toward film photography (new interest = more meaningful) and maybe streetwear-adjacent but not shoes. Should ask budget."
+      },
+      {
+        "message": "the photography direction is cool actually, I didn't think of that. maybe $200-300? he's my only kid so I want it to be special",
+        "intent": "Picks a direction. Gives budget. Adds emotional weight (only kid).",
+        "expect_ai": "Should complete with photography direction, $200-300 budget, capture the 'special for only kid' expression."
+      }
+    ],
+    "scoring": {
+      "context_should_have": {
+        "name": "Ethan",
+        "relationship": "son",
+        "occasion": "graduation",
+        "interests_any": [
+          "photography",
+          "film",
+          "sneakers",
+          "streetwear",
+          "gaming"
+        ],
+        "budget_contains": "200"
+      },
+      "conversation_should": [
+        "Not suggest sneakers/shoes (explicitly rejected)",
+        "Lean toward photography (newer interest, more meaningful)",
+        "Acknowledge the emotional weight",
+        "Complete by turn 3"
+      ],
+      "recs_should": [
+        "At least 1 photography-related item (camera, film, accessories)",
+        "NO sneakers or shoes",
+        "Budget $200-300",
+        "Feel special/meaningful, not generic"
+      ]
+    },
+    "postRecs": {
+      "behavior": "analytical",
+      "reactions": {
+        "slot0": "relevant",
+        "slot1": "relevant",
+        "slot2": "irrelevant"
+      },
+      "decision": "Reads every detail carefully. Will pick the most photography-specific item. Needs the 'why this fits' to reference Ethan's new interest specifically, not generic 'your son will love this'.",
+      "cardEdit": "Would write her own card message entirely \u2014 too personal for AI-generated text.",
+      "wouldRefine": "If no photography item is in the picks, would hit 'Not quite right' and say 'I specifically want something for film photography'.",
+      "buyBehavior": "Researches the product externally before buying. May not confirm purchase in-app."
+    }
+  },
+  {
+    "id": "awkward_professional",
+    "title": "New employee trying to get a holiday gift for entire team",
+    "description": "Started a new job 3 months ago. Office does a holiday gift exchange but they barely know their assigned person. Has almost no info. Terrified of getting something weird or offensive.",
+    "turns": [
+      {
+        "message": "I got assigned someone for our office secret santa and I literally know nothing about them except their name is David and he works in accounting",
+        "intent": "Minimal info. Professional context. Fear of awkwardness. Secret Santa = typically $25-50.",
+        "expect_ai": "Should extract: name=David, relationship=coworker, occasion=secret santa/holiday. Should ask what they DO know or suggest safe directions."
+      },
+      {
+        "message": "I think he drinks coffee? I've seen him with a mug. He seems quiet, maybe early 30s. Our budget limit is $40. I just don't want to get something embarrassing",
+        "intent": "Very thin signals. Coffee is a guess. Budget is firm ($40 cap). Primary concern is not looking stupid.",
+        "expect_ai": "Should show safe, crowd-pleasing directions. Coffee is the strongest signal. Should NOT ask more questions \u2014 there's nothing more to learn."
+      },
+      {
+        "message": "yeah coffee is the safest bet, let's go with that",
+        "intent": "Confirms direction. Wants safety over delight.",
+        "expect_ai": "Should complete immediately. Coffee direction, $40 cap, professional/safe tone."
+      }
+    ],
+    "scoring": {
+      "context_should_have": {
+        "name": "David",
+        "relationship": "coworker",
+        "occasion": "secret santa",
+        "interests_any": [
+          "coffee"
+        ],
+        "budget_contains": "40"
+      },
+      "conversation_should": [
+        "Not push for more personal info (they don't have any)",
+        "Suggest safe, universally-liked directions",
+        "Respect the low-info constraint",
+        "Complete by turn 3"
+      ],
+      "recs_should": [
+        "All items under $40 STRICT",
+        "At least 1 coffee-related item",
+        "Nothing too personal or risky",
+        "Items that work for someone you barely know"
+      ]
+    },
+    "postRecs": {
+      "behavior": "quick_decider",
+      "reactions": {
+        "slot0": "relevant"
+      },
+      "decision": "Picks the first coffee-related item immediately. Doesn't read the other options in detail. Just wants this done.",
+      "cardEdit": "Skips the card entirely \u2014 it's a secret santa, no card needed.",
+      "wouldRefine": "Never. Picking the safest option fast is the priority.",
+      "buyBehavior": "Clicks buy, done. Doesn't use feedback link \u2014 it's a coworker."
+    }
+  },
+  {
+    "id": "conflicted_sibling",
+    "title": "Complicated relationship, wants to reconnect through a gift",
+    "description": "Hasn't talked to their sister in 8 months after a fight. Sister's birthday is coming up and they want to use the gift as an olive branch. Emotionally loaded. The gift IS the message.",
+    "turns": [
+      {
+        "message": "I need a birthday gift for my sister Priya. We haven't really been talking since last summer. I want to... I don't know, bridge the gap I guess",
+        "intent": "Emotional opener. The gift is about the relationship, not the object. Vulnerable.",
+        "expect_ai": "Should handle the emotional weight. Extract: name=Priya, relationship=sister, occasion=birthday, subtext=reconciliation. Should ask about shared memories or what she's into."
+      },
+      {
+        "message": "We used to be super close. She got me into hiking and we'd do these long trail walks and just talk. She also loves tea \u2014 she has this whole ritual with loose leaf and fancy cups. I think she started a garden this year but I only know from instagram",
+        "intent": "Rich context through nostalgia. Hiking = shared activity. Tea = her thing. Garden = new but they're not close enough to know details. Instagram stalking = they miss each other.",
+        "expect_ai": "Should show directions that reference the shared history. Hiking/tea are the strongest signals. Garden is too uncertain."
+      },
+      {
+        "message": "the hiking one hits different. like it's saying I remember what we had. budget maybe $75-125? I don't want it to seem like I'm trying too hard but also not nothing",
+        "intent": "Picks direction with emotional reasoning. Budget has emotional subtext \u2014 not too much (desperate), not too little (careless).",
+        "expect_ai": "Should complete. Capture the reconciliation expression. Budget $75-125."
+      }
+    ],
+    "scoring": {
+      "context_should_have": {
+        "name": "Priya",
+        "relationship": "sister",
+        "occasion": "birthday",
+        "interests_any": [
+          "hiking",
+          "tea",
+          "garden",
+          "outdoors"
+        ],
+        "budget_contains": "75"
+      },
+      "conversation_should": [
+        "Acknowledge the emotional complexity without being therapist-y",
+        "Not be too cheerful or surface-level",
+        "Reference shared history in directions",
+        "Complete by turn 3"
+      ],
+      "recs_should": [
+        "At least 1 hiking/outdoor item",
+        "Items that feel personal, not generic",
+        "Budget $75-125",
+        "Nothing that screams 'I googled gift for sister'"
+      ]
+    },
+    "postRecs": {
+      "behavior": "emotional",
+      "reactions": {
+        "slot0": "relevant",
+        "slot1": "relevant",
+        "slot2": "irrelevant"
+      },
+      "decision": "Reads 'what this gift says' for each option carefully. Picks the one whose message best captures 'I remember us'. The product itself matters less than what it communicates.",
+      "cardEdit": "Would heavily edit the card. Might write something like 'I miss our trail talks. Maybe we can do one again soon.' \u2014 deeply personal.",
+      "wouldRefine": "If none of the options feel like they reference shared hiking memories, would refine with 'I want something that reminds her of when we used to hike together'.",
+      "buyBehavior": "Buys carefully, wraps it herself. Sends feedback link with a nervous text message."
+    }
+  },
+  {
+    "id": "last_minute_chaos",
+    "title": "Everything is wrong and they need a gift in 2 hours",
+    "description": "Ordered something online, it didn't arrive, event is TODAY. Needs something they can buy instantly \u2014 digital gift, local pickup, or experience. Tests the system's ability to handle extreme urgency and pivot from physical to digital/experiential.",
+    "turns": [
+      {
+        "message": "ok so my friend Jake's birthday dinner is TONIGHT and the thing I ordered didn't come. I need something I can get like right now or send digitally",
+        "intent": "Extreme urgency. Physical product probably won't work. Needs digital/experiential/last-minute solutions.",
+        "expect_ai": "Should extract urgency. Should immediately orient toward digital gifts, experiences, or instant-delivery options."
+      },
+      {
+        "message": "he's a huge foodie, loves trying new restaurants. we're in montreal. he's turning 30. maybe $50-80?",
+        "intent": "Good info dump. Foodie + Montreal + 30th birthday. Budget clear.",
+        "expect_ai": "Should show food/restaurant experience directions. Should acknowledge the last-minute reality."
+      },
+      {
+        "message": "the restaurant experience one, for sure. something I can print or show him on my phone tonight",
+        "intent": "Needs something deliverable NOW. Digital or printable.",
+        "expect_ai": "Should complete with experiential/food direction, last-minute constraint emphasized."
+      }
+    ],
+    "scoring": {
+      "context_should_have": {
+        "name": "Jake",
+        "relationship": "friend",
+        "occasion": "birthday",
+        "interests_any": [
+          "food",
+          "restaurant",
+          "dining",
+          "foodie"
+        ],
+        "budget_contains": "50"
+      },
+      "conversation_should": [
+        "Acknowledge the urgency without judgment",
+        "Not suggest items that need shipping",
+        "Pivot to digital/experiential immediately",
+        "Complete by turn 3"
+      ],
+      "recs_should": [
+        "Prefer experiential or digital-delivery items",
+        "Food/restaurant related",
+        "Budget $50-80",
+        "Things that can be given same-day"
+      ]
+    },
+    "postRecs": {
+      "behavior": "urgent",
+      "reactions": {
+        "slot0": "relevant"
+      },
+      "decision": "Picks whatever is most clearly giftable tonight \u2014 needs to be digital, printable, or an experience voucher. Physical products are instant reject regardless of relevance.",
+      "cardEdit": "Skips card \u2014 will just say something in person at dinner.",
+      "wouldRefine": "If all 3 are physical products, would immediately refine with 'these all need shipping \u2014 I need something I can give TONIGHT'.",
+      "buyBehavior": "Buys instantly, screenshots the confirmation, shows it on phone at dinner."
+    }
+  },
+  {
+    "id": "grateful_daughter",
+    "title": "Daughter thanking mom for everything, Mother's Day",
+    "description": "Close relationship, knows her mom well. Wants something that says thank you for years of support. Budget conscious but willing to spend.",
+    "turns": [
+      {
+        "message": "Mother's Day is coming up and I want to get my mom C\u00e9cile something really nice. She does so much for our family.",
+        "intent": "Clear occasion, name, emotional context.",
+        "expect_ai": "Extract name, relationship, occasion. Ask about interests."
+      },
+      {
+        "message": "She's really into wellness \u2014 yoga, meditation, skincare. She also loves plants and her little balcony garden. She's 58 and honestly deserves to be spoiled",
+        "intent": "Rich interest data. Age context. Emotional weight.",
+        "expect_ai": "Show wellness/garden directions. Ask budget."
+      },
+      {
+        "message": "the wellness self-care one. maybe around 100-150? she never treats herself so I want to do it for her",
+        "intent": "Picks direction. Budget clear. Emotional reason.",
+        "expect_ai": "Complete with wellness, $100-150, self-care expression."
+      }
+    ],
+    "scoring": {
+      "context_should_have": {
+        "name": "C\u00e9cile",
+        "relationship": "mom",
+        "occasion": "Mother's Day",
+        "interests_any": [
+          "wellness",
+          "yoga",
+          "skincare",
+          "plants",
+          "garden"
+        ],
+        "budget_contains": "100"
+      },
+      "conversation_should": [
+        "Extract wellness + garden interests",
+        "Show directions by turn 2",
+        "Complete by turn 3"
+      ],
+      "recs_should": [
+        "At least 1 wellness/skincare item",
+        "Budget $100-150",
+        "Self-care oriented"
+      ]
+    },
+    "postRecs": {
+      "behavior": "thoughtful",
+      "reactions": {
+        "slot0": "relevant",
+        "slot1": "relevant",
+        "slot2": "relevant"
+      },
+      "decision": "Carefully considers all 3. Picks the one that feels most like pampering.",
+      "cardEdit": "Edits card to add personal touch about how much mom means.",
+      "wouldRefine": "Only if picks feel generic.",
+      "buyBehavior": "Buys and wraps beautifully."
+    }
+  },
+  {
+    "id": "clueless_boyfriend",
+    "title": "First Valentine's Day, terrified of getting it wrong",
+    "description": "6 months together, first Valentine's Day as a couple. Has no idea what the \"rules\" are. Overthinking everything.",
+    "turns": [
+      {
+        "message": "ok so valentine's is coming up and this is my first one with my girlfriend Emma. what do I even do?? is it too early for jewelry?",
+        "intent": "Anxious. Questions about social norms. Name given.",
+        "expect_ai": "Reassure. Extract relationship context. Ask about her."
+      },
+      {
+        "message": "she's a graphic designer, really creative. loves vintage stuff and thrift stores. she made me a playlist for my birthday which was really sweet. we're both 26",
+        "intent": "Creative person. Vintage aesthetic. She gives thoughtful gifts.",
+        "expect_ai": "Show directions. Creative/vintage/thoughtful angles."
+      },
+      {
+        "message": "something creative and personal, not cheesy. maybe 60-100? I want her to know I actually thought about it",
+        "intent": "Picks direction. Budget. Wants to match her thoughtfulness.",
+        "expect_ai": "Complete. Creative direction, $60-100."
+      }
+    ],
+    "scoring": {
+      "context_should_have": {
+        "name": "Emma",
+        "relationship": "girlfriend",
+        "occasion": "Valentine's Day",
+        "interests_any": [
+          "design",
+          "creative",
+          "vintage",
+          "art"
+        ],
+        "budget_contains": "60"
+      },
+      "conversation_should": [
+        "Reassure about first Valentine's",
+        "Not suggest jewelry (he asked if too early)",
+        "Show creative directions"
+      ],
+      "recs_should": [
+        "Creative/design items",
+        "Nothing too generic",
+        "Budget $60-100"
+      ]
+    },
+    "postRecs": {
+      "behavior": "anxious",
+      "reactions": {
+        "slot0": "relevant",
+        "slot1": "too_expensive",
+        "slot2": "relevant"
+      },
+      "decision": "Picks the one that feels most personal and least generic.",
+      "cardEdit": "Writes his own card \u2014 wants it to sound like him, not AI.",
+      "wouldRefine": "If all 3 feel generic/cheesy.",
+      "buyBehavior": "Buys immediately once decided."
+    }
+  },
+  {
+    "id": "group_gift_organizer",
+    "title": "Organizing a group gift for a retiring colleague",
+    "description": "Collecting money from 8 people for a group retirement gift. Needs something impressive but crowd-pleasing. Committee dynamics.",
+    "turns": [
+      {
+        "message": "We're doing a group gift for our colleague Tom who's retiring after 30 years. I'm organizing and we collected about 400 from 8 people",
+        "intent": "Group gift. Big budget. Professional context. 30-year milestone.",
+        "expect_ai": "Extract group context. Ask about Tom's interests."
+      },
+      {
+        "message": "He's a golfer, loves whiskey, and he and his wife are planning a trip to Portugal for retirement. He's pretty traditional, mid-60s",
+        "intent": "Clear interests. Traditional taste. Travel plans.",
+        "expect_ai": "Show directions. Golf/whiskey/travel angles."
+      },
+      {
+        "message": "the travel one is great because everyone knows about the Portugal trip. budget is firm at 400, it's what we collected",
+        "intent": "Picks direction with social reasoning. Firm budget.",
+        "expect_ai": "Complete with travel direction, $400 firm."
+      }
+    ],
+    "scoring": {
+      "context_should_have": {
+        "name": "Tom",
+        "relationship": "colleague",
+        "occasion": "retirement",
+        "interests_any": [
+          "golf",
+          "whiskey",
+          "travel"
+        ],
+        "budget_contains": "400"
+      },
+      "conversation_should": [
+        "Treat as group gift",
+        "Suggest impressive options",
+        "Complete by turn 3"
+      ],
+      "recs_should": [
+        "Travel or experience related",
+        "Feels impressive for group gift",
+        "Budget around $400"
+      ]
+    },
+    "postRecs": {
+      "behavior": "committee",
+      "reactions": {
+        "slot0": "relevant",
+        "slot1": "relevant",
+        "slot2": "irrelevant"
+      },
+      "decision": "Picks the one easiest to explain to 8 contributors.",
+      "cardEdit": "Card needs to work as from the whole team.",
+      "wouldRefine": "If nothing feels impressive enough for $400.",
+      "buyBehavior": "Buys and reports back to the group."
+    }
+  },
+  {
+    "id": "new_parent_exhausted",
+    "title": "Exhausted new dad getting something for wife's first birthday as a mom",
+    "description": "Baby is 4 months old. Both parents are sleep-deprived. He wants to make her feel seen and appreciated. Time and energy are extremely limited.",
+    "turns": [
+      {
+        "message": "My wife Nina's birthday is next week. She just became a mom 4 months ago and she's amazing but exhausted. I want her to feel appreciated, not just get another baby-related thing",
+        "intent": "Emotional context. Explicit constraint: NOT baby stuff. Wants to honor HER not just her role as mom.",
+        "expect_ai": "Extract context. Acknowledge the dynamic. Ask about her interests pre-baby."
+      },
+      {
+        "message": "Before the baby she was really into running and barre class, and she loves skincare \u2014 had a whole routine. She hasn't had time for any of it. She also misses reading, she used to read a book a week",
+        "intent": "Pre-baby identity she misses. Running, skincare, reading.",
+        "expect_ai": "Show directions that honor her identity beyond motherhood."
+      },
+      {
+        "message": "the self-care one. something that says you're still you, not just a mom. 100-200 range",
+        "intent": "Powerful expression. Budget clear.",
+        "expect_ai": "Complete with self-care direction, $100-200, identity-affirming expression."
+      }
+    ],
+    "scoring": {
+      "context_should_have": {
+        "name": "Nina",
+        "relationship": "wife",
+        "occasion": "birthday",
+        "interests_any": [
+          "skincare",
+          "running",
+          "reading",
+          "self-care"
+        ],
+        "budget_contains": "100"
+      },
+      "conversation_should": [
+        "Not suggest baby items",
+        "Honor her identity beyond motherhood",
+        "Complete by turn 3"
+      ],
+      "recs_should": [
+        "Self-care/skincare items",
+        "Nothing baby-related",
+        "Budget $100-200"
+      ]
+    },
+    "postRecs": {
+      "behavior": "emotional",
+      "reactions": {
+        "slot0": "relevant",
+        "slot1": "relevant",
+        "slot2": "irrelevant"
+      },
+      "decision": "Picks whatever most clearly says \"this is about YOU not the baby\".",
+      "cardEdit": "Writes deeply personal card about how proud he is of her.",
+      "wouldRefine": "If any pick is baby-related.",
+      "buyBehavior": "Buys immediately \u2014 no time to overthink."
+    }
+  },
+  {
+    "id": "long_distance_friend",
+    "title": "Sending a care package to a friend going through a tough time",
+    "description": "Best friend moved to Vancouver 2 years ago, just went through a breakup. Wants to send something that says \"I'm here even though I'm far\".",
+    "turns": [
+      {
+        "message": "My best friend Aisha just went through a really rough breakup. She's in Vancouver and I'm in Montreal so I can't be there in person. I want to send her something",
+        "intent": "Emotional support context. Long distance. No specific occasion.",
+        "expect_ai": "Extract context. Acknowledge emotional support intent. Ask about her."
+      },
+      {
+        "message": "She loves baking \u2014 it's her stress relief. She's also into true crime podcasts and cozy stuff. She's been spending a lot of weekends alone since the breakup",
+        "intent": "Comfort-oriented interests. Baking as therapy. Loneliness context.",
+        "expect_ai": "Show comfort/cozy/baking directions. Sensitive to the breakup context."
+      },
+      {
+        "message": "baking stuff or cozy comfort. maybe 50-80? I just want her to feel less alone",
+        "intent": "Picks direction. Budget. Powerful expression.",
+        "expect_ai": "Complete with comfort/baking direction, $50-80."
+      }
+    ],
+    "scoring": {
+      "context_should_have": {
+        "name": "Aisha",
+        "relationship": "best friend",
+        "occasion": "just because",
+        "interests_any": [
+          "baking",
+          "cozy",
+          "comfort",
+          "true crime"
+        ],
+        "budget_contains": "50"
+      },
+      "conversation_should": [
+        "Handle breakup context sensitively",
+        "Not suggest anything romantic",
+        "Focus on comfort and connection"
+      ],
+      "recs_should": [
+        "Comfort/baking items",
+        "Nothing romantic",
+        "Budget $50-80",
+        "Shippable to Vancouver"
+      ]
+    },
+    "postRecs": {
+      "behavior": "caring",
+      "reactions": {
+        "slot0": "relevant",
+        "slot1": "relevant",
+        "slot2": "relevant"
+      },
+      "decision": "Picks the most comforting, cozy option.",
+      "cardEdit": "Writes personal card about missing her and being proud of her.",
+      "wouldRefine": "If picks feel impersonal.",
+      "buyBehavior": "Ships directly to Aisha with a note."
+    }
+  }
+]

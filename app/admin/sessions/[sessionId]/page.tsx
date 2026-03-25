@@ -73,6 +73,7 @@ export default function SessionReplay({ params }: { params: { sessionId: string 
   const [recLog, setRecLog] = useState<RecLog | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [events, setEvents] = useState<{ event_type: string; event_data: string | null; created_at: string }[]>([]);
 
   useEffect(() => {
     fetch(`/api/admin/sessions/${params.sessionId}/messages`)
@@ -84,6 +85,7 @@ export default function SessionReplay({ params }: { params: { sessionId: string 
           setMessages(data.messages || []);
           setSession(data.session || null);
           setRecLog(data.recLog || null);
+          setEvents(data.events || []);
         }
         setLoading(false);
       })
@@ -434,6 +436,101 @@ export default function SessionReplay({ params }: { params: { sessionId: string 
               {presentationGuide.pairingIdea && (
                 <div><span className="text-xs text-gray-500">Pairing idea:</span> <span className="text-sm">{presentationGuide.pairingIdea}</span></div>
               )}
+            </div>
+          </div>
+        )}
+
+        {/* Decision Journey — full timeline of what happened */}
+        {events.length > 0 && (
+          <div className="px-4 pb-4">
+            <div className="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
+              <div className="bg-gray-900 text-white px-5 py-3">
+                <div className="text-[10px] uppercase tracking-wider font-medium">Decision Journey</div>
+                <p className="text-[11px] text-gray-400 mt-0.5">{events.length} actions tracked</p>
+              </div>
+              <div className="px-5 py-4">
+                {/* Visual timeline */}
+                <div className="space-y-0">
+                  {events.map((evt, i) => {
+                    const data = evt.event_data ? (() => { try { return JSON.parse(evt.event_data); } catch { return null; } })() : null;
+                    const time = new Date(evt.created_at).toLocaleTimeString("en-US", { hour12: false, hour: "2-digit", minute: "2-digit", second: "2-digit" });
+
+                    // Map event types to readable labels + icons
+                    const EVENT_DISPLAY: Record<string, { icon: string; label: string; color: string }> = {
+                      "session.started": { icon: "🟢", label: "Session started", color: "text-green-700" },
+                      "session.completed": { icon: "✅", label: "Profile complete — ready for recommendations", color: "text-green-700" },
+                      "chat.message_sent": { icon: "💬", label: `User sent message (${data?.inputLength || "?"} chars, turn ${(data?.turnCount || 0) + 1})`, color: "text-gray-700" },
+                      "chat.response_received": { icon: "🤖", label: `AI responded — phase: ${data?.phase || "?"}, readiness: ${data?.readiness ?? "?"}`, color: "text-gray-500" },
+                      "recs.requested": { icon: "🔍", label: `Recommendations requested${data?.recipientName ? ` for ${data.recipientName}` : ""}`, color: "text-blue-700" },
+                      "recs.displayed": { icon: "🎁", label: `3 products shown: ${(data?.productIds || []).length} options`, color: "text-blue-700" },
+                      "card.generated": { icon: "💌", label: `Card generated — ${data?.designTheme || "custom"} theme, ${data?.toneMatch || "?"} tone`, color: "text-violet-700" },
+                      "recs.card_reaction": { icon: data?.reaction === "relevant" ? "👍" : data?.reaction === "irrelevant" ? "👎" : "💰", label: `Reacted "${data?.reaction}" to product`, color: data?.reaction === "relevant" ? "text-green-700" : data?.reaction === "irrelevant" ? "text-red-600" : "text-amber-600" },
+                      "gift.marked_as_purchased": { icon: "🛒", label: "Marked as purchased", color: "text-green-700" },
+                      "delivery.feedback_link_created": { icon: "🔗", label: "Feedback link generated", color: "text-violet-700" },
+                      "delivery.marked_given": { icon: "🎉", label: "Gift marked as given", color: "text-emerald-700" },
+                      "delivery.feedback_received": { icon: "💝", label: "Recipient feedback received", color: "text-pink-700" },
+                    };
+
+                    const display = EVENT_DISPLAY[evt.event_type] || { icon: "•", label: evt.event_type, color: "text-gray-500" };
+                    const isLast = i === events.length - 1;
+
+                    return (
+                      <div key={i} className="flex gap-3">
+                        {/* Timeline line */}
+                        <div className="flex flex-col items-center">
+                          <span className="text-sm leading-none">{display.icon}</span>
+                          {!isLast && <div className="w-px flex-1 bg-gray-200 my-1" />}
+                        </div>
+                        {/* Event content */}
+                        <div className="pb-3 flex-1 min-w-0">
+                          <p className={`text-[13px] font-medium ${display.color}`}>{display.label}</p>
+                          <p className="text-[10px] text-gray-400">{time}</p>
+                          {/* Show product IDs for recs.displayed */}
+                          {evt.event_type === "recs.displayed" && data?.productIds && (
+                            <div className="mt-1 flex flex-wrap gap-1">
+                              {(data.productIds as string[]).map((pid: string, j: number) => (
+                                <span key={j} className="text-[9px] bg-gray-100 text-gray-500 px-1.5 py-0.5 rounded">
+                                  {["Top pick", "Great match", "Wild card"][j]}: {pid.split("-").slice(0, 3).join("-")}
+                                </span>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+
+                {/* Summary stats */}
+                <div className="mt-4 pt-4 border-t border-gray-100 grid grid-cols-3 gap-3 text-center">
+                  <div>
+                    <p className="text-lg font-bold">{events.filter(e => e.event_type === "chat.message_sent").length}</p>
+                    <p className="text-[10px] text-gray-400">Messages</p>
+                  </div>
+                  <div>
+                    <p className="text-lg font-bold">{events.filter(e => e.event_type === "recs.displayed").length > 0 ? "Yes" : "No"}</p>
+                    <p className="text-[10px] text-gray-400">Saw recs</p>
+                  </div>
+                  <div>
+                    <p className="text-lg font-bold">{selectedProduct ? "Yes" : "No"}</p>
+                    <p className="text-[10px] text-gray-400">Chose gift</p>
+                  </div>
+                </div>
+
+                {/* Final outcome */}
+                <div className={`mt-3 px-4 py-2.5 rounded-xl text-center text-sm font-medium ${
+                  selectedProduct ? "bg-green-50 text-green-700" :
+                  session?.status === "completed" ? "bg-blue-50 text-blue-700" :
+                  "bg-gray-50 text-gray-500"
+                }`}>
+                  {selectedProduct
+                    ? `Selected: ${(selectedProduct as Record<string, unknown>).name} ($${(selectedProduct as Record<string, unknown>).price})`
+                    : session?.status === "completed"
+                      ? "Conversation completed but no product selected"
+                      : "Session still active"
+                  }
+                </div>
+              </div>
             </div>
           </div>
         )}

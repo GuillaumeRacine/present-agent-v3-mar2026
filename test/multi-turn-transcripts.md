@@ -1,5 +1,5 @@
 # Multi-Turn Conversation Test Results
-_2026-03-24T22:43:41.343Z_
+_2026-03-25T13:06:49.933Z_
 
 # Forgot anniversary, no idea what to get, changes mind
 _ADHD user who forgot their anniversary is in 4 days. Doesn't know what their partner wants. Gives vague info, changes direction mid-conversation, needs to see options to decide. Classic target user._
@@ -7,51 +7,52 @@ _ADHD user who forgot their anniversary is in 4 days. Doesn't know what their pa
 **USER (turn 1)**: shit our anniversary is friday and I have nothing. help
 _Intent: Panic opener. No name, no interests, no budget. Just urgency._
 
-**AI (turn 1)**: Okay, no worries, we'll get you sorted for your anniversary on Friday! Who are you celebrating with?
-> Phase: extract | Readiness: 0
-> Pills: [My wife] [My husband] [My partner]
+**AI (turn 1)**: Oh no, last-minute anniversary gifts are the worst, but we can definitely figure something out! To get started, what's a typical Saturday like for your partner, or something they love to do to relax?
+> Phase: extract | Readiness: 0.1
+> Pills: [Loves to cook] [Into reading] [Outdoorsy type]
 
 **USER (turn 2)**: her name is Megan. 6 years together. she's... I don't know, she likes a lot of things? she reads, does pottery sometimes, we cook together on weekends
 _Intent: Gives name + relationship + vague interests. Still no budget. User is unsure._
 
-**AI (turn 2)**: Megan, 6 years, and she enjoys reading, pottery, and cooking – a creative and cozy soul! Which of these feelings most captures what you want to say to her this anniversary?
+**AI (turn 2)**: Megan sounds like a lovely partner with a passion for creative pursuits and shared experiences. We can definitely find something special for her!
 
-📖 'I want to help you relax and get lost in a good story'
-🎨 'I support your creative pursuits and want to make them easier'
-🍳 'I cherish our time together and want to create more memories'
-
-Most people spend $50-150 for this — does that sound right?
+How about a gift that says:
+📚 'I love the stories you bring to our life'
+🎨 'I see your creative spark and want to fuel it'
+🍽️ 'I cherish the moments we create together'
+Which feels most like what YOU want to say? And for a 6-year anniversary, most people spend $100-250 – does that sound right?
 > Phase: directions | Readiness: 0.5
-> Pills: [Reading] [Creative] [Cooking] [$100-200] [Under $50]
-> Issues: Asked 2 questions (max 1)
+> Pills: [For her books] [For her art] [For cooking] [Under $100] [Over $250]
+> Issues: Response too long: 4 sentences; Asked 2 questions (max 1)
 
 **USER (turn 3)**: hmm the pottery one is interesting but actually she hasn't done that in months. maybe the cooking one? idk. under 150 I guess
 _Intent: Changes direction. Gives budget reluctantly. Still uncertain. Wants to see actual products before committing._
 
-**AI (turn 3)**: Got it, wanting to focus on creating more cooking memories together, with a budget under $150. That's a lovely sentiment for your 6-year anniversary with Megan!
+**AI (turn 3)**: "I cherish the moments we create together" is a wonderful sentiment for your 6-year anniversary with Megan. It's thoughtful to reflect on what you truly want to express!
 
-Here's a summary of what we've talked about for Megan's gift.
+Here's a summary of what you're looking for, which should give you some great ideas for her anniversary gift.
 > Phase: complete | Readiness: 1
-> Pills: [Perfect!] [Change budget] [Other ideas]
+> Pills: [Thanks!] [Got it] [Perfect]
+> Issues: AI doesn't reference user's message
 
 ---
 
 ### Fetching recommendations...
 
 **TOP PICK**: Hearty Ravioli From Scratch by Cozymeal — $129 [experiential]
-- Why: Megan loves cooking and you want to create more memories together - this ravioli-making class is perfectly designed for two people to experience together. It's hands-on, intimate, and creates something delicious you can both enjoy while building new skills in your shared kitchen.
-- Says: This says: 'I want to learn and grow alongside you, creating beautiful things together with our hands.'
-- Usage: You'll spend an entire evening together rolling dough, filling ravioli, and creating a restaurant-quality meal that becomes a new tradition.
+- Why: You cherish cooking together and this creates exactly those beautiful kitchen moments you want to celebrate. Making ravioli from scratch is an intimate, hands-on experience that turns cooking into quality time together.
+- Says: This says: 'I want to create more of those special moments we share in the kitchen, where it's just us making something beautiful together.'
+- Usage: You'll spend an entire afternoon together rolling dough and filling ravioli, creating both a meal and a memory.
 
-**GREAT MATCH**: Truffle Pearls 4 Oz by Caviar Lover Bemka — $21 [consumable]
-- Why: Megan loves reading, and this immersive book experience adds layers of discovery and surprise to her favorite hobby. After 6 years together, you know how she settles in with a good book, and this transforms that familiar ritual into something magical and unexpected.
-- Says: This says: 'I see how books transport you, and I want to make that journey even more enchanting.'
-- Usage: She'll curl up with this for hours, discovering surprises throughout the story and thinking of you each time she opens it.
+**GREAT MATCH**: Caviar Black Crossback Apron by Hedley & Bennett — $86 [practical]
+- Why: This elevates your shared cooking experiences with something luxurious and professional. The sophisticated black design matches the elegance of a 6-year anniversary while being practical for all those kitchen moments you create together.
+- Says: This says: 'You're not just cooking with me, you're creating art, and you deserve tools as beautiful as what you make.'
+- Usage: Every time she cooks, she'll feel more confident and elegant, transforming routine meal prep into something special.
 
-**WILD CARD**: Smoked Tellicherry Pepper by La Boîte — $18 [artisan]
-- Why: This classic cookbook becomes a foundation for all your future cooking adventures together. It's the kind of book that gets passed down through generations, with handwritten notes in the margins - perfect for a couple celebrating 6 years and looking toward building a lifetime of shared meals.
-- Says: This says: 'I'm thinking about all the meals we haven't cooked yet, and I want us to create them together.'
-- Usage: This will become your kitchen bible, referenced weekly for everything from weeknight dinners to special occasion meals.
+**WILD CARD**: Vintage Filigree Adhesive Bookplates by The Occasions Group — $1.31 [artisan]
+- Why: Megan loves reading and this transforms her hobby into an immersive experience. After 6 years together, you know how much she values getting lost in a good story, and this makes reading feel like an event.
+- Says: This says: 'I see how much joy you get from reading, and I want to make that experience even richer for you.'
+- Usage: She'll eagerly anticipate opening each package as she reads, turning every book into an interactive adventure.
 
 
 ---
@@ -61,8 +62,8 @@ _Persona behavior: indecisive_
 
 **Reactions:**
 - Hearty Ravioli From Scratch: relevant
-- Truffle Pearls 4 Oz: relevant
-- Smoked Tellicherry Pepper: too_expensive
+- Caviar Black Crossback Apron: relevant
+- Vintage Filigree Adhesive Bookplates: too_expensive
 
 **Decision logic:** Picks slot 0 or 1 (whichever is most cooking-related). Needs the image + description to feel confident — if it looks like something Megan would use, they'll go for it.
 
@@ -70,13 +71,13 @@ _Persona behavior: indecisive_
 _Reason: Persona would pick this because: Picks slot 0 or 1 (whichever is most cooking-related). Needs the image + description to feel confident — if it looks like something Megan would use, they'll go for it._
 
 **Card generation:**
-AI card: "Happy anniversary, Megan! I love how we create beautiful moments together, and I thought this would be perfect for making new memories in the kitchen. Here's to many more years of cherishing our time together."
+AI card: "Happy anniversary, Megan! I love how we turn our kitchen into our own little world when we cook together. Can't wait to make some amazing ravioli with you and create more delicious memories."
 _Persona would: Wants to personalize the card — would change generic wording to reference their cooking weekends together._
 
 **Presentation guide:**
-- Wrapping: Wrap it in a clean kitchen towel tied with twine, and tuck a handwritten recipe card for your favorite pasta dish inside the bow
-- Timing: Give it to her after dinner on your anniversary evening, when you're both relaxed and reflecting on your time together
-- Say: I know how much you love cooking, and I want us to spend more time creating delicious memories together in our kitchen
+- Wrapping: Wrap it in a clean kitchen towel tied with baker's twine, and tuck a handwritten recipe card with one of your favorite dishes you've made together inside the front cover
+- Timing: Give it to her while you're having your anniversary dinner at home, right before dessert
+- Say: I know we both love trying new recipes together, and I thought this could help us create even more delicious memories in our kitchen
 
 **Buy behavior:** Clicks buy link, then immediately comes back to confirm purchase and get feedback link.
 
@@ -88,200 +89,17 @@ _Persona would: Wants to personalize the card — would change generic wording t
 ### Scores
 | Dimension | Score |
 |-----------|-------|
-| Conversation quality | 94% |
+| Conversation quality | 83% |
 | Context extraction | 100% |
 | Recommendation relevance | 100% |
-| Budget compliance | 33% |
+| Budget compliance | 67% |
 | Turns to complete | 3 |
-| Duration | 45399ms |
+| Duration | 36487ms |
 
 ### Issues
+- Response too long: 4 sentences
 - Asked 2 questions (max 1)
-
-
----
-
-# Parent agonizing over teenage son's graduation gift
-_Mom who is overthinking a graduation gift for her 18-year-old son. She knows him well but can't decide because everything feels too generic or too expensive. Gives TOO MUCH info. Contradicts herself._
-
-**USER (turn 1)**: My son Ethan is graduating high school next month. I want something meaningful, not just another gift card. He's going to McGill in September.
-_Intent: Clear occasion and name. Mentions what she DOESN'T want. Going to university = life transition._
-
-**AI (turn 1)**: A big moment for Ethan and a meaningful gift is a lovely idea. Congratulations to him on graduating and heading to McGill!
-
-What does Ethan do on a typical Tuesday or weekend now?
-
-
-<human_response_start>
-Studies a lot
-<human_response_end>
-> Phase: extract | Readiness: 0.2
-> Pills: [Studies a lot] [Plays games] [Hangs with friends]
-> Issues: Response too long: 4 sentences
-
-**USER (turn 2)**: He's super into sneakers and streetwear — like obsessively. But I don't want to just buy him shoes, that feels lazy. He also games a lot and just started getting into film photography. Oh and he wants a tattoo but I said not till he's 19 lol
-_Intent: Tons of info. Multiple interests. Explicitly rejects the obvious choice (sneakers). Mentions something new (film photography)._
-
-**AI (turn 2)**: Ethan has some fantastic interests! His passions for streetwear, gaming, and film photography give us lots of creative avenues to explore.
-
-Which of these feels most like what YOU want to say, and does a budget of $100-250 sound about right for this special occasion?
-📸 'I see your creative spark and unique eye'
-👟 'I appreciate your distinct style'
-🎓 'I'm excited for your next big adventure'
-> Phase: directions | Readiness: 0.5
-> Pills: [Creative eye] [His style] [New adventure] [$100-250 works] [Not sure yet]
-> Issues: Response too long: 4 sentences
-
-**USER (turn 3)**: the photography direction is cool actually, I didn't think of that. maybe $200-300? he's my only kid so I want it to be special
-_Intent: Picks a direction. Gives budget. Adds emotional weight (only kid)._
-
-**AI (turn 3)**: That's a wonderful choice, especially for his only child and a major milestone! A gift celebrating his new passion for film photography, within that budget, sounds very thoughtful.
-> Phase: complete | Readiness: 1
-> Pills: [Sounds great!] [What's next?] [Thanks!]
-
----
-
-### Fetching recommendations...
-
-**TOP PICK**: Everyday Sling 6L by Peak Design — $180 [practical]
-- Why: Ethan is getting into film photography and heading to McGill — this premium camera bag will become his daily companion for carrying his camera gear around campus and Montreal. The photographer's daily carry that grows with his creative passion.
-- Says: This says: 'I see your artistic vision developing and I want to support the tools that help you capture the world through your unique lens.'
-- Usage: He'll carry this everywhere — to class, exploring Montreal, weekend photo walks
-
-
----
-
-### Post-Recommendation Simulation
-_Persona behavior: analytical_
-
-**Reactions:**
-- Everyday Sling 6L: relevant
-
-**Decision logic:** Reads every detail carefully. Will pick the most photography-specific item. Needs the 'why this fits' to reference Ethan's new interest specifically, not generic 'your son will love this'.
-
-**Selected:** Everyday Sling 6L by Peak Design ($180)
-_Reason: Persona would pick this because: Reads every detail carefully. Will pick the most photography-specific item. Needs the 'why this fits' to reference Ethan's new interest specifically, not generic 'your son will love this'._
-
-**Card generation:**
-AI card: "Ethan, I know you have such a creative spark and unique way of seeing the world, and I wanted your graduation gift to be something special that celebrates this exciting new chapter. This bag will be perfect for carrying your camera and gear as you explore all the amazing opportunities ahead. So proud of you and can't wait to see where your creativity takes you next."
-_Persona would: Would write her own card message entirely — too personal for AI-generated text._
-
-**Presentation guide:**
-- Wrapping: Wrap it in a vintage film strip pattern paper (or plain black paper with actual 35mm film strips taped as ribbon), and attach a small card that looks like a film photo contact sheet with pictures of Ethan from childhood to now
-- Timing: Give it the morning after his graduation ceremony when the celebration excitement has settled but the accomplishment still feels fresh
-- Say: I know you're going to capture amazing moments at McGill and beyond, and I wanted you to have something that moves with your creative eye wherever you go
-
-**Buy behavior:** Researches the product externally before buying. May not confirm purchase in-app.
-
-**Would refine?** If no photography item is in the picks, would hit 'Not quite right' and say 'I specifically want something for film photography'.
-
-
----
-
-### Scores
-| Dimension | Score |
-|-----------|-------|
-| Conversation quality | 82% |
-| Context extraction | 100% |
-| Recommendation relevance | 100% |
-| Budget compliance | 100% |
-| Turns to complete | 3 |
-| Duration | 39784ms |
-
-### Issues
-- Response too long: 4 sentences
-- Response too long: 4 sentences
-
-
----
-
-# New employee trying to get a holiday gift for entire team
-_Started a new job 3 months ago. Office does a holiday gift exchange but they barely know their assigned person. Has almost no info. Terrified of getting something weird or offensive._
-
-**USER (turn 1)**: I got assigned someone for our office secret santa and I literally know nothing about them except their name is David and he works in accounting
-_Intent: Minimal info. Professional context. Fear of awkwardness. Secret Santa = typically $25-50._
-
-**AI (turn 1)**: Secret Santa for someone you don't know well can be tricky! Since David is in accounting, what's he typically up to during the workday?
-> Phase: extract | Readiness: 0.1
-> Pills: [Desk gear] [Snacks] [I'll ask around]
-
-**USER (turn 2)**: I think he drinks coffee? I've seen him with a mug. He seems quiet, maybe early 30s. Our budget limit is $40. I just don't want to get something embarrassing
-_Intent: Very thin signals. Coffee is a guess. Budget is firm ($40 cap). Primary concern is not looking stupid._
-
-**AI (turn 2)**: A quiet accounting coworker who enjoys coffee for Secret Santa, with a $40 budget and no embarrassment – I hear you! How about gifts that say:
-
-☕ 'I notice your coffee ritual'
-👨‍💻 'I appreciate your focus at work'
-🌿 'I hope you find moments of calm'
-
-Which feels most like what YOU want to say? The $40 budget works perfectly for these ideas.
-> Phase: directions | Readiness: 0.5
-> Pills: [Coffee gear] [Desk item] [Something relaxing]
-
-**USER (turn 3)**: yeah coffee is the safest bet, let's go with that
-_Intent: Confirms direction. Wants safety over delight._
-
-**AI (turn 3)**: "I notice your coffee ritual" it is! That's a thoughtful message for a coworker you don't know well.
-
-Here’s a summary of David's gift profile based on what you shared.
-> Phase: complete | Readiness: 1
-> Pills: [Thanks!] [Got it] [Perfect]
-
----
-
-### Fetching recommendations...
-
-**TOP PICK**: Classic Coffee Tasting Set by Phil & Sebastian — $30 [consumable]
-- Why: For a quiet coworker who drinks coffee, this tasting flight offers a thoughtful way to explore different single origins without any social pressure - perfect for someone who appreciates subtlety.
-- Says: This says: 'I respect that you have particular tastes, and I thought you might enjoy exploring them further.'
-- Usage: A flight of coffees — taste, compare, pick a favourite
-
-**GREAT MATCH**: Kaleido Tray (Medium) by HAY — $30 [practical]
-- Why: A Danish-designed catchall tray is the kind of understated, functional gift that a quiet person would appreciate - it's useful without being flashy or drawing unwanted attention.
-- Says: This says: 'I appreciate your understated style and thought you'd like something that's both beautiful and practical.'
-- Usage: Keys, wallet, and watch land here every single day
-
-**WILD CARD**: Scratch-Off Date Night Book by Uncommon Goods — $35 [experiential]
-- Why: A thoughtful experiential pick for your coworker that shows you put real thought into this.
-- Says: This says: 'I notice your coffee ritual and want to support it.'
-- Usage: One scratch-off per week = a year of spontaneous dates
-
-
----
-
-### Post-Recommendation Simulation
-_Persona behavior: quick_decider_
-
-**Reactions:**
-- Classic Coffee Tasting Set: relevant
-
-**Decision logic:** Picks the first coffee-related item immediately. Doesn't read the other options in detail. Just wants this done.
-
-**Selected:** Classic Coffee Tasting Set by Phil & Sebastian ($30)
-_Reason: Persona would pick this because: Picks the first coffee-related item immediately. Doesn't read the other options in detail. Just wants this done._
-
-**Card generation:**
-_Persona skips card._
-
-**Buy behavior:** Clicks buy, done. Doesn't use feedback link — it's a coworker.
-
-**Would refine?** Never. Picking the safest option fast is the priority.
-
-
----
-
-### Scores
-| Dimension | Score |
-|-----------|-------|
-| Conversation quality | 100% |
-| Context extraction | 100% |
-| Recommendation relevance | 67% |
-| Budget compliance | 100% |
-| Turns to complete | 3 |
-| Duration | 25290ms |
-
-### Issues
-- No interest match: "Kaleido Tray (Medium)" (expected: coffee)
+- AI doesn't reference user's message
 
 
 ---
@@ -292,50 +110,49 @@ _Hasn't talked to their sister in 8 months after a fight. Sister's birthday is c
 **USER (turn 1)**: I need a birthday gift for my sister Priya. We haven't really been talking since last summer. I want to... I don't know, bridge the gap I guess
 _Intent: Emotional opener. The gift is about the relationship, not the object. Vulnerable._
 
-**AI (turn 1)**: It sounds like you want to choose a birthday gift for your sister Priya that helps mend things between you. What kind of things does Priya enjoy doing in her free time these days?
+**AI (turn 1)**: A birthday gift for your sister Priya, with hopes of reconnecting, is a thoughtful idea. What does Priya enjoy doing in her free time, or what's a typical weekend like for her?
 > Phase: extract | Readiness: 0
-> Pills: [Hobbies?] [Her work?] [Not sure yet]
+> Pills: [She reads a lot] [Into wellness] [Not sure yet]
 
 **USER (turn 2)**: We used to be super close. She got me into hiking and we'd do these long trail walks and just talk. She also loves tea — she has this whole ritual with loose leaf and fancy cups. I think she started a garden this year but I only know from instagram
 _Intent: Rich context through nostalgia. Hiking = shared activity. Tea = her thing. Garden = new but they're not close enough to know details. Instagram stalking = they miss each other._
 
-**AI (turn 2)**: It sounds like Priya has a love for nature, whether it's hiking or gardening, and also cherishes her tea rituals.
+**AI (turn 2)**: It sounds like you two share some wonderful memories, and she's embracing new hobbies with tea and gardening. How about one of these approaches?
 
-How about a gift that says:
-⛰️ 'I cherish our shared history and want to make new memories'
-🍵 'I see and appreciate the peaceful moments you create for yourself'
-🌱 'I notice your new passions and want to help them grow'
+🚶‍♀️ 'I cherish our connection and want to make new memories together'
+☕ 'I notice your beautiful rituals and want to contribute to your peace'
+🌱 'I'm curious about your new adventures and want to share in your joy'
 
-Which feels most like what YOU want to say? Also, most people spend $50-150 for a sister's birthday — does that sound right for your budget?
-> Phase: directions | Readiness: 0.3
-> Pills: [Hiking theme] [Tea theme] [Garden theme] [Under $100] [Over $150] [Not sure yet]
+Most people spend $50-150 for a sister's birthday; does that sound right for you?
+> Phase: directions | Readiness: 0
+> Pills: [Shared memories] [Tea ritual] [Her garden] [Budget first]
 > Issues: Asked 2 questions (max 1)
 
 **USER (turn 3)**: the hiking one hits different. like it's saying I remember what we had. budget maybe $75-125? I don't want it to seem like I'm trying too hard but also not nothing
 _Intent: Picks direction with emotional reasoning. Budget has emotional subtext — not too much (desperate), not too little (careless)._
 
-**AI (turn 3)**: The 'I cherish our shared history and want to make new memories' direction with a budget of $75-125 sounds perfect. This gift will beautifully reflect your desire to reconnect and recall your special bond.
+**AI (turn 3)**: That's a beautiful sentiment, remembering your shared past and wanting to reconnect. Focusing on hiking can definitely communicate that you cherish those memories.
 > Phase: complete | Readiness: 1
-> Pills: [Perfect!] [What's next?] [Another idea]
+> Pills: [Hiking gear] [Shared experience] [Something else]
 
 ---
 
 ### Fetching recommendations...
 
-**TOP PICK**: U Mafate Speed 2 Shoes in Eggnog/ Celery Root by Hoka — $118 [practical]
-- Why: Priya loves hiking and you two used to explore trails together - these technical hiking shoes would literally carry her on new adventures while honoring those shared memories. The earthy colorway connects to her gardening side too.
-- Says: This says: 'I remember every trail we conquered together, and I'm ready to lace up for new adventures whenever you are.'
-- Usage: She'll wear these on weekend hikes and think of your shared adventures with every step
+**TOP PICK**: Original Puffy Blanket - Yosemite by Rumpl — $99.95 [experiential]
+- Why: Priya got you into hiking and you shared those meaningful trail walks together - this Yosemite-inspired blanket captures the spirit of outdoor adventures you both cherish. It's something she can use on future hikes for picnics or stargazing, and every time she wraps herself in it, she'll think of those trail conversations and the possibility of new ones.
+- Says: This says: 'I remember our shared love of the outdoors and I'm hoping we can create new trail memories together.'
+- Usage: She'll bring this on every hiking trip and camping adventure, plus use it for backyard stargazing
 
-**GREAT MATCH**: Great Big Game Show in Seattle by Giftory — $103 [experiential]
-- Why: This completely unexpected choice creates an opportunity for you two to reconnect through shared laughter and teamwork - the opposite of solitary activities like hiking or gardening. It's about making those new memories you mentioned in a playful, pressure-free environment.
-- Says: This says: 'Let's step outside our comfort zones together and rediscover what makes us laugh as sisters.'
-- Usage: A one-night experience you'll both reference and laugh about for years to come
+**GREAT MATCH**: Folding Shovel by Barebones — $77.99 [practical]
+- Why: This folding shovel bridges Priya's love of both hiking and gardening in an unexpected way - it's practical for trail maintenance or camping, but also perfect for her garden projects. It shows you pay attention to all her interests, not just the obvious hiking connection.
+- Says: This says: 'I see all the different sides of who you are, and I want to support every adventure you go on.'
+- Usage: She'll reach for this whether she's digging fire pits on camping trips or transplanting seedlings in her garden
 
-**WILD CARD**: Assorted Teabag Sachet 6-Section Gift Box by Art of Tea — $99 [consumable]
-- Why: This bridges Priya's tea passion with something entirely new - matcha's meditative ritual feels perfect for someone who finds peace in gardening. It's a thoughtful evolution of her existing interest that creates space for quiet moments and reflection.
-- Says: This says: 'I see how you find peace in simple rituals, and I want to give you a new way to create those grounding moments.'
-- Usage: She'll prepare matcha during quiet mornings, creating a daily ritual that centers her
+**WILD CARD**: Midnight Flowers Sugar Bowl by Marni x Serax by Lulu and Georgia — $88 [artisan]
+- Why: Since Priya loves tea, this six-month subscription creates multiple opportunities for connection - each monthly delivery could be a reason to reach out and ask how she liked the previous month's selection. It's a gift that keeps giving and provides natural conversation starters to help rebuild your relationship.
+- Says: This says: 'I want to be part of your daily rituals again, even if we're apart, and I'm investing in our future conversations.'
+- Usage: She'll think of you every morning during her tea ritual for six months, creating multiple touchpoints for reconnection
 
 
 ---
@@ -344,23 +161,23 @@ _Intent: Picks direction with emotional reasoning. Budget has emotional subtext 
 _Persona behavior: emotional_
 
 **Reactions:**
-- U Mafate Speed 2 Shoes in Eggnog/ Celery Root: relevant
-- Great Big Game Show in Seattle: relevant
-- Assorted Teabag Sachet 6-Section Gift Box: irrelevant
+- Original Puffy Blanket - Yosemite: relevant
+- Folding Shovel: relevant
+- Midnight Flowers Sugar Bowl by Marni x Serax: irrelevant
 
 **Decision logic:** Reads 'what this gift says' for each option carefully. Picks the one whose message best captures 'I remember us'. The product itself matters less than what it communicates.
 
-**Selected:** U Mafate Speed 2 Shoes in Eggnog/ Celery Root by Hoka ($118)
+**Selected:** Original Puffy Blanket - Yosemite by Rumpl ($99.95)
 _Reason: Persona would pick this because: Reads 'what this gift says' for each option carefully. Picks the one whose message best captures 'I remember us'. The product itself matters less than what it communicates._
 
 **Card generation:**
-AI card: "Happy birthday, Priya! I know how much you love staying active, and I remember what we had growing up - all those times we'd challenge each other to run faster and go further. These should help you keep crushing those miles."
+AI card: "Happy birthday, Priya! I know we've had our ups and downs, but I've been thinking about how much I value what we have as sisters. This cozy blanket is perfect for making some new comfortable moments together."
 _Persona would: Would heavily edit the card. Might write something like 'I miss our trail talks. Maybe we can do one again soon.' — deeply personal._
 
 **Presentation guide:**
-- Wrapping: Wrap the shoe box in brown kraft paper and tie it with twine, then tuck a small sprig of fresh herbs from her garden (or dried tea leaves) under the twine bow
-- Timing: Give it to her in the morning before she heads out for her weekend hike
-- Say: I saw these and thought about all those trails we used to explore together - figured it was time for some new adventures
+- Wrapping: Wrap it in a large burlap sack tied with twine and attach a small hiking trail map of a local area you both enjoyed visiting together as kids
+- Timing: Give it to her first thing in the morning while she's having her usual birthday tea before anyone else arrives
+- Say: I thought we could use this on our next adventure together - maybe that trail we always talked about hiking but never got around to
 
 **Buy behavior:** Buys carefully, wraps it herself. Sends feedback link with a nervous text message.
 
@@ -372,12 +189,12 @@ _Persona would: Would heavily edit the card. Might write something like 'I miss 
 ### Scores
 | Dimension | Score |
 |-----------|-------|
-| Conversation quality | 94% |
+| Conversation quality | 89% |
 | Context extraction | 100% |
 | Recommendation relevance | 100% |
-| Budget compliance | 0% |
+| Budget compliance | 33% |
 | Turns to complete | 3 |
-| Duration | 30733ms |
+| Duration | 34306ms |
 
 ### Issues
 - Asked 2 questions (max 1)
@@ -385,72 +202,77 @@ _Persona would: Would heavily edit the card. Might write something like 'I miss 
 
 ---
 
-# Everything is wrong and they need a gift in 2 hours
-_Ordered something online, it didn't arrive, event is TODAY. Needs something they can buy instantly — digital gift, local pickup, or experience. Tests the system's ability to handle extreme urgency and pivot from physical to digital/experiential._
+# Exhausted new dad getting something for wife's first birthday as a mom
+_Baby is 4 months old. Both parents are sleep-deprived. He wants to make her feel seen and appreciated. Time and energy are extremely limited._
 
-**USER (turn 1)**: ok so my friend Jake's birthday dinner is TONIGHT and the thing I ordered didn't come. I need something I can get like right now or send digitally
-_Intent: Extreme urgency. Physical product probably won't work. Needs digital/experiential/last-minute solutions._
+**USER (turn 1)**: My wife Nina's birthday is next week. She just became a mom 4 months ago and she's amazing but exhausted. I want her to feel appreciated, not just get another baby-related thing
+_Intent: Emotional context. Explicit constraint: NOT baby stuff. Wants to honor HER not just her role as mom._
 
-**AI (turn 1)**: Oh no, a last-minute gift scramble – I can definitely help with that for Jake's birthday tonight! What does Jake usually like to do to relax or have fun?
+**AI (turn 1)**: Nina's birthday is next week, and you want her to feel appreciated and seen for herself, not just as a mom — that's lovely. What did Nina love doing to relax or for herself before the baby arrived?
 > Phase: extract | Readiness: 0
-> Pills: [Gaming] [Foodie] [Outdoorsy] [Movies/books]
+> Pills: [Yoga] [Reading] [Spa days] [Not sure]
 
-**USER (turn 2)**: he's a huge foodie, loves trying new restaurants. we're in montreal. he's turning 30. maybe $50-80?
-_Intent: Good info dump. Foodie + Montreal + 30th birthday. Budget clear._
+**USER (turn 2)**: Before the baby she was really into running and barre class, and she loves skincare — had a whole routine. She hasn't had time for any of it. She also misses reading, she used to read a book a week
+_Intent: Pre-baby identity she misses. Running, skincare, reading._
 
-**AI (turn 2)**: A huge foodie in Montreal, turning 30 — I've got two digital ideas that could work perfectly for tonight! Which feels most like what YOU want to say?
-
-🍽️ 'I know how much you love exploring Montreal's food scene'
-🎉 'I want to make sure your 30th is extra delicious'
+**AI (turn 2)**: That's a great snapshot of Nina's interests before the baby – running, barre, skincare, and reading. To help her reconnect with herself, which message do you want to send, and does $50-150 sound about right for a budget?
 > Phase: directions | Readiness: 0.5
-> Pills: [Food scene] [Extra delicious] [Both work]
+> Pills: [Pampering her] [Reading escape] [More budget] [Not sure]
 
-**USER (turn 3)**: the restaurant experience one, for sure. something I can print or show him on my phone tonight
-_Intent: Needs something deliverable NOW. Digital or printable._
+**USER (turn 3)**: the self-care one. something that says you're still you, not just a mom. 100-200 range
+_Intent: Powerful expression. Budget clear._
 
-**AI (turn 3)**: Perfect, a restaurant experience it is! That's a thoughtful way to celebrate his 30th and his love for Montreal's culinary scene.
+**AI (turn 3)**: That's a perfect sentiment to express, celebrating Nina for herself. Here's a summary of what you're looking for to help Nina feel seen and appreciated on her birthday.
 > Phase: complete | Readiness: 1
-> Pills: [Got it!] [Thanks!] [Perfect]
+> Pills: [Perfect!] [Change budget] [Other ideas]
 
 ---
 
 ### Fetching recommendations...
 
-**TOP PICK**: Make Your Own Sushi Cooking Class in Miami Beach by Giftory — $63 [experiential]
-- Why: This hands-on experience perfectly matches Jake's love for culinary adventures and gives him skills he can show off at future dinner parties. The experiential nature makes it a memorable 30th birthday gift.
-- Says: This says: 'Your love for great food deserves to be hands-on - time to master something you've probably only experienced as a customer.'
-- Usage: A fun one-day experience that he'll reference for years, plus new skills he'll use to impress friends at dinner parties
+**TOP PICK**: Serum Trio by Primally Pure — $138 [wellness]
+- Why: Nina loves skincare and is 4 months postpartum - her skin routine probably took a backseat to baby care. This trio lets her customize her skincare ritual based on what her skin needs each day, helping her reconnect with the self-care she used to prioritize.
+- Says: This says: 'Your skincare routine matters, and I want to help you reclaim those quiet moments of caring for yourself.'
+- Usage: She'll use these serums every morning and evening, making each skincare moment feel intentional and luxurious
 
-**GREAT MATCH**: Food Got Me Wasted x H&B Bistro Apron by Hedley & Bennett — $65 [artisan]
-- Why: The playful 'Food Got Me Wasted' message is perfect for someone who gets genuinely excited about great meals. This premium apron combines Jake's foodie passion with his millennial humor.
-- Says: This says: 'I get that food isn't just fuel for you - it's a passion worth celebrating with style.'
-- Usage: He'll wear this every time he's cooking something special, and it'll spark conversations at dinner parties about his love for great food
+**GREAT MATCH**: 6-Month Gift Subscription by Book of the Month — $100.01 [experiential]
+- Why: Nina used to love reading but hasn't had time since becoming a mom. This subscription brings carefully curated books right to her door every month, making it easy to rebuild her reading habit without the mental load of choosing what to read next.
+- Says: This says: 'I remember the reader you are, and I want to help that part of you flourish again, one book at a time.'
+- Usage: A new carefully selected book arrives each month, giving her something to look forward to and read at her own pace
 
-**WILD CARD**: The Greek Gourmet Experience by Authentic Greek Artisanal Food — $85 [consumable]
-- Why: Connects to Jake's interest in foodie — a consumable pick that fits naturally into their life.
-- Says: This says: 'I know how much you love exploring Montreal's food scene'
-- Usage: They eagerly anticipate the arrival of their monthly box, discovering new Greek delicacies to incorporate into their weekend meals or share with friends.
+**WILD CARD**: MothTech T-Shirt in Aged Black by Satisfy Running — $150 [practical]
+- Why: Connects to Nina's interest in running — a practical pick that fits naturally into their life.
+- Says: This says: 'You're still you, not just a mom; I see your need for personal time and want to '
+- Usage: Every run will feel like performance art in this laser-cut, weathered masterpiece
 
 
 ---
 
 ### Post-Recommendation Simulation
-_Persona behavior: urgent_
+_Persona behavior: emotional_
 
 **Reactions:**
-- Make Your Own Sushi Cooking Class in Miami Beach: relevant
+- Serum Trio: relevant
+- 6-Month Gift Subscription: relevant
+- MothTech T-Shirt in Aged Black: irrelevant
 
-**Decision logic:** Picks whatever is most clearly giftable tonight — needs to be digital, printable, or an experience voucher. Physical products are instant reject regardless of relevance.
+**Decision logic:** Picks whatever most clearly says "this is about YOU not the baby".
 
-**Selected:** Make Your Own Sushi Cooking Class in Miami Beach by Giftory ($63)
-_Reason: Persona would pick this because: Picks whatever is most clearly giftable tonight — needs to be digital, printable, or an experience voucher. Physical products are instant reject regardless of relevance._
+**Selected:** Serum Trio by Primally Pure ($138)
+_Reason: Persona would pick this because: Picks whatever most clearly says "this is about YOU not the baby"._
 
 **Card generation:**
-_Persona skips card._
+AI card: "Happy birthday to the amazing woman who happens to be an incredible mom too. I see how much you give to everyone else, and I want you to have something that's just for you. You deserve to feel pampered and beautiful, because that's exactly what you are."
+_Persona would: Writes deeply personal card about how proud he is of her._
 
-**Buy behavior:** Buys instantly, screenshots the confirmation, shows it on phone at dinner.
+**Presentation guide:**
+- Wrapping: Place each serum in a small mesh bag (like the ones for delicates in laundry) tied with silk ribbon - it mimics spa packaging and hints at self-care rituals
+- Timing: Give it Sunday morning after her usual skincare routine but before she starts her day
+- Say: I wanted you to have something that's just for you - not for the house, not for anyone else, just for Nina
 
-**Would refine?** If all 3 are physical products, would immediately refine with 'these all need shipping — I need something I can give TONIGHT'.
+**Buy behavior:** Buys immediately — no time to overthink.
+
+**Would refine?** If any pick is baby-related.
 
 
 ---
@@ -461,9 +283,9 @@ _Persona skips card._
 | Conversation quality | 100% |
 | Context extraction | 100% |
 | Recommendation relevance | 100% |
-| Budget compliance | 0% |
+| Budget compliance | 33% |
 | Turns to complete | 3 |
-| Duration | 24019ms |
+| Duration | 38253ms |
 
 
 ---

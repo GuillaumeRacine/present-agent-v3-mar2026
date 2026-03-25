@@ -1,82 +1,54 @@
 {
-  "timestamp": "2026-03-24T22:46:26.570Z",
+  "timestamp": "2026-03-25T13:08:39.079Z",
   "personas": [
     {
       "id": "indecisive_partner",
       "title": "Forgot anniversary, no idea what to get, changes mind",
       "scores": {
-        "conversationQuality": 0.94,
+        "conversationQuality": 0.83,
         "contextExtraction": 1,
         "recommendationRelevance": 1,
-        "budgetCompliance": 0.33,
+        "budgetCompliance": 0.67,
         "turnsToComplete": 3,
-        "totalDurationMs": 45399
+        "totalDurationMs": 36487
       },
-      "issueCount": 1,
-      "recCount": 3
-    },
-    {
-      "id": "overthinking_parent",
-      "title": "Parent agonizing over teenage son's graduation gift",
-      "scores": {
-        "conversationQuality": 0.82,
-        "contextExtraction": 1,
-        "recommendationRelevance": 1,
-        "budgetCompliance": 1,
-        "turnsToComplete": 3,
-        "totalDurationMs": 39784
-      },
-      "issueCount": 2,
-      "recCount": 1
-    },
-    {
-      "id": "awkward_professional",
-      "title": "New employee trying to get a holiday gift for entire team",
-      "scores": {
-        "conversationQuality": 1,
-        "contextExtraction": 1,
-        "recommendationRelevance": 0.67,
-        "budgetCompliance": 1,
-        "turnsToComplete": 3,
-        "totalDurationMs": 25290
-      },
-      "issueCount": 1,
+      "issueCount": 3,
       "recCount": 3
     },
     {
       "id": "conflicted_sibling",
       "title": "Complicated relationship, wants to reconnect through a gift",
       "scores": {
-        "conversationQuality": 0.94,
+        "conversationQuality": 0.89,
         "contextExtraction": 1,
         "recommendationRelevance": 1,
-        "budgetCompliance": 0,
+        "budgetCompliance": 0.33,
         "turnsToComplete": 3,
-        "totalDurationMs": 30733
+        "totalDurationMs": 34306
       },
       "issueCount": 1,
       "recCount": 3
     },
     {
-      "id": "last_minute_chaos",
-      "title": "Everything is wrong and they need a gift in 2 hours",
+      "id": "new_parent_exhausted",
+      "title": "Exhausted new dad getting something for wife's first birthday as a mom",
       "scores": {
         "conversationQuality": 1,
         "contextExtraction": 1,
         "recommendationRelevance": 1,
-        "budgetCompliance": 0,
+        "budgetCompliance": 0.33,
         "turnsToComplete": 3,
-        "totalDurationMs": 24019
+        "totalDurationMs": 38253
       },
       "issueCount": 0,
       "recCount": 3
     }
   ],
   "averageScores": {
-    "conversationQuality": 0.94,
+    "conversationQuality": 0.91,
     "contextExtraction": 1,
-    "recommendationRelevance": 0.93,
-    "budgetCompliance": 0.47
+    "recommendationRelevance": 1,
+    "budgetCompliance": 0.44
   },
-  "totalIssues": 5
+  "totalIssues": 4
 }
