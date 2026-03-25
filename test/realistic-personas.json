@@ -582,5 +582,250 @@
       "wouldRefine": "If picks feel impersonal.",
       "buyBehavior": "Ships directly to Aisha with a note."
     }
+  },
+  {
+    "id": "browser_only",
+    "title": "Just browsing \u2014 looks but does not buy",
+    "description": "Comparison shopper. Wants to see what the app recommends but will buy on their own later. Gives full info but never clicks Choose.",
+    "turns": [
+      {
+        "message": "I need ideas for my wife birthday. She likes plants and skincare. Budget $80-120.",
+        "intent": "Dense opener. All info in one message.",
+        "expect_ai": "Should complete quickly with all this info."
+      },
+      {
+        "message": "the plant direction",
+        "intent": "Picks direction.",
+        "expect_ai": "Should complete."
+      },
+      {
+        "message": "ok show me",
+        "intent": "Wants to see options.",
+        "expect_ai": "Should complete and show profile."
+      }
+    ],
+    "scoring": {
+      "context_should_have": {
+        "name": "wife",
+        "relationship": "wife",
+        "occasion": "birthday",
+        "interests_any": [
+          "plants",
+          "skincare"
+        ],
+        "budget_contains": "80"
+      },
+      "conversation_should": [
+        "Complete in 3 turns"
+      ],
+      "recs_should": [
+        "Plant-related items"
+      ]
+    },
+    "postRecs": {
+      "behavior": "browser",
+      "reactions": {
+        "slot0": "relevant",
+        "slot1": "relevant"
+      },
+      "decision": "Does NOT select any product. Just browses.",
+      "cardEdit": "N/A \u2014 never reaches card page.",
+      "wouldRefine": "No.",
+      "buyBehavior": "Leaves the app. Will search on their own."
+    }
+  },
+  {
+    "id": "price_shocker",
+    "title": "Everything is too expensive \u2014 abandons",
+    "description": "Has a very tight budget ($20-30) for a coworker. All recommendations feel too expensive or too cheap. Leaves frustrated.",
+    "turns": [
+      {
+        "message": "Need a quick gift for a coworker leaving the company. Don't know them well. Max $25.",
+        "intent": "Low budget, minimal info.",
+        "expect_ai": "Extract and suggest safe options."
+      },
+      {
+        "message": "he likes tech stuff I think? not sure",
+        "intent": "Vague interest.",
+        "expect_ai": "Show generic safe directions."
+      },
+      {
+        "message": "just something useful, under 25",
+        "intent": "Reiterates budget constraint.",
+        "expect_ai": "Complete with $25 budget."
+      }
+    ],
+    "scoring": {
+      "context_should_have": {
+        "name": "coworker",
+        "relationship": "coworker",
+        "occasion": "farewell",
+        "interests_any": [
+          "tech"
+        ],
+        "budget_contains": "25"
+      },
+      "conversation_should": [
+        "Complete in 3 turns"
+      ],
+      "recs_should": [
+        "Under $25 strict"
+      ]
+    },
+    "postRecs": {
+      "behavior": "price_shocked",
+      "reactions": {
+        "slot0": "too_expensive",
+        "slot1": "too_expensive",
+        "slot2": "too_expensive"
+      },
+      "decision": "All too expensive. Abandons.",
+      "cardEdit": "N/A",
+      "wouldRefine": "No \u2014 just leaves.",
+      "buyBehavior": "Does not buy. Gets a gift card instead."
+    }
+  },
+  {
+    "id": "wrong_products",
+    "title": "None of the 3 feel right \u2014 refines once then quits",
+    "description": "Looking for something very specific (vinyl records for a music nerd). The catalog probably doesn't have it. Refines once, still not right, gives up.",
+    "turns": [
+      {
+        "message": "Birthday gift for my roommate. He's obsessed with vinyl records and collects rare pressings.",
+        "intent": "Very niche interest.",
+        "expect_ai": "Extract vinyl/music interests."
+      },
+      {
+        "message": "specifically looking for something vinyl related. he has a turntable already. maybe accessories or rare records. $60-100",
+        "intent": "Very specific direction.",
+        "expect_ai": "Should complete with vinyl direction."
+      },
+      {
+        "message": "yeah the vinyl direction",
+        "intent": "Confirms.",
+        "expect_ai": "Complete."
+      }
+    ],
+    "scoring": {
+      "context_should_have": {
+        "name": "roommate",
+        "relationship": "roommate",
+        "occasion": "birthday",
+        "interests_any": [
+          "vinyl",
+          "music",
+          "records"
+        ],
+        "budget_contains": "60"
+      },
+      "conversation_should": [
+        "Complete in 3 turns"
+      ],
+      "recs_should": [
+        "Music-related items"
+      ]
+    },
+    "postRecs": {
+      "behavior": "disappointed",
+      "reactions": {
+        "slot0": "irrelevant",
+        "slot1": "irrelevant",
+        "slot2": "irrelevant"
+      },
+      "decision": "None feel vinyl-specific enough. Clicks Not quite right once.",
+      "cardEdit": "N/A",
+      "wouldRefine": "Yes \u2014 says I want actual vinyl records or turntable accessories. Still not happy after 2nd round.",
+      "buyBehavior": "Gives up. Goes to Discogs instead."
+    }
+  },
+  {
+    "id": "abandoner_early",
+    "title": "Starts conversation but drops off before recommendations",
+    "description": "Gets distracted after turn 1. Never provides enough info for the AI to complete. ADHD in action.",
+    "turns": [
+      {
+        "message": "need a gift for someone",
+        "intent": "Extremely vague. No name, no occasion, nothing.",
+        "expect_ai": "Should ask who and what occasion."
+      },
+      {
+        "message": "um my friend I guess? for their thing",
+        "intent": "Still vague. User is distracted.",
+        "expect_ai": "Try to extract. Ask about interests."
+      }
+    ],
+    "scoring": {
+      "context_should_have": {
+        "name": "friend",
+        "relationship": "friend",
+        "occasion": "unknown",
+        "interests_any": [],
+        "budget_contains": ""
+      },
+      "conversation_should": [
+        "Not complete \u2014 only 2 turns, too vague"
+      ],
+      "recs_should": []
+    },
+    "postRecs": {
+      "behavior": "abandoned",
+      "reactions": {},
+      "decision": "Never sees recommendations. Closes tab.",
+      "cardEdit": "N/A",
+      "wouldRefine": "N/A",
+      "buyBehavior": "N/A \u2014 never reaches this stage."
+    }
+  },
+  {
+    "id": "returner_delayed",
+    "title": "Completes conversation, sees recs, comes back 3 days later to buy",
+    "description": "Does the full flow, likes the Top Pick, but doesn't buy immediately. Returns later.",
+    "turns": [
+      {
+        "message": "Father's Day gift for my dad. He's into golf and grilling. Pretty traditional guy, 60s.",
+        "intent": "Clear info.",
+        "expect_ai": "Extract interests + occasion."
+      },
+      {
+        "message": "grilling direction is great. He just got a new grill. Budget 100-200.",
+        "intent": "Picks direction, gives budget.",
+        "expect_ai": "Complete."
+      },
+      {
+        "message": "yeah let's see what you've got",
+        "intent": "Ready for recs.",
+        "expect_ai": "Complete."
+      }
+    ],
+    "scoring": {
+      "context_should_have": {
+        "name": "dad",
+        "relationship": "father",
+        "occasion": "Father's Day",
+        "interests_any": [
+          "golf",
+          "grilling",
+          "bbq"
+        ],
+        "budget_contains": "100"
+      },
+      "conversation_should": [
+        "Complete in 3 turns"
+      ],
+      "recs_should": [
+        "Grilling-related items",
+        "Budget $100-200"
+      ]
+    },
+    "postRecs": {
+      "behavior": "delayed_buyer",
+      "reactions": {
+        "slot0": "relevant"
+      },
+      "decision": "Likes the Top Pick. But does not buy today. Will return.",
+      "cardEdit": "N/A \u2014 not buying yet.",
+      "wouldRefine": "No \u2014 likes the options.",
+      "buyBehavior": "Bookmarks the page. Returns in 3 days to buy."
+    }
   }
 ]

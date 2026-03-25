@@ -246,6 +246,35 @@ export function getDb(): Database.Database {
     CREATE INDEX IF NOT EXISTS idx_events_session_type ON events(session_id, event_type, created_at);
   `);
 
+  // ── Migrations (safe to re-run) ──────────────────────────────────
+
+  // Add FTS5 full-text search (silently skip if already exists)
+  try {
+    _db.exec(`
+      CREATE VIRTUAL TABLE IF NOT EXISTS products_fts USING fts5(
+        name, brand, short_description, recipient_traits, category,
+        content=products, content_rowid=rowid
+      );
+    `);
+    // Populate FTS if empty
+    const ftsCount = (_db.prepare("SELECT COUNT(*) as c FROM products_fts").get() as { c: number }).c;
+    if (ftsCount === 0) {
+      const productCount = (_db.prepare("SELECT COUNT(*) as c FROM products").get() as { c: number }).c;
+      if (productCount > 0) {
+        _db.exec(`
+          INSERT INTO products_fts(rowid, name, brand, short_description, recipient_traits, category)
+          SELECT rowid, name, brand, short_description, recipient_traits, category FROM products
+        `);
+      }
+    }
+  } catch {
+    // FTS5 may not be available in all SQLite builds — skip gracefully
+  }
+
+  // Add freshness columns (safe if already exist)
+  try { _db.exec("ALTER TABLE products ADD COLUMN last_checked_at TEXT"); } catch { /* already exists */ }
+  try { _db.exec("ALTER TABLE products ADD COLUMN check_status TEXT DEFAULT 'unchecked'"); } catch { /* already exists */ }
+
   return _db;
 }
 
