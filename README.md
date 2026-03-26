@@ -1,175 +1,256 @@
-# Present Agent v2
+# Present Agent
 
-An AI-powered gifting assistant designed for ADHD adults. Conversational chat builds a recipient profile in 2-3 turns, then delivers 3 psychology-informed gift recommendations with AI-generated cards and presentation guides.
+> AI gift concierge for ADHD adults. 171K products, 236K real customer reviews, Shopify checkout, Claude Code CLI.
+
+Find the perfect gift in 2 minutes from your terminal. Tell it who you're shopping for, get 3 personalized recommendations with real customer reviews and social proof, then checkout in one click.
+
+## Quick Start (Claude Code)
+
+```bash
+# 1. Clone and install
+git clone https://github.com/GuillaumeRacine/present-agent-v3-mar2026.git
+cd present-agent-v3-mar2026
+npm install
+
+# 2. Add your API key
+echo 'OPENAI_API_KEY=your-key-here' > .env.local
+
+# 3. Install Claude Code skills
+cp docs/commands/gift.md ~/.claude/commands/gift.md
+cp docs/commands/buy.md ~/.claude/commands/buy.md
+cp docs/commands/remind.md ~/.claude/commands/remind.md
+
+# 4. Start the app
+npm run dev
+
+# 5. In Claude Code, run:
+/gift
+```
+
+## How It Works
+
+```
+You: /gift
+Agent: Who's the gift for and what's the occasion?
+You: My partner Sarah, birthday next month. She's into yoga and cooking. $75-100.
+
+Agent:
+  1. TOP PICK: Heart Padlock Necklace — $75
+     Rated 5/5 by 25 verified buyers
+     "Sarah loves yoga and cooking, and this elegant necklace
+      adds sophistication to her daily outfits..."
+
+  2. GREAT MATCH: Brightland Olive Oil Set — $62
+     Rated 4.9/5 by 515 buyers
+     "Perfect for someone who loves cooking..."
+
+  3. WILD CARD: Daily Driver Kit — $99
+     "Combines practicality with creativity..."
+
+  Like one of these?
+
+You: #1
+
+Agent: [Opens Shopify checkout in your browser]
+  Checkout ready! Heart Padlock Necklace for $75 CAD.
+```
+
+## Skills
+
+| Skill | What It Does |
+|-------|-------------|
+| `/gift` | Conversational gift finder → 3 personalized recommendations |
+| `/buy` | Create Shopify cart → open checkout in browser |
+| `/remind` | Scan calendar for upcoming gift occasions |
 
 ## Architecture
 
 ```
-Chat (Gemini Flash) → Gift Profile → SQLite Catalog (171K products) → Claude Sonnet Scoring → 3-Card Display → AI Card + Presentation Guide → Purchase → Recipient Feedback → Learning Loop
+/remind (calendar scan)
+    → /gift (chat → context → recommend 3)
+        → /buy (Shopify cart → checkout)
+            → Webhooks (order tracking)
+                → Feedback (learning loop)
 ```
 
-| Layer | Tech |
-|-------|------|
-| Frontend | Next.js 14, Tailwind CSS, React 18 |
-| Chat | Gemini 2.5 Flash (fast conversational flow) |
-| Recommendations | Claude Sonnet (nuanced matching, 3-slot strategy) |
-| Cards | Claude Sonnet (personalized messages + presentation guides) |
-| Catalog | SQLite (better-sqlite3), 171K enriched products |
-| Voice STT | Web Speech API + Whisper fallback |
-| Voice TTS | OpenAI TTS (server-side) |
-| Auth | Google OAuth (profiles, calendar, contacts) |
+| Layer | Technology |
+|-------|-----------|
+| CLI Interface | Claude Code skills |
+| Web App | Next.js 14, Tailwind CSS |
+| Chat | Gemini 2.5 Flash |
+| Recommendations | OpenAI gpt-4o-mini (ranking) |
+| Cards | Claude Sonnet (personalized messages) |
+| Catalog | SQLite, 171K enriched products |
+| Commerce | Shopify (Storefront API + Admin API) |
+| Reviews | Okendo API (free) + Firecrawl |
+| Voice | Web Speech API + Whisper + OpenAI TTS |
+| Auth | Google OAuth |
 
-## Features
+## Data Pipeline
 
-### Core Gift Flow
-- **3-turn conversational profiling** — extracts recipient, occasion, budget, interests
-- **3-card recommendation engine** — Top Pick / Great Match / Wild Card slot strategy
-- **AI-generated gift cards** — personalized messages that sound like the giver, not AI
-- **Presentation guides** — wrapping ideas, timing advice, what to say
-- **"Just Pick For Me"** — one-tap for decision-paralyzed users
+5 layers of enrichment on every product:
 
-### Persistent Memory
-- **User accounts** — Google OAuth with persistent profiles
-- **Recipient profiles** — interests, avoids, shared memories, inside jokes
-- **Gift history** — what worked, what didn't, satisfaction tracking
-- **Learning loop** — feedback from recipients improves future recommendations
+| Layer | What | Coverage | Source |
+|-------|------|----------|--------|
+| **Product catalog** | Name, brand, price, images | 171,450 | Shopify stores API |
+| **Gift intelligence** | Psychological fit, relationship fit, occasions, traits | 171,450 (100%) | Claude Sonnet |
+| **Customer reviews** | Ratings, review text, star breakdown | 12,652 (236K reviews) | Okendo API + Firecrawl |
+| **Review intelligence** | Themes, gift signals, quality notes | 9,686 | OpenAI gpt-4o-mini |
+| **Gift dimensions** | Suitability score, relationships, occasions, uniqueness | 171,020 (99.7%) | OpenAI gpt-4o-mini |
 
-### Intelligence
-- **Budget compliance** — tight pre-filter + hard post-filter (95% floor, 110% ceiling)
-- **Category diversity** — enforced in post-processing (no two same-category picks)
-- **Recipient feedback** — shareable feedback links, reactions feed back into profiles
-- **Urgency awareness** — last-minute filter for occasions within 3 days
-- **Relationship normalization** — "best friend" → friend, "mother-in-law" → extended_family
+### Sample Enriched Product
 
-### Voice Mode
-- Browser Speech API with Whisper STT fallback
-- OpenAI TTS for natural voice output
-- Voice activity detection (auto-send after 1.5s silence)
-- Persistent preference (localStorage)
+```
+Cashmere Crewneck by Todd Snyder — $328
 
-### Instrumentation
-- Full event taxonomy (session lifecycle, chat, recs, cards, delivery, voice)
-- Analytics dashboard at `/admin/analytics`
-- Session funnel, conversation metrics, recommendation accuracy, satisfaction
+Gift Intelligence:
+  Mood: luxurious, thoughtful, practical
+  For: partner, parent, close_family, friend
+  Occasions: birthday, christmas, fathers_day, mothers_day
 
-## Product Catalog
+Reviews: 4.8/5 (25 reviews, 92% five-star)
+  "Unbelievably comfortable" — Richard R. (verified)
+  "Super cozy and soft right out of the box" — Matt J. (verified)
 
-171K enriched products from 600+ Shopify stores, all $1-$1000 USD:
+Review Intelligence:
+  Themes: luxurious comfort, great quality, versatile style
+  Gift Signals: frequently bought as a gift, great for winter holidays
+  Quality Note: one reviewer noted shrinkage in wash
 
-| Field | Description |
-|-------|-------------|
-| `category` | practical, experiential, consumable, artisan, wellness, kids |
-| `psychological_fit` | practical, thoughtful, playful, luxurious, sentimental, adventurous |
-| `relationship_fit` | partner, parent, child, close_family, friend, professional, acquaintance |
-| `recipient_traits` | Free-form tags (coffee, outdoors, baking, gaming, etc.) |
-| `occasion_fit` | birthday, mothers_day, christmas, wedding, etc. |
-| `price_tier` | token, budget, moderate, premium, luxury |
-| `usage_signal` | "She'll use this every morning" |
-| `what_this_says` | "This says: 'I notice the little rituals that make your day better'" |
+Gift Dimensions:
+  Suitability: 0.85/1.0  |  Gift-proven: YES
+  Given to: wife, mother, friend  |  For: birthday, christmas
+  Uniqueness: medium  |  Unboxing: premium  |  Regift risk: low
+```
+
+## Recommendation Engine
+
+```
+Gift Context (recipient, occasion, budget, interests)
+    │
+    ├─ SQL Prefilter (150 candidates)
+    │   ├─ Price range, occasion, relationship matching
+    │   ├─ Rating filter (>= 3.5 stars)
+    │   └─ Boost: gift-proven (+3), suitability (+2), matching occasions (+2),
+    │           matching relationships (+2), review count (+2), uniqueness (+1)
+    │
+    ├─ Diversity: max 2/brand, max 12/category → 50 candidates
+    │
+    ├─ LLM Ranking (OpenAI gpt-4o-mini)
+    │   ├─ Slot 1: TOP PICK (highest confidence)
+    │   ├─ Slot 2: GREAT MATCH (sentimental, different category)
+    │   └─ Slot 3: WILD CARD (surprising, high uniqueness)
+    │
+    └─ Output: whyThisFits, giftAngle, whatThisSays, usageSignal,
+              socialProof, qualityCaveat, shopify variantId
+```
+
+### Context Accumulation (Gets Smarter Over Time)
+
+Each gift session feeds back into the system:
+- Recipient profile updated with new interests
+- User preferences tracked (categories, budget patterns)
+- Gift outcomes recorded (loved it / meh / returned)
+- Next recommendation uses all accumulated context
+
+## Shopify Integration
+
+Products are synced to a Shopify store with 16 metafields of gift intelligence. Checkout happens via Shopify's hosted checkout (secure, PCI-compliant).
+
+```
+Product sync (SQLite → Shopify Admin API)
+    → Published to Online Store
+    → Queryable via Storefront API (with metafields)
+    → Cart creation → checkout URL → payment
+    → Webhooks: orders/create, orders/paid, fulfillments
+    → Session tracking → delivery status → feedback trigger
+```
 
 ## Pages
 
 | Route | Purpose |
 |-------|---------|
-| `/` | ADHD-specific landing page with waitlist capture |
-| `/dashboard` | Search contacts, upcoming occasions, "Your People" grid |
-| `/gift/[sessionId]` | Chat → profile card → 3 recommendations → card page |
-| `/gift/[sessionId]/card` | Card preview → presentation guide → summary → purchase → feedback link |
-| `/feedback/[token]` | Public recipient feedback page (no auth required) |
-| `/admin` | Product browser (filter, search, paginate) |
-| `/admin/analytics` | Funnel, conversation, recommendation, satisfaction metrics |
-| `/admin/sessions` | Per-session event timeline explorer |
-
-## Project Status
-
-See [docs/STATUS.md](docs/STATUS.md) for the complete project status, next steps, and deployment instructions.
+| `/` | Landing page |
+| `/dashboard` | Contacts, occasions, recipients |
+| `/dashboard/profile` | User profile, gift history, learned preferences |
+| `/dashboard/settings` | AI behavior sliders, privacy controls, data management |
+| `/gift/[sessionId]` | Chat → recommendations → card |
+| `/admin` | Product browser |
+| `/admin/reviews` | Review browser with live customer reviews |
+| `/admin/analytics` | Session funnel, recommendation metrics |
 
 ## API Routes
 
 | Endpoint | Method | Purpose |
 |----------|--------|---------|
-| `/api/chat` | POST | Conversational gift profiling (Gemini Flash) |
-| `/api/recommend` | POST | 3-card recommendations (Claude Sonnet) |
-| `/api/cards/generate` | POST | AI card message + presentation guide |
-| `/api/auth/google` | POST | Google OAuth user creation |
-| `/api/users/me` | GET/PATCH | Current user profile + preferences |
-| `/api/recipients` | GET/POST | List/create recipients |
-| `/api/recipients/[id]` | GET/PATCH | Single recipient + history |
-| `/api/sessions` | POST | Create persistent gift session |
-| `/api/sessions/[id]` | GET/PATCH | Session state management |
-| `/api/events` | POST | Client-side event ingestion |
-| `/api/analytics` | GET | Computed metrics |
-| `/api/feedback` | POST | Session feedback (implicit/explicit) |
-| `/api/feedback/recipient/[token]` | GET/POST | Recipient feedback submission |
-| `/api/voice/stt` | POST | Whisper speech-to-text |
-| `/api/voice/tts` | POST | OpenAI text-to-speech |
-| `/api/v1/gift` | POST | Public REST API — get recommendations |
-| `/api/v1/gift/[id]` | GET/PATCH | Public REST API — session details |
-| `/api/v1/occasions` | GET | Public REST API — upcoming occasions |
-| `/api/v1/recipients` | GET | Public REST API — user's recipients |
-| `/api/occasions` | GET | Calendar occasions |
-| `/api/contacts` | GET | Google Contacts search |
-| `/api/catalog/stats` | GET | Catalog statistics |
-| `/api/admin/products` | GET | Paginated product browser |
-
-## MCP Server
-
-Claude Code integration via `mcp/server.ts`:
-
-| Tool | Purpose |
-|------|---------|
-| `present_find_gift` | Find gift recommendations |
-| `present_occasions` | Get upcoming occasions |
-| `present_recipient_profile` | Look up saved recipient |
-| `present_generate_card` | Generate card message |
-| `present_mark_given` | Mark gift as given + get feedback link |
-
-## CLI
-
-```bash
-npx tsx cli/present.ts gift --for "Mom" --occasion birthday --budget "$50-100"
-npx tsx cli/present.ts occasions --days 30
-npx tsx cli/present.ts recipients
-```
-
-## Setup
-
-```bash
-npm install
-cp .env.local.example .env.local  # Add API keys (see below)
-npm run dev
-```
-
-Required environment variables:
-- `ANTHROPIC_API_KEY` — Claude API
-- `GEMINI_API_KEY` — Gemini Flash
-- `OPENAI_API_KEY` — Whisper STT + TTS
-- `GOOGLE_CREDENTIALS_PATH` — Google OAuth credentials
-- `GOOGLE_TOKEN_PATH` — Google OAuth token
+| `/api/gift/recommend` | POST | Get 3 recommendations (main entry point) |
+| `/api/chat` | POST | Conversational profiling |
+| `/api/recommend` | POST | Legacy recommendation endpoint |
+| `/api/cards/generate` | POST | AI card message |
+| `/api/admin/reviews` | GET | Review browser with filters |
+| `/api/admin/reviews/[productId]` | GET | Live reviews from Okendo |
+| `/api/admin/reviews/stats` | GET | Review coverage statistics |
+| `/api/user/insights` | GET | User patterns and history |
+| `/api/user/settings` | GET/PUT | Privacy and AI behavior settings |
+| `/api/user/data-export` | GET/DELETE | GDPR data export/deletion |
+| `/api/webhooks/shopify` | POST | Order lifecycle webhooks |
+| `/api/v1/gift` | POST | Public REST API |
 
 ## Scripts
 
 ```bash
-npm run dev              # Start dev server
-npm run build            # Production build
-npm run db:stats         # Catalog statistics
-npm run db:enrich        # Run LLM enrichment
-npm run db:quality       # Data quality audit
-npm run db:import-shopify # Import from Shopify stores
+# Core
+npm run dev                          # Start dev server
+npm run build                        # Production build
+
+# Data pipeline
+npx tsx scripts/crawl-stores.ts           # Crawl Shopify stores
+npx tsx scripts/enrich-products.ts        # Gift intelligence (Claude)
+npx tsx scripts/scrape-reviews.ts         # Okendo review scraper (free)
+npx tsx scripts/scrape-reviews-firecrawl.ts discover  # Find review platforms
+npx tsx scripts/enrich-from-reviews.ts    # Review intelligence (OpenAI)
+npx tsx scripts/enrich-gift-dimensions.ts # Gift dimensions (OpenAI)
+npx tsx scripts/sync-to-shopify.ts        # Sync to Shopify store
+npx tsx scripts/simulate-gift-journey.ts  # Test with simulated users
+
+# Database
+npm run db:stats                     # Catalog statistics
+npm run db:quality                   # Data quality audit
+```
+
+## Environment Variables
+
+```bash
+# Required (recommendation engine)
+OPENAI_API_KEY=sk-proj-...           # For recommendation ranking
+
+# Shopify (for checkout)
+SHOPIFY_STORE_DOMAIN=store.myshopify.com
+SHOPIFY_ADMIN_ACCESS_TOKEN=shpat_...
+SHOPIFY_STOREFRONT_PUBLIC_TOKEN=...
+
+# Optional
+GEMINI_API_KEY=...                   # For chat (Gemini Flash)
+RECOMMEND_MODEL=gpt-4o-mini         # Override ranking model
+GOOGLE_CREDENTIALS_PATH=...         # Google OAuth
+GOOGLE_TOKEN_PATH=...               # Google OAuth token
 ```
 
 ## Testing
 
 ```bash
-npx playwright test                    # All E2E tests
-npx playwright test -g "API Routes"    # API tests only (7 tests)
-npx playwright test -g "UX"            # Browser UX tests (11 tests)
+# E2E tests
+npx playwright test
+
+# Simulated user journeys (5 personas)
+npx tsx scripts/simulate-gift-journey.ts --verbose
+
+# Test specific persona
+npx tsx scripts/simulate-gift-journey.ts --persona=1 --with-checkout
 ```
 
-## Data Pipeline
+## Project Status
 
-1. **Import**: `import-shopify.ts` crawls Shopify stores → SQLite
-2. **Enrich**: `enrich-products.ts` adds gift intelligence via Claude
-3. **Clean**: `data-quality.ts` removes junk prices, duplicates, missing data
-4. **Tag**: Batch SQL updates for hobby traits (baking, last-minute, etc.)
-5. **Serve**: Recommendation engine queries enriched products at runtime
+See [docs/STATUS.md](docs/STATUS.md) for deployment status and roadmap.
+
+Full technical architecture: [briefs/01_present_agent.md](https://github.com/GuillaumeRacine/ensemble_prototypes/blob/main/briefs/01_present_agent.md)
